@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Estilização de todo o menu inicial da barra de navegação */ 
+* {
+  font-family: "Work Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(255, 255, 255);
+}   
+
+section {
+    padding: 10px 8%;
+}
+
+header{
+    background-color: #ddecf4;
+    width: 100%;
+    padding: 1px 8%;
+    box-shadow: 0 0.1rem 0.5rem #ccc;
+}
+
+#menu_inicial{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#logo{
+    width: 6%;
+    height: 6%;
+    font-size: 10px;
+    color: rgb(1, 37, 63);
+}
+
+#lista_inicial{
+    display: flex;
+    list-style: none;
+    gap: 100px;
+    padding: 2px;
+}
+
+.item_nav a {   
+    text-decoration: none;
+    color: rgb(37, 47, 57);
+    font-weight: 600;
+}
+
+
+.item_nav.active a {
+    color: rgb(41, 97, 218);
+    border-bottom: 3px solid #234e93;
+
+}
+
+.botao_padrao {
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2196F3 ;
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+}
+
+/* Botões e input do simulador */ 
+#btn_formulario1, #btn_formulario2 {
+    border: none;
+    display: flex;  
+    background-color: #6CCE6F;
+    margin-top: 10px;
+    margin-left: 400px;
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+}
+
+#voltar {
+    border: none;
+    display: flex;  
+    background-color: #6CCE6F;
+    margin-top: 10px;
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    width: 198px;
+}
+
+#btn_formulario3 {
+    border: none;
+    display: flex;  
+    background-color: #6CCE6F;
+    margin-top: 10px;
+    margin-left: 250px ;
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+
+}
+
+/* -------------------------------------------------------------------- */ 
+#cadastro {
+    color: rgb(37, 47, 57);
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    align-items: center;
+    gap: 40px;
+}
+
+a {
+    text-decoration: none;
+    text-decoration: none;
+    color: rgb(37, 47, 57);
+    font-weight: 600;
+}
+
+#botao_padrao2 {
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(97, 127, 151) ;
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-weight: 600;
+    box-shadow: 0px 0px 5px 2px rgba(97, 127, 151, 0.63);
+    cursor: pointer;
+    color: white;
+}
+
+div {
+    display: none;
+    color: #010412;
+}
+
+#content1, #content2{
+    color: darkblue;
+    margin-top: 10%;
+    margin-left: 20%;
+}
+
+#content3{
+    color: darkblue;
+    margin-top: 10%;
+    margin-left: 30%;
+}   
+
+#tinta_utilizada, #primer_utilizado{
+    margin-left: 25%;
+    width: 23%;
+    margin-top: 15px;
+    border-radius: 10px;
+    font-size: 150%;
+    color: #6CCE6F;
+    font-weight: bold;
+    text-align: center;
+}
+
+#tipo_de_veiculo {
+    margin-left: 15%;
+    width: 23%;
+    margin-top: 15px;
+    border-radius: 10px;
+    font-size: 100%;
+}
+
+.visible {
+    display: block;
+}
+
+#resultados {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: darkblue;
+}
+
+table {
+    width: 50%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+    word-wrap: break-word;
+}
+th {
+    background-color: #f2f2f2;
+}

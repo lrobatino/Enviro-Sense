@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./estilo.css">
+    <title>Página Inicial</title>
+</head>
+<body>
+    <center>
+        <header>
+            <h1 id="logo">Enviro Sense</h1>
+        </header>
+        <div class="secao" id="secao1">
+            <h2>Bem vindo, por gentiza informe os seguintes dados:</h2>
+            Volume da tinta usada por mês(L):<br>
+            <input type="number" id="inputVolumeTinta"><br>
+            Concentração de COV presente(Kg/l):<br>
+            <input type="number" id="inputConcentracaoCov"><br>
+            Peso do solvente utilizado(Kg):<br>
+            <input type="number" id="inputPesoSolvente"><br><br>
+            <button onclick="proximo(secao1, secao2)" class="botao">Próximo</button>
+        </div>
+        <div class="secao" id="secao2" hidden>
+            <h2>Primer:</h2><br>
+            Volume usado por mês(L):<br>
+            <input type="number" id="inputVolumeTintaPrimer"><br>
+            Concentração de COV presente(Kg/l):<br>
+            <input type="number" id="inputConcentracaoCovPrimer"><br>
+            Peso do solvente utilizado(Kg):<br>
+            <input type="number" id="inputPesoSolventePrimer"><br><br>
+            <button class="botaoAnterior" onclick="anterior()">Anterior</button>
+            <button class="botao" onclick="proximo2()">Próximo</button>
+        </div>
+        <div class="secao" id="secaoAlternativa" hidden>
+            <h2>Irá utilizar verniz?</h2>
+            <button class="botao" onclick="proximoNao()">Não</button>
+            <button class="botao" onclick="proximo3()">Sim</button><br><br>
+            <button class="botaoAnterior" onclick="anteriorAlternativa()">Anterior</button>
+        </div>
+        <div class="secao" id="secao3" hidden>
+            <h2>Verniz:</h2><br>
+            Volume usado por mês(L):<br>
+            <input type="number" id="inputVolumeTintaVerniz"><br>
+            Concentração de COV presente(Kg/l):<br>
+            <input type="number" id="inputConcentracaoCovVerniz"><br>
+            Peso do solvente utilizado(Kg):<br>
+            <input type="number" id="inputPesoSolventeVerniz"><br><br>
+            <button class="botaoAnterior" onclick="anterior2()">Anterior</button>
+            <button class="botao" onclick="proximo4()">Próximo</button>
+        </div>
+        <div class="secao" id="secao4" hidden>
+            <h2>Selecione um tipo de licença de acordo com o veiculo</h2>
+            <button onclick="botaoCarro()"><img style="width: 80px;" src="./Imagens/carro.png" alt=""></button><br> <!--licenca < 2007 == 60g/m2 || licenças >= 2007 == 45g/m2-->
+            <button onclick="botaoCaminhao()"><img style="width: 80px;" src="./Imagens/caminhao.png" alt=""></button><br><!--licenca < 2007 == 90g/m2 || licenças >= 2007 == 70g/m2-->
+            <button onclick="botaoOnibus()"><img style="width: 80px;" src="./Imagens/onibus.png" alt=""></button><br><br><!--licenca < 2007 == 225g/m2 || licenças >= 2007 == 150g/m2-->
+            <button class="botaoAnterior" onclick="anterior3()">Anterior</button>
+        </div>
+        <div class="secao" id="secaoCarro" hidden>
+            <h2>Automóveis</h2>
+            Quantidade mensal:<br>
+            <input type="number" id="inputQtdCarro"><br>
+            Área do veiculo:<br>
+            <input type="number" id="inputAreaCarro"><br><br>
+            <button class="botaoAnterior" onclick="anteriorCarro()">Anterior</button>
+            <button class="botao" onclick="calcularVE()">Calcular</button>
+        </div>
+        <div class="secao" id="secaoCaminhao" hidden>
+            <h2>Caminhão</h2>
+            Quantidade mensal:<br>
+            <input type="number" id="inputQtdCaminhao"><br>
+            Área do veiculo:<br>
+            <input type="number" id="inputAreaCaminhao"><br><br>
+            <button class="botaoAnterior" onclick="anteriorCaminhao()">Anterior</button>
+            <button class="botao" onclick="calcularVE()">Calcular</button>
+        </div>
+        <div class="secao" id="secaoOnibus" hidden>
+            <h2>Ônibus</h2>
+            Quantidade mensal:<br>
+            <input type="number" id="inputQtdOnibus"><br>
+            Área do veiculo:<br>
+            <input type="number" id="inputAreaOnibus"><br><br>
+            <button class="botaoAnterior" onclick="anteriorOnibus()">Anterior</button>
+            <button class="botao" onclick="calcularVE()">Calcular</button>
+        </div>
+        <div class="secao" id="resultado" hidden></div>
+    </center>
+</body>
+</html>
+
+<script>
+    /*
+    VE = 1000 x [ (VC1 x COV1) + (VC2 x COV2) + Solv1 + Solv2 . . . - (RSA + RSB . . .) ]/ 
+    [(B1 x S1)+(B2 X S2)+...]
+    VE = emissão de COV (g·m)
+    VCn = volume mensal de tinta utilizada (L·mês)
+    COVn = concentração de COVs em cada tinta (kg·L)
+    Solvn = peso de solvente utilizada por mês (kg·mês)
+    RSA = massa mensal de solventes capturados na fase vapor (kg·mês)
+    RSB = massa mensal de solventes capturados na fase líquida (kg·mês)
+    B = quantidade mensal de carrocerias pintadas (mês)
+    S = área das carrocerias (m2) 
+    */
+
+    function calcularVE()
+    {
+        const vc = Number(inputVolumeTinta.value)
+        const cov = Number(inputConcentracaoCov.value)
+        const solv = Number(inputPesoSolvente.value)
+        const vcPrimer = Number(inputVolumeTintaPrimer.value)
+        const covPrimer = Number(inputConcentracaoCovPrimer.value)
+        const solvPrimer = Number(inputPesoSolventePrimer.value)
+        const vcVerniz = Number(inputVolumeTintaVerniz.value)
+        const covVerniz = Number(inputConcentracaoCovVerniz.value)
+        const solvVerniz = Number(inputPesoSolventeVerniz.value)
+        const bCarro = Number(inputQtdCarro.value)
+        const sCarro = Number(inputAreaCarro.value)
+        const bCaminhao = Number(inputQtdCaminhao.value)
+        const sCaminhao = Number(inputAreaCaminhao.value)
+        const bOnibus = Number(inputQtdOnibus.value)
+        const sOnibus = Number(inputAreaOnibus.value)
+        var antes2007 = 0
+        var depois2007 = 0
+
+
+        const ve = (1000 * ((vc * cov) + (vcPrimer * covPrimer) +
+                    (vcVerniz * covVerniz) + solv + solvPrimer +
+                    solvVerniz)) / ((bCarro * sCarro) + 
+                    (bCaminhao * sCaminhao) + (bOnibus * sOnibus))
+
+        if(secaoCarro.hidden == false){
+            secaoCarro.hidden = true
+            resultado.hidden = false
+            antes2007 = 60
+            depois2007 = 45
+        }
+        else if(secaoCaminhao.hidden == false){
+            secaoCaminhao.hidden = true
+            resultado.hidden = false
+            antes2007 = 90
+            depois2007 = 70
+        }
+        else{
+            secaoOnibus.hidden = true
+            resultado.hidden = false
+            antes2007 = 225
+            depois2007 = 150
+        }
+
+        
+        resultado.innerHTML = `<br>Ignorando os métodos de contenção,
+                                a sua empresa está emitindo 
+                                aproximadamente ${ve.toFixed(2)}g/m²
+                                <br>Sendo o limite de ${antes2007}g/m² 
+                                para licenças antes de 2007 e 
+                                ${depois2007}g/m² para depois de 2007`
+    }
+
+    function proximo()
+    {
+        secao1.hidden = true
+        secao2.hidden = false
+    }
+
+    function anterior(){
+        secao1.hidden = false
+        secao2.hidden = true
+    }
+
+    function proximo2()
+    {
+        secao2.hidden = true
+        secaoAlternativa.hidden = false
+    }
+
+    function anterior2()
+    {
+        secaoAlternativa.hidden = false
+        secao3.hidden = true
+    }
+
+    function proximo3()
+    {
+        secaoAlternativa.hidden = true
+        secao3.hidden = false
+    }
+
+    function proximo4()
+    {
+        secao3.hidden = true
+        secao4.hidden = false
+    }
+
+    function proximoNao()
+    {
+        secaoAlternativa.hidden = true
+        secao4.hidden = false
+    }
+
+    function anterior3()
+    {
+        secao4.hidden = true
+        secaoAlternativa.hidden = false
+    }
+
+    function anteriorAlternativa()
+    {
+        secaoAlternativa.hidden = true
+        secao2.hidden = false
+    }
+
+    function botaoCarro()
+    {
+        secaoCarro.hidden = false
+        secao4.hidden = true
+    }
+
+    function botaoCaminhao()
+    {
+        secaoCaminhao.hidden = false
+        secao4.hidden = true
+    }
+
+    function botaoOnibus()
+    {
+        secaoOnibus.hidden = false
+        secao4.hidden = true
+    }
+
+    function anteriorCarro()
+    {
+        secaoCarro.hidden = true
+        secao4.hidden = false
+    }
+
+    function anteriorCaminhao()
+    {
+        secaoCaminhao.hidden = true
+        secao4.hidden = false
+    }
+
+    function anteriorOnibus()
+    {
+        secaoOnibus.hidden = true
+        secao4.hidden = false
+    }
+</script>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro</title>
+    <link rel="shortcut icon" href="image.png" type="image/x-icon"> 
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Preencha os dados abaixo: </h1><hr>
+    <div class="container">
+        
+        <!-- Campos de Preenchimento de dados-->
+        Informe a quantidade de tintas utilizadas no mês (L):
+        <input type="number" id="input_qtd_tintas_mes"><br>
+            
+        Informe a quantidade de primer utilizadas no mês (L):
+        <input type="number"  id="input_qtd_primer_mes" ><br>
+
+        Selecione o tipo de veículo:
+
+        <input type="radio" id="input_automoveis" name="veiculo" value="automoveis" onclick="mostrarEntradaVeiculo()">
+        Automóveis
+
+        <input type="radio" id="input_caminhoes" name="veiculo" value="caminhoes" onclick="mostrarEntradaVeiculo()">
+        Caminhões
+            
+        <input type="radio" id="input_onibus" name="veiculo" value="onibus" onclick="mostrarEntradaVeiculo( )">
+        Ônibus<br><br>
+            
+        <!-- Campos Dinâmicos para mostrar outras entradas de dados -->
+        <div id="input_carroceria" style="display:none;">
+            <label>Número de Carrocerias pintadas no mês:</label>
+            <input type="number" id="input_num_carroceria"><br>
+
+            <label>Área da superfície da carroceria (m²): </label>
+            <input type="number" id="input_area_carroceria"><br><br>
+        </div>
+        
+        Selecione a opção do ano de licenciamento:
+        <input type="radio" name="ano" value="antes_2007">
+        <label for="ano">Antes de 2007</label>
+            
+        <input type="radio" name="ano" value="depois_2007">
+        <label for="ano">Depois de 2007</label><br>
+
+        <button onclick="calculoEmissaoCOV()" class="btn">Calcular Emissão COV</button>
+        <div id="res_cov"></div>
+    </div>
+
+    <script>
+        function mostrarEntradaVeiculo()
+        {
+            // --- Variáveis da função ---
+            const carroceria = document.getElementById('input_carroceria');
+            carroceria.style.display = 'none'; // Escondendo a div carroceria com os campos
+            const veiculoSelecionado = document.querySelector('input[name="veiculo"]:checked').value; // Variável que pega o valor do check digitado
+
+            if (veiculoSelecionado === 'automoveis')
+                carroceria.style.display = 'block';
+            else if (veiculoSelecionado === 'caminhoes')
+               carroceria.style.display = 'block';
+            else if (veiculoSelecionado === 'onibus')
+                carroceria.style.display = 'block';
+        }
+
+
+        function calculoEmissaoCOV()
+        {
+            // --- Variáveis da função ---
+            const volumeTintasMes = Number(input_qtd_tintas_mes.value);
+            const volumePrimerMes = Number(input_qtd_primer_mes.value);
+            const qtdCarroceriasMes = Number(document.getElementById('input_num_carroceria').value);
+            const areaCarroceria= Number(document.getElementById('input_area_carroceria').value);
+            const solventeTinta = (1 / 3) * volumeTintasMes * 0.825; // considerando o valor 0.0825 como valor da densidade do thiner
+            const solventePrimer = (1 / 5) * volumeTintasMes * 0.825; 
+            const ano = document.querySelector('input[name="ano"]:checked').value;
+            const veiculoSelecionado = document.querySelector('input[name="veiculo"]:checked').value; // Variável que pega o valor do check digitado
+
+            // Utilizar do operador === significa você comparar se os valores e o tipo de dados dos valores estão corretos 
+            var limiteEmissoesCOV = 0;
+            if (ano === 'antes_2007') {
+                if (veiculoSelecionado === 'automoveis')
+                    limiteEmissoesCOV = 60;
+                else if (veiculoSelecionado === 'caminhoes')
+                    limiteEmissoesCOV = 90;
+                else if (veiculoSelecionado === 'onibus')
+                    limiteEmissoesCOV = 225;
+            } else {
+                if (veiculoSelecionado === 'automoveis')
+                    limiteEmissoesCOV = 45;
+                else if (veiculoSelecionado === 'caminhoes')
+                    limiteEmissoesCOV = 70;
+                else if (veiculoSelecionado === 'onibus')
+                    limiteEmissoesCOV = 150;
+            }
+            /* 
+            Cálculo de emissão de VOC
+            VE = 1000 * [(VC1 * COV1) + (VC2 * COV2) + Solv1 + Solv2 - (RSA + RSB)] / [(B1 * S1) + (B2 * S2)]
+            */
+            const VE = 1000 * [(volumeTintasMes * 0.42) + (volumePrimerMes * 0.42) + solventeTinta + solventePrimer] / (qtdCarroceriasMes * areaCarroceria);
+            
+            res_cov.innerHTML = `<br>A emissão de COV é <strong>${VE.toFixed(2)} g/m²</strong>, ignorando métodos de controle de COVs!
+                <table border="1">
+                <tr>
+                    <th>Atividade</th>
+                    <th>Instalações licenciadas antes de 2007</th>
+                    <th>Instalações licenciadas a partir de 2007</th>
+                </tr>
+                <tr>
+                    <td>Automóveis</td>
+                    <td>Menor que 60 g/m²</td>
+                    <td>15 a 45 g/m²</td>
+                </tr>
+                <tr>
+                    <td>Cabine de caminhões, carrocerias de veículos
+                        utilitários, pick-up e caminhonete</td>
+                    <td>90 g/m²</td>
+                    <td>70 g/m²</td>
+                </tr>
+                <tr>
+                    <td>Ônibus, Trator e veículos agrícolas e/ou utilizados
+                        na construção civil</td>
+                    <td>225 g/m²</td>
+                    <td>150 g/m²</td>
+                </tr>
+            </table>
+            <br>`;
+
+        if (VE > limiteEmissoesCOV)
+            res_cov.innerHTML += `Segundo a tabela apresentada acima, as emissões de COV estão acima do limite estabelecido
+             pela CETESB de <strong>${limiteEmissoesCOV.toFixed(2)}g/m².</strong> Você estará sujeito a tomar uma multa e a <strong>perder</strong> a licença de operação da fábrica, 
+             tendo o seu fechamento!`
+        else
+            res_cov.innerHTML += `Segundo a tabela apresentada acima, as emissões de COV estão dentro do acordo estabelecido
+             pela lei que são <strong>${limiteEmissoesCOV.toFixed(2)}g/m².</strong>! 
+             <br> Parabéns, sua empresa está contribuindo com um ambiente <strong>mais colorido e sustentável</strong>!` 
+            
+           
+        }
+    </script>
+
+</body>
+</html>

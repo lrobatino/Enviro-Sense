@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Negócio</title>
+</head>
+
+<body>
+    <h1>Calculadora de Financeira</h1>
+
+    Informe o nome da sua Empresa
+    <input id="input_nome_empresa" type="text"><br><br>
+    Sua licença ambiental é anterior a 2007:
+    <input id="input_data_licenciamento" type="checkbox"><br><br>
+    Informe o tipo de veículo:
+    <select id="input_tipo_veiculo">
+        <option value="carro">Carro</option>
+        <option value="caminhao">Caminhão</option>
+        <option value="onibus">Ônibus</option>
+    </select><br><br>
+    Informe o número de carrocerias pintadas por mês:
+    <input id="input_qtd_carrocerias" type="number" min="0"><br><br>
+    Informe o volume de tinta usado por mês (em litros):
+    <input id="input_litros_tinta_mes" type="number" min="0"><br><br>
+    Informe o volume de priimer usado por mês (em litros):
+    <input id="input_litros_primer_mes" type="number" min="0"><br><br>
+    <button onclick="mostrarCalculo()">Calcular</button><br><br>
+
+    <div id="mostrar_calculo">
+    </div>
+</body>
+
+</html>
+<script>
+
+    // ve = 1000 * ((vc1 * cov1) + solv1 - (rsa + rsb)) / (b1 * s1);
+
+    function mostrarCalculo() {
+        //Quantidade média de COV em tinta para pintura automotiva.
+        const COVTinta = 0.42;
+        //Quantidade média de COV em Primer para pintura automotiva.
+        const COVPrimer = 0.42;
+        // Valor referente aos métodos de controle (serão desprezados)
+        const RSA = 0;
+        // Valor referente aos métodos de controle (serão desprezados)
+        const RSB = 0;
+
+        const qtdCarroceria = Number(input_qtd_carrocerias.value);
+        const litrosTintaMes = Number(input_litros_tinta_mes.value);
+        const litrosPrimerMes = Number(input_litros_primer_mes.value);
+        const tipoVeiculo = input_tipo_veiculo.value;
+
+        //Cálculo do peso do solvente da tinta.
+        const volumeSolventeTintaMes = litrosTintaMes / 3;
+        const pesoSolventeTintaMes = volumeSolventeTintaMes * 0.82;
+
+        //Cálculo do peso do solvente do primer.
+        const volumeSolventePrimerMes = litrosPrimerMes / 3;
+        const pesoSolventePrimerMes = volumeSolventePrimerMes * 0.82;
+
+        // Limite irá variar de acordo com a data da licença ambiental
+        var limiteEmissao = 0;
+
+        if (input_data_licenciamento.checked) {
+            if (tipoVeiculo == "carro") {
+                limiteEmissao = 60;
+            } else if (tipoVeiculo == "caminhao") {
+                limiteEmissao = 90;
+            } else {
+                limiteEmissao = 225;
+            }
+        } else {
+            if (tipoVeiculo == "carro") {
+                limiteEmissao = 45;
+            } else if (tipoVeiculo == "caminhao") {
+                limiteEmissao = 70;
+            } else {
+                limiteEmissao = 150;
+            }
+        }
+
+        // Area da carroceria irá variar de acordo com o tipo de veículo.
+        var areaCarroceria;
+
+        if (tipoVeiculo == "carro") {
+            areaCarroceria = 30;
+        } else if (tipoVeiculo == "caminhao") {
+            areaCarroceria = 100;
+        } else {
+            areaCarroceria = 200;
+        }
+
+        /*  
+        var calculo1 = 1000 * ((vc * COV) + solv - (RSA + RSB));
+        var calculo2 = (b1 * S1) + (b2 * S2) + (b3 * S3);
+        var volumeEmissao = calculo1 / calculo2;
+        */
+
+        var volumeEmissao = (1000 * ((litrosTintaMes * COVTinta) + (litrosPrimerMes * COVPrimer) + pesoSolventeTintaMes + pesoSolventePrimerMes - (RSA + RSB))) / (qtdCarroceria * areaCarroceria);
+
+        if (volumeEmissao <= limiteEmissao) {
+            mostrar_calculo.innerHTML = `
+        Sua fábrica pode emitir até ${limiteEmissao.toFixed(2)}g/m<sup>2</sup> de COVs. E sua emissão atual, ignorando os métodos de contenção, é de ${volumeEmissao.toFixed(2)}g/m<sup>2</sup> de COVs.
+        Parabéns, sua fábrica está dentro dos padrões de emissão de seu licenciamento ambiental. 
+        `
+        }
+
+        if (volumeEmissao > limiteEmissao) {
+            mostrar_calculo.innerHTML = `
+        Sua fábrica pode emitir até ${limiteEmissao.toFixed(2)}g/m<sup>2</sup> de COVs. Porém sua emissão atual, ignorando os métodos de contenção, é de ${volumeEmissao.toFixed(2)}g/m<sup>2</sup> de COVs.
+        Esses níveis podem fazer sua Fábrica perder a licença ambiental, além de sofrer multa de até 350 mil reias mais multa diária de 35 mil reais.  
+        `
+        }
+
+    };
+
+</script>

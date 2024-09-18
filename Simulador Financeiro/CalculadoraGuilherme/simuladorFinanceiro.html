@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro</title>
+   <link rel="stylesheet" href="estiloSimulador.css">
+</head>
+
+<body>
+
+    <!-- Topo da home page -->
+    <header class="topo">
+        <nav id="menu_inicial">
+            <!-- <i class="\images\logo.jpg" id="logo"> Enviro Sense</i>-->
+            <img src="images/image.png" id="logo" alt="Logo">
+            <ul id="lista_inicial">
+                <li class="item_nav active">
+                    <a href="#home">Home</a>
+                </li>
+                <li class="item_nav">
+                    <a href="#sobre">Sobre Nós</a>
+                </li>
+                <li class="item_nav">
+                    <a href="#teste">Nossos Valores</a>
+                </li>
+                <li class="item_nav">
+                    <a href="#teste">Regulamentações</a>
+                </li>
+            </ul>
+            <ul id="cadastro">
+                <li>
+                    <a href="#login">Login</a>
+                </li>
+                <li>
+                    <button class="botao_padrao">
+                        Cadastro
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Conteúdo que irá aparecer para o usuário de acordo com a seleção dos botões -->
+    <div id="content1" class="container visible">
+        <h2>Digite a quantidade de tinta de acabamento utilizada mensalmente em Litros</h2>
+        <input type="number" id="tinta_utilizada">
+        <button id="btn_formulario1" onclick="proximo('content1', 'content2')">Continuar</button>
+    </div>
+
+    <div id="content2" class="container">
+        <h2>Digite a quantidade de primer gastos em sua fábrica em Litros</h2>
+        <input type="number" id="primer_utilizado">
+        <button id="btn_formulario2" onclick="proximo('content2', 'content3')">Continuar</button>
+    </div>
+
+    <div id="content3" class="container">
+        <h2>Qual o tipo de veículo produzido em sua fábrica?</h2>
+        <select id="tipo_de_veiculo">
+            <option value="carro">Automoveis</option>
+            <option value="caminhao">Cabines de caminhões, carrocerias e caminhonetes</option>
+            <option value="onibus">Ônibus, trator e veículos agrícolas</option>
+        </select>
+        <br><br>
+        <h2>A sua licença ambiental é anterior a 2007?</h2>
+        <input type="checkbox" id="validacao_licenca"> Sim
+        <button id="btn_formulario3" onclick="mostrarSelecao()">Continuar</button>
+    </div>
+
+    <div id="resultados" class="container hidden"></div>
+
+
+    <script>
+
+        function mostrarSelecao() {
+
+            if (tipo_de_veiculo.value == 'carro') {
+                var limiteAmbiental = 45                        // Limites de emissão estabelecidos por licenciamentos após 2007 para carros
+                if (validacao_licenca.checked) {
+                    limiteAmbiental = 60                    // Limites de emissão permitidos antes de 2007
+                }
+            }
+
+            if (tipo_de_veiculo.value == 'caminhao') {
+                var limiteAmbiental = 70                        // Limites de emissão estabelecidos por licenciamentos após 2007 para Cabine de caminhões, carrocerias de veículos utilitários, pick-up e caminhonete
+                if (validacao_licenca.checked) {
+                    limiteAmbiental = 90                    // Limites de emissão permitidos antes de 2007
+                }
+            }
+
+            if (tipo_de_veiculo.value == 'onibus') {
+                var limiteAmbiental = 150                        // Limites de emissão estabelecidos por licenciamentos após 2007 para Ônibus, Trator e veículos agrícolas e/ou utilizados na construção civil
+                if (validacao_licenca.checked) {
+                    limiteAmbiental = 225                    // Limites de emissão permitidos antes de 2007
+                }
+            }
+
+            if (tipo_de_veiculo.value == 'carro') {
+                var VC1 = Number(tinta_utilizada.value)
+                var COV1 = 0.42                                      // Estimando uma emissão de 0.42 g/m² de COV da tinta
+                var VC2 = Number(primer_utilizado.value)
+                var COV2 = 0.42                                      // Estimando uma emissão de 0.42 g/m² de COV do primer
+                var proporcaoSolventeTinta = (1 / 3) * VC1           // Diluição de tinta que costuma ser 3:1
+                var proporcaoSolventePrimer = (1 / 5) * VC2          // Diluição de primer que costuma ser 5:1
+                var SOLV1 = 0.825 * proporcaoSolventeTinta           // Peso do solvente utilizado, considerando Thiner (0.825 g/cm³ de densidade)
+                var SOLV2 = 0.825 * proporcaoSolventePrimer          // Peso do solvente utilizado, considerando Thiner (0.825 g/cm³ de densidade)
+                var B1 = (VC1 + VC2) / 8                             // Estimando que o gasto para a pintura de um carro seja 5L de tinta + primer
+                var S1 = 25 * B1                                     // Estimando que a área superficial de pintura de um carro seja 25m²
+                var VE = 1000 * ((VC1 * COV1) + (VC2 * COV2) + SOLV1 + SOLV2) / ((S1))
+            }
+
+            if (tipo_de_veiculo.value == 'caminhao') {
+                var VC1 = Number(tinta_utilizada.value)
+                var COV1 = 0.42                                      // Estimando uma emissão de 0.42 g/m² de COV da tinta
+                var VC2 = Number(primer_utilizado.value)
+                var COV2 = 0.42                                      // Estimando uma emissão de 0.42 g/m² de COV do primer
+                var proporcaoSolventeTinta = (1 / 3) * VC1           // Diluição de tinta que costuma ser 3:1
+                var proporcaoSolventePrimer = (1 / 5) * VC2          // Diluição de primer que costuma ser 5:1
+                var SOLV1 = 0.825 * proporcaoSolventeTinta           // Peso do solvente utilizado, considerando Thiner (0.825 g/cm³ de densidade)
+                var SOLV2 = 0.825 * proporcaoSolventePrimer          // Peso do solvente utilizado, considerando Thiner (0.825 g/cm³ de densidade)
+                var B1 = (VC1 + VC2) / 20                            // Estimando que o gasto para a pintura de um caminhao seja 20L de tinta + primer
+                var S1 = 60 * B1                                     // Estimando que a área superficial de pintura de um caminhao seja 100m²
+                var VE = 1000 * ((VC1 * COV1) + (VC2 * COV2) + SOLV1 + SOLV2) / ((S1))
+            }
+
+            if (tipo_de_veiculo.value == 'onibus') {
+                var VC1 = Number(tinta_utilizada.value)
+                var COV1 = 0.42                                      // Estimando uma emissão de 0.42 g/m² de COV da tinta
+                var VC2 = Number(primer_utilizado.value)
+                var COV2 = 0.42                                      // Estimando uma emissão de 0.42 g/m² de COV do primer
+                var proporcaoSolventeTinta = (1 / 3) * VC1           // Diluição de tinta que costuma ser 3:1
+                var proporcaoSolventePrimer = (1 / 5) * VC2          // Diluição de primer que costuma ser 5:1
+                var SOLV1 = 0.825 * proporcaoSolventeTinta           // Peso do solvente utilizado, considerando Thiner (0.825 g/cm³ de densidade)
+                var SOLV2 = 0.825 * proporcaoSolventePrimer          // Peso do solvente utilizado, considerando Thiner (0.825 g/cm³ de densidade)
+                var B1 = (VC1 + VC2) / 35                            // Estimando que o gasto para a pintura de um onibus seja 35L de tinta + primer
+                var S1 = 80 * B1                                    // Estimando que a área superficial de pintura de um carro seja 200m²
+                var VE = 1000 * ((VC1 * COV1) + (VC2 * COV2) + SOLV1 + SOLV2) / ((S1))
+            }
+
+            if (validacao_licenca.checked) {
+                resultados.innerHTML = `     
+            <center>
+            <br>
+        <p>Sua emissão atual, <b>ignorando os métodos de contenção</b>, é de <b style="font-size: 20px; color: red;">${VE.toFixed(2)}g/m² de COVs</b></p><br>
+        <p>Considerando que sua licença ambiental é antes de 2007, os valores permitidos de emissão de COV é de <b>${limiteAmbiental} g/m²</b>, conforme o plano de redução de emissão de fontes estacionárias feito pela CETESB a seguir:</p><br>
+        
+        <table border="1">
+        <tr>
+            <th>Atividade</th>
+            <th>Instalações licenciadas antes de 2007</th>
+            <th>Instalações licenciadas a partir de 2007</th>
+        </tr>
+        <tr>
+            <td>Automóveis</td>
+            <td>Menor que 60 g/m²</td>
+            <td>15 a 45 g/m²</td>
+        </tr>
+        <tr>
+            <td>Cabine de caminhões, carrocerias de veículos
+                utilitários, pick-up e caminhonete</td>
+            <td>90 g/m²</td>
+            <td>70 g/m²</td>
+        </tr>
+        <tr>
+            <td>Ônibus, Trator e veículos agrícolas e/ou utilizados
+                na construção civil</td>
+            <td>225 g/m²</td>
+            <td>150 g/m²</td>
+        </table>
+        <br>
+        <p>De acordo com a Lei Estadual nº 997/1976, aprovado pelo decreto estadual nº 8.468/1976 são estabelecidos valores de multas que podem ir de <b>R$35,36 a R$353.600,00</b> referentes a emissão de poluentes na atmosfera, além de que com esses valores emitidos <b style= "color: red;">não será possivel a renovação de sua Licença ambiental de operação pela CETESB.</b></p>
+        <br>
+        <p>Com um sistema de monitoramento eficiente, além da possibilidade de reduzir gastos diretamente da fonte de emissão de compostos orgânicos, você se enquadra dentro de parâmetros legais.</p>
+        <br>
+        <a id="voltar" href="./simuladorFinanceiro.html">Voltar a pagina inicial</a>
+        <br>
+        <img src="https://png.pngtree.com/png-vector/20230523/ourmid/pngtree-verified-stamp-vector-png-image_7105265.png" style="height: 125px;">
+        </center> `
+            } else {
+
+                resultados.innerHTML = `     
+            <center>
+            <br>
+        <p>Sua emissão atual, <b>ignorando os métodos de contenção</b>, é de <b style="font-size: 20px; color: red;">${VE.toFixed(2)}g/m² de COVs</b></p><br>
+        <p>Considerando que sua licença ambiental é após 2007, os valores permitidos de emissão de COV é de no máximo <b>${limiteAmbiental} g/m²</b>, conforme o plano de redução de emissão de fontes estacionárias feito pela CETESB a seguir:</p><br>
+        
+        <table border="1">
+        <tr>
+            <th>Atividade</th>
+            <th>Instalações licenciadas antes de 2007</th>
+            <th>Instalações licenciadas a partir de 2007</th>
+        </tr>
+        <tr>
+            <td>Automóveis</td>
+            <td>Menor que 60 g/m²</td>
+            <td>15 a 45 g/m²</td>
+        </tr>
+        <tr>
+            <td>Cabine de caminhões, carrocerias de veículos
+                utilitários, pick-up e caminhonete</td>
+            <td>90 g/m²</td>
+            <td>70 g/m²</td>
+        </tr>
+        <tr>
+            <td>Ônibus, Trator e veículos agrícolas e/ou utilizados
+                na construção civil</td>
+            <td>225 g/m²</td>
+            <td>150 g/m²</td>
+        </tr>
+        </table>
+        <br>
+        <p>De acordo com a Lei Estadual nº 997/1976, aprovado pelo decreto estadual nº 8.468/1976 são estabelecidos valores de multas que podem ir de <b>R$35,36 a R$353.600,00</b> referentes a emissão de poluentes na atmosfera, além de que com esses valores emitidos <b style= "color: red;">não será possivel a renovação de sua Licença ambiental de operação pela CETESB.</b></p>
+        <br>
+        <p>Com um sistema de monitoramento eficiente, além da possibilidade de reduzir gastos diretamente da fonte de emissão de compostos orgânicos, você se enquadra dentro de parâmetros legais.</p>
+        <br>
+        <a id="voltar" href="./simuladorFinanceiro.html">Voltar a pagina inicial</a>
+        <br>
+        <img src="https://png.pngtree.com/png-vector/20230523/ourmid/pngtree-verified-stamp-vector-png-image_7105265.png" style="height: 125px;">
+        </center> `
+            }
+            proximo('content3', 'resultados')
+
+        }
+
+        // Function para deixar as div's visiveis ou invisiveis, de acordo com o ID delas, definidos parâmetros nos botôes de continuar
+        function proximo(currentId, nextId) {
+            document.getElementById(currentId).classList.remove('visible');
+            document.getElementById(currentId).classList.add('hidden');
+            document.getElementById(nextId).classList.remove('hidden');
+            document.getElementById(nextId).classList.add('visible');
+        }
+    </script>
+
+</body>
+
+</html>
