@@ -35,7 +35,7 @@ function calcularMonitoramentoCOV() {
     document.querySelector('.dados').classList.add('hidden');
     document.getElementById('resultados').classList.remove('hidden');
     resultados.innerHTML = `     
-    <br>A emissão de COV é <strong>${VE.toFixed(2)} g/m²</strong>, ignorando métodos de controle de COVs!
+    <br>A emissão de COV é <strong>${VE.toFixed(2)} g/m²</strong>, <span class="texto-vermelho"> ignorando métodos de controle de COVs</span>!
      <table border="1">
             <tr>
                 <th>Atividade</th>
@@ -69,7 +69,7 @@ function calcularMonitoramentoCOV() {
              tendo o seu fechamento!<br>
              <p class="msg">Quer garantir um monitoramento eficiente da sua fábrica?</p>
              <div class="opcao">
-                <a href="home.html" >Clique aqui e conheça a EnviroSense</a>
+                <a href="home.html" target="_blank">Clique aqui e conheça a EnviroSense</a>
              </div>`
     else
         resultados.innerHTML += `Segundo a tabela apresentada acima, as emissões de COV estão dentro do acordo estabelecido
@@ -77,7 +77,7 @@ function calcularMonitoramentoCOV() {
              <br> Parabéns, sua empresa está contribuindo com um ambiente <strong>mais colorido e sustentável</strong>!
              <p class="msg">Quer garantir um monitoramento eficiente da sua fábrica?</p>
              <div class="opcao">
-                <a href="home.html">Clique aqui e conheça a EnviroSense</a>
+                <a href="home.html" target="_blank">Clique aqui e conheça a EnviroSense</a>
              </div>` 
 }   
 

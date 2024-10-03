@@ -112,15 +112,16 @@ body {
     background-color: #35b341;
     bottom: 0;
     position: fixed;
+    
 }
 
 
 .dados{
     background-color: #35b341;
     width: 50%;
-    height: 500px;
+    height: 520px;
     padding: 15px;
-    margin: 125px auto;
+    margin: 35px auto;
     border-radius: 15px;
     box-shadow: 1px 1px 1px #d7d713;
     border: 0.8px solid rgb(18, 21, 23);
@@ -162,6 +163,15 @@ h2{
     font-size: 24px;
     font-weight: bolder;
 }
+
+.titSimulador{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    color: #1fab1f;
+}
+
 
 label{
     font-size: 20px;
@@ -205,17 +215,16 @@ label{
     color: rgb(0, 0, 0);
     background-color:  #35b341;
     width: 50%;
-    height: 550px;
+    height: 480px;
     padding: 15px;
-    margin: 125px auto;
+    margin: 35px auto;
     border: 0.8px solid rgb(18, 21, 23);
     border-radius: 15px;
     box-shadow: 1px 1px 1px #040404;
     font-size: 18px;
 }
 
-table {
-    width: 50%;
+table { 
     margin: 0 auto;
     border-collapse: collapse;
     margin-top: 5px;
@@ -236,6 +245,7 @@ p{
     margin-bottom: 0;
 }
 
+
 .opcao a{
     text-decoration: none;
     font-size: 20px;
@@ -248,4 +258,8 @@ p{
 .opcao :hover {
     transform: scale(1.0);
     cursor: pointer;
+}
+
+.texto-vermelho{
+    color: red;
 }

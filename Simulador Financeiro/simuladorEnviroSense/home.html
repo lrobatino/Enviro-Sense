@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>| Enviro Sense</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../simuladorEnviroSense/css/styleHome.css">
     <link rel="icon" type="image/png" href="images/icon-noname.png">
     <script src="js/script.js"></script>
 </head>
@@ -17,19 +17,41 @@
                     <a>ENVIRO SENSE</a>
                 </div>
                 <div class="opcoes">
-                    <a class="opcao">Home</a>
+                    <a class="opcao" href="index.html">Home</a>
                     <a class="opcao">Sobre Nós</a>
-                    <a class="opcao">Nossos Serviços</a>
+                    <a class="opcao" href="#nossos-servicos">Nossos Serviços</a>
                 </div>
             </div>
             <div class="botoes">
-                <button onclick="">LOGIN</button>
-                <button onclick="">CADASTRO</button>
+                <button onclick="window.location.href='tela-login.html'">Login</button>
+                <button onclick="window.location.href='tela-cadastro.html'">Cadastro</button>
             </div>
         </div>
     </div>
+    <div class="home">
+        <div class="container-welcome">
+            <div class="conteudo">
+                <span>Controle a emissão, proteja o futuro.</span>
+                <a>Monitoramento de COV para um amanhã <b>limpo</b> e <b>seguro</b>.</a>
+            </div>
+        </div>
+        <div class="container-nossos-servicos" id="nossos-servicos">
+            <div class="moldura">
+            </div>
+            <div class="conteudo">
+                <span>Nossos Serviços</span>
+                <a>A Enviro Sense tem como objetivo ajudar a monitorar a emissão de gases COV (compostos orgânicos voláteis) para montadoras de veículos que realizam o processo de pintura automotiva, fornecendo dados cruciais para tomada de decisões preventivas e regulamentares.</a>
+            </div>
+        </div>
+        <div class="container-sobre-nos">
+
+        </div>
+    </div>
     <div class="footer">
-        <div class="container">
+        <div class="container-conteudo">
+            <span>Canais de Atendimento:</span>
+            <a>sac@envirosense.com.br</a>
+            <a>0800 999 9999</a>
         </div>
     </div>
 </body>
