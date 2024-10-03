@@ -117,14 +117,6 @@ html {
     cursor: pointer;
 }
 
-.footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 200px;
-    background: linear-gradient(to top, #002000, #004507);
-}
 
 .home {
     width: 100%;
@@ -174,10 +166,46 @@ html {
     position: relative;
     width: 100%;
     height: 800px;
-    background: linear-gradient(to right, #005f0a, #00690b);
+    background: rgb(0, 39, 3);
+    box-shadow: 0px 0px 20px 20px #002802;
 }
 
-.container-nossos-servicos .moldura {
+.container-nao-arrisque {
+    display: flex;
+    top: 600px;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    height: 800px;
+    background: rgb(35, 35, 35);
+    box-shadow: 0px 0px 20px 20px #232323;  
+}
+
+.container-nao-arrisque .conteudo2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 900px;
+    height: 500px;
+    gap: 30px;
+    color: rgb(240, 240, 240);
+    padding-bottom: 60px;
+}
+
+.container-nao-arrisque .conteudo2 span {
+    font-size: 62px;
+    font-weight: bold;
+}
+
+.container-nao-arrisque .conteudo2 a {
+    font-size: 30px;
+}
+
+
+.container-nossos-servicos .moldura1 {
     background: url("../images/pintura-automotiva.png");
     height: 400px;
     width: 600px;
@@ -191,7 +219,7 @@ html {
     box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.5);
 }
 
-.container-nossos-servicos .conteudo {
+.container-nossos-servicos .conteudo1 {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -205,16 +233,19 @@ html {
     min-height: 500px;
 }
 
-.container-nossos-servicos .conteudo span {
+.container-nossos-servicos .conteudo1 span {
     font-size: 60px;
     font-weight: bold;
     color: rgb(240, 240, 240);
 }
 
-.container-nossos-servicos .conteudo a {
+.container-nossos-servicos .conteudo1 a {
     font-size: 30px;
     text-align: left;
-    color: rgb(220, 220, 220);
+    color: rgb(200, 200, 200);
+}
+.container-nossos-servicos b {
+    color: rgb(240, 240, 240);
 }
 
 .footer .container-conteudo {
@@ -234,6 +265,18 @@ html {
     color: rgb(240, 240, 240);
     text-decoration: underline;
     cursor: pointer;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 0px;
+    width: 100%;
+    height: 200px;
+    background: rgb(0, 25, 00);
+    box-shadow: 0px 0px 15px 15px rgba(0, 25, 0, 0.9);
 }
 
 .login {
@@ -322,12 +365,16 @@ html {
 }
 
 .cadastro{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    height: 675px;
+    height: 690px;
 }
 
 .caixa-cadastro{
-    height: 400px;
+    height: 500px;
     width: 600px;
     background-color: whitesmoke;
     color:#35b341;
@@ -340,11 +387,10 @@ html {
     justify-content: center;
 }
 
-.cadastro .conteudo {
-    margin-top: 0;
-    height: 300px;
+.cadastro .caixa-cadastro .conteudo {
+    height: 400px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
 }
@@ -360,7 +406,7 @@ html {
     font-size: 16px;
     font-weight: bold;
     font-family: "Fredoka";
-    transition: transform 0.5s ease;
+    transition: transform 0.5s ease;    
 }
 
 .cadastro .conteudo .botao:hover {
@@ -414,3 +460,4 @@ html {
     align-items: center;
     margin-top: -70px;
 }
+
