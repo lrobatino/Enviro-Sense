@@ -1,19 +1,25 @@
 function verSenha() {
-    if (verSenha.class === 'bi bi-eye-slash') {
-        senha_input.type = 'text'; 
-        verSenha.class ="bi bi-eye";
+    const senhaInput = document.getElementById('senha_input');
+    const verSenhaIcon = document.getElementById('verSenha');
+
+    if (verSenhaIcon.className === 'bi bi-eye-slash') {
+        senhaInput.type = 'text';
+        verSenhaIcon.className = 'bi bi-eye';
     } else {
-        senha_input.type = 'password';
-        verSenha.class = 'bi bi-eye-slash'; 
+        senhaInput.type = 'password';
+        verSenhaIcon.className = 'bi bi-eye-slash';
     }
 }
 
 function verConfirmaSenha() {
-    if (confirmarSenha.class === 'bi bi-eye-slash') {
-        senha_confirm_input.type = 'text'; 
-        confirmarSenha.class ="bi bi-eye"; 
+    const confirmarInput = document.getElementById('senha_confirm_input');
+    const confirmarIcon = document.getElementById('confirmarSenha');
+
+    if (confirmarIcon.className === 'bi bi-eye-slash') {
+        confirmarInput.type = 'text';
+        confirmarIcon.className = 'bi bi-eye';
     } else {
-        senha_confirm_input.type = 'password'; 
-        confirmarSenha.class = 'bi bi-eye-slash'; 
+        confirmarInput.type = 'password';
+        confirmarIcon.className = 'bi bi-eye-slash';
     }
 }
