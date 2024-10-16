@@ -116,3 +116,7 @@
     cursor: pointer;
     color: #35b341;
 }
+
+.login .campo_imagens{
+    text-align: center;
+}
