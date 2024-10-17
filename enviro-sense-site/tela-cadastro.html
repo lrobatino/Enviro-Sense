@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
     <script src="js/script.js"></script>
     <script src="js/cadastro.js"></script>
 </head>
+
 <body>
     <div class="header">
         <div class="container">
@@ -34,39 +36,60 @@
     </div>
 
     <div class="cadastro">
-            <div class="caixa-cadastro">
-                <h2>Fazer Cadastro</h2>
-                <div class="conteudo">
-                    <div class="campo_login">
-                        <span>Nome:</span> <br>
-                        <input id="nome_input" type="text" placeholder="Seu nome">
-                    </div>
-                    <div class="campo_login">
-                        <span>Usuário:</span> <br>
-                        <input id="campo_usuario" type="text" placeholder="seuemail@provedor.com">
-                    </div>
-                    <div class="campo_login">
-                        <span>Insira seu E-mail:</span><br>
-                        <input id="email_input" type="text" placeholder="Insira seu Email">
-                    </div>
-                    <div class="campo_senha">
-                        <span>Senha:</span><br>
-                        <div class="input-container">
-                            <input id="senha_input" type="password" placeholder="******">
-                            <i class="bi bi-eye-slash" id="verSenha" onclick="verSenha()"></i>
-                        </div>
-                    </div>
-                    <div class="campo_senha">
-                        <span>Confirme sua senha:</span><br>
-                        <div class="input-container">
-                            <input id="senha_confirm_input" type="password" placeholder="******">
-                            <i class="bi bi-eye-slash" id="confirmarSenha" onclick="verConfirmaSenha()"></i>
-                        </div>
-                    </div>
-                    
-                    <button class="botao">Entrar</button>
+        <h2>Fazer Cadastro</h2>
+        <div class="caixa-cadastro">
+
+            <div class="conteudo">
+                <div class="campo_login">
+                    <span>Nome:</span> 
+                    <input id="nome_input" type="text" placeholder="Seu nome">
                 </div>
+                <div class="campo_login">
+                    <span>Usuário:</span> 
+                    <input id="campo_usuario" type="text" placeholder="Nome de usuário">
+                </div>
+                <div class="campo_login">
+                    <span>Insira seu E-mail:</span>
+                    <input id="email_input" type="text" placeholder="seuemail@provedor.com">
+                </div>
+                <div class="campo_senha">
+                    <span>Senha:</span>
+                    <div class="input-container">
+                        <input id="senha_input" type="password" placeholder="******">
+                        <i class="bi bi-eye-slash" id="verSenha" onclick="verSenha()"></i>
+                    </div>
+                </div>
+                <div class="campo_senha">
+                    <span>Confirme sua senha:</span><br>
+                    <div class="input-container">
+                        <input id="senha_confirm_input" type="password" placeholder="******">
+                        <i class="bi bi-eye-slash" id="confirmarSenha" onclick="verConfirmaSenha()"></i>
+                    </div>
+                </div>
+
             </div>
+            <div class="conteudo2">
+                <div class="campo_login">
+                    <span>CNPJ:</span>
+                    <input type="text" id="cnpj_input" placeholder="Insira seu CNPJ">
+                </div>
+                <div class="campo_login">
+                    <span>Nome Fantasia:</span>
+                    <input type="text" id="nome_fantasia_input" placeholder="Insira o nome fantasia da empresa">
+                </div>
+                <div class="campo_login">
+                    <span>Razão social:</span>
+                    <input type="text" id="razao_social_input" placeholder="Razão social da empresa">
+                </div>
+                <div class="campo_login">
+                    <span>Representante legal:</span>
+                    <input type="text" id="epresentante_input" placeholder="Nome do representante legal">
+                </div>
+
+                <button class="botao">Entrar</button>
+            </div>
+        </div>
     </div>
 </body>
+
 </html>
