@@ -1,0 +1,159 @@
+
+
+.dados {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.dados::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)), url('../images/background-home-welcome.png')  no-repeat center center / cover;
+    filter: blur(5px); /* Aplica desfoque */
+    transform: scale(1.1); /* Para garantir que o desfoque cubra toda a área */
+    z-index: -1; /* Coloca atrás de todo o conteúdo */
+}
+
+
+h2{
+    margin-bottom: 0;
+}
+
+#content1, #content2, #content3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+
+#content4{
+    text-align: center;
+    margin-top: 15px;
+}
+
+
+#input_tinta, #input_primer, #input_area_carroceria, #input_num_carroceria{
+    width: 45%;
+    border-radius: 10px;
+    font-size: 150%;
+    color: #6CCE6F;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+#titulo{
+    font-size: 24px;
+    font-weight: bolder;
+}
+
+.titSimulador{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    color: #1fab1f;
+}
+
+
+label{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#tipo_de_veiculo {
+    width: 45%;
+    margin-top: 5px;
+    border-radius: 10px;
+    font-size: 100%;
+    height: 30px;
+}
+
+.botao button{
+    width: 100px;
+    height: 35px;
+    border: 0px solid;
+    border-radius: 15px;
+    background-color: white;
+    color: #1fab1f;
+    font-weight: bold;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.5s ease;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+
+ .botao :hover {
+    transform: scale(1.3);
+}
+
+
+.hidden{
+    display: none;
+}
+
+#resultados {
+    text-align: center;
+    color: rgb(0, 0, 0);
+    background-color:  #35b341;
+    width: 50%;
+    height: 480px;
+    padding: 15px;
+    margin: 35px auto;
+    border: 0.8px solid rgb(18, 21, 23);
+    border-radius: 15px;
+    box-shadow: 1px 1px 1px #040404;
+    font-size: 18px;
+}
+
+table { 
+    margin: 0 auto;
+    border-collapse: collapse;
+    margin-top: 5px;
+}
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+
+p{
+    font-size: 20px;
+    color: #100385;
+    font-weight: bolder;
+    transition: transform 1.s ease;
+    margin-bottom: 0;
+}
+
+
+.opcao a{
+    text-decoration: none;
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: white;
+    font-style: italic;
+    transition: transform 0.3s ease;
+}
+
+.opcao :hover {
+    transform: scale(1.0);
+    cursor: pointer;
+}
+
+.texto-vermelho{
+    color: red;
+}

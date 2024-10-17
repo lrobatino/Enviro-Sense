@@ -1,17 +1,17 @@
 .login .conteudo span{
-    font-size: 20px;
+    font-size: 40px;
     font-weight: bold;
 }
 
-.login .caixa-login .botao {
-    width: 150px;
-    height: 30px;
+.login  .botao {
+    width: 300px;
+    height: 50px;
     border: 0px solid;
     border-radius: 15px;
     box-shadow: 0px 0px 6px 6px rgba(0, 255, 0, 0.14);
     background-color: #35b341;
     color: white;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
     font-family: "Fredoka";
     transition: transform 0.5s ease;
@@ -55,20 +55,19 @@
 
 
 .login .caixa-login {
-        height: 400px;
+        height: 600px;
         width: 600px;
         color: #35b341;
         border-radius: 15px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
     }
 
 
 .login .caixa-login h2 {
     margin-bottom: 0;
-    font-size: 40px;
+    font-size: 70px;
     font-weight: bold;
     margin-top: -80px;
 }
@@ -80,8 +79,28 @@
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
-    
 }
+
+.login .campo_login {
+    margin-top: 20px;
+}
+
+.login .campo_senha {
+    margin-top: 20px;
+}
+
+.login .campo_imagens{
+    text-align: center;
+    width: 300px;
+    height: 300px;
+    font-size: 25px;
+}
+
+.login .campo_captcha{
+    margin-top: 20px;
+    font-size: 25px;
+}
+
 
 .login .campo_login input {
     width: 500px;
@@ -92,7 +111,7 @@
     text-align: center;
 }
 
-.campo_senha .input-container {
+.login .campo_senha .input-container {
     position: relative;
     width: 500px;
 }
@@ -116,3 +135,5 @@
     cursor: pointer;
     color: #35b341;
 }
+
+

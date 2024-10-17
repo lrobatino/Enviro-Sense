@@ -5,8 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulador Financeiro</title>
-    <link rel="stylesheet" href="../simuladorEnviroSense/css/styleSimulador.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/simulador.css">
    <link rel="shortcut icon" href="images/icon-noname.png" type="image/x-icon">
+   <script src="js/simulador.js"></script>
+   <script src="js/script.js"></script>
 </head>
 
 <body>
@@ -19,21 +22,21 @@
                     <a>ENVIRO SENSE</a>
                 </div>
                 <div class="opcoes">
-                    <a class="opcao">Home</a>
-                    <a class="opcao">Sobre Nós</a>
-                    <a class="opcao">Nossos Serviços</a>
+                    <a class="opcao" href="index.html">Home</a>
+                    <a class="opcao" href="index.html#sobre-nos">Sobre Nós</a>
+                    <a class="opcao" href="index.html#nossos-servicos">Nossos Serviços</a>
                 </div>
             </div>
             <div class="botoes">
-                <button onclick="">LOGIN</button>
-                <button onclick="">CADASTRO</button>
+                <button onclick="window.location.href='tela-login.html'">Login</button>
+                <button onclick="window.location.href='tela-cadastro.html'">Cadastro</button>
             </div>
         </div>
     </div>
 
-    <h2 class="titSimulador">Simulador Financeiro</h2>
+    
     <div class="dados">
-        
+        <h2 class="titSimulador">Simulador Financeiro</h2>
         <div id="content1">
             <h2>Quantidade de tinta de acabamento utilizada mensalmente (L):</h2>
             <input type="number" id="input_tinta">
@@ -75,15 +78,6 @@
     <div id="resultados" class="container hidden">
         
     </div>
-
-    <div class="footer"></div>
-        <div class="container-conteudo">
-    
-        </div>
-    </div>
-
-
-    <script src="../simuladorEnviroSense/js/script.js"></script>
 </body>
 
 </html>
