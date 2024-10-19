@@ -7,9 +7,7 @@
     <title>Simulador Financeiro</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/simulador.css">
-   <link rel="shortcut icon" href="images/icon-noname.png" type="image/x-icon">
-   <script src="js/simulador.js"></script>
-   <script src="js/script.js"></script>
+    <link rel="shortcut icon" href="images/icon-noname.png" type="image/x-icon">
 </head>
 
 <body>
@@ -25,6 +23,7 @@
                     <a class="opcao" href="index.html">Home</a>
                     <a class="opcao" href="index.html#sobre-nos">Sobre Nós</a>
                     <a class="opcao" href="index.html#nossos-servicos">Nossos Serviços</a>
+                    <a class="opcao" href="simulador.html">Simulador</a>
                 </div>
             </div>
             <div class="botoes">
@@ -34,50 +33,57 @@
         </div>
     </div>
 
-    
-    <div class="dados">
-        <h2 class="titSimulador">Simulador Financeiro</h2>
-        <div id="content1">
-            <h2>Quantidade de tinta de acabamento utilizada mensalmente (L):</h2>
-            <input type="number" id="input_tinta">
-            
-            <h2>Quantidade de primer gastos em sua fábrica (L): </h2>
-            <input type="number" id="input_primer">
-        </div>  
 
-        <div id="content2">
-            <h2>Digite o número de carrocerias pintadas mensalmente:</h2>
-            <input type="number" id="input_num_carroceria">
-            <h2>Digite a área de carrocerias pintadas (m²): </h2>
-            <input type="number" id="input_area_carroceria">
-        </div>
+    <div class="simulador" id="simulador">
+        <h2>Simulador Financeiro</h2>
+        <div class="caixa-simulador">
+            <div class="conteudo">
+                <div class="campo_tinta">
+                    <span>Quantidade de tinta de acabamento utilizada mensalmente (L):</span> 
+                    <input type="number" id="input_tinta">
+                </div>
+                <div class="campo_primer">
+                    <span>Quantidade de primer gastos em sua fábrica (L):</span>
+                    <input type="number" id="input_primer">
+                </div>
 
-        <div id="content3">
-            <h2>Qual o tipo de veículo produzido em sua fábrica?</h2>
-            <select id="tipo_de_veiculo">
-                <option value="carro">Automoveis</option>
-                <option value="caminhao">Cabines de caminhões, carrocerias e caminhonetes</option>
-                <option value="onibus">Ônibus, trator e veículos agrícolas</option>
-            </select>
-        </div>
-        <div id="content4">
-            <label id="titulo">Ano da sua licença:</label>
-            <input type="radio" name="ano" value="antes_2007">
-            <label for="ano">Antes de 2007</label>
+                <div class="campo_area">
+                    <span>Área de carrocerias pintadas (m²):</span>
+                    <input type="number" id="input_area_carroceria">
+                </div>
+
+                <div class="campo_carrocerias">
+                    <span>Número de carrocerias pintadas mensalmente:</span> 
+                    <input type="number" id="input_num_carroceria">
+                </div>
+
                 
-            <input type="radio" name="ano" value="depois_2007">
-            <label for="ano">Depois de 2007</label><br>
-
-            <div class="botao">
-                <button onclick="calcularMonitoramentoCOV()">Calcular</button>
+                <div class="campo_veiculo">
+                    <span>Qual o tipo de veículo produzido em sua fábrica?</span>
+                    <select id="tipo_de_veiculo">
+                        <option value="carro">Automoveis</option>
+                        <option value="caminhao">Cabines de caminhões, carrocerias e caminhonetes</option>
+                        <option value="onibus">Ônibus, trator e veículos agrícolas</option>
+                    </select>
+                </div>
+                <div class="campo_opcao">
+                    <label id="titulo">Ano da sua licença:</label>
+                    <input type="radio" name="ano" value="antes_2007">
+                    <label for="ano" class="ano1">Antes de 2007</label>
+                        
+                    <input type="radio" name="ano" value="depois_2007">
+                    <label for="ano" class="ano1">Depois de 2007</label><br>
+                </div>
+                <div class="botao">
+                    <button onclick="calcularMonitoramentoCOV()">Calcular</button>
+                </div>  
             </div>
         </div>
-        
     </div>
-  
-    <div id="resultados" class="container hidden">
-        
-    </div>
-</body>
 
+    <div id="resultados" class="hidden">
+        
+    </div>
+    <script src="js/simulador.js"></script>
+</body>
 </html>

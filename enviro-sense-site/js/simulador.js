@@ -1,84 +1,95 @@
 function calcularMonitoramentoCOV() {
-
-    const volumeTintasMes = Number(input_tinta.value);
+    const volumeTintasMes = Number(document.getElementById('input_tinta').value);
     const COV = 0.42;                                                     // Estimando uma emissão de 0.42 g/m² de COV da tinta
-    const volumePrimerMes = Number(input_primer.value);
-    const qtdCarroceriasMes = Number(input_num_carroceria.value);
-    const areaCarroceria = Number(input_area_carroceria.value);                                             
+    const volumePrimerMes = Number(document.getElementById('input_primer').value);
+    const qtdCarroceriasMes = Number(document.getElementById('input_num_carroceria').value);
+    const areaCarroceria = Number(document.getElementById('input_area_carroceria').value);                                             
     const solventeTinta = (1 / 3) * volumeTintasMes * 0.825        // Diluição de tinta que costuma ser 3:1
     const solventePrimer = (1 / 5) * volumePrimerMes * 0.825       // Diluição de primer que costuma ser 5:1
     const ano = document.querySelector('input[name="ano"]:checked').value;
-    var limiteEmissoesCOV = 0
+    var limiteEmissoesCOV = 0;
 
-    if (ano === 'antes_2007') {
-        if (tipo_de_veiculo.value == 'carro')
-            limiteEmissoesCOV = 60;
-        else if (tipo_de_veiculo.value == 'caminhao')
-            limiteEmissoesCOV = 90;
-        else if (tipo_de_veiculo.value == 'onibus')
-            limiteEmissoesCOV = 225;
-    } else {
-        if (tipo_de_veiculo.value == 'carro')
-            limiteEmissoesCOV = 45;
-        else if (tipo_de_veiculo.value == 'caminhao')
-            limiteEmissoesCOV = 70;
-        else if (tipo_de_veiculo.value == 'onibus')
-            limiteEmissoesCOV = 150;
+
+    if (!volumeTintasMes || !volumePrimerMes || !qtdCarroceriasMes || !areaCarroceria) {
+        alert("Por favor, preencha todos os campos.");
     }
+    else
+    {
+        if (ano === 'antes_2007') {
+            if (tipo_de_veiculo.value == 'carro')
+                limiteEmissoesCOV = 60;
+            else if (tipo_de_veiculo.value == 'caminhao')
+                limiteEmissoesCOV = 90;
+            else if (tipo_de_veiculo.value == 'onibus')
+                limiteEmissoesCOV = 225;
+        } else {
+            if (tipo_de_veiculo.value == 'carro')
+                limiteEmissoesCOV = 45;
+            else if (tipo_de_veiculo.value == 'caminhao')
+                limiteEmissoesCOV = 70;
+            else if (tipo_de_veiculo.value == 'onibus')
+                limiteEmissoesCOV = 150;
+        }
 
-    /*
-    Cálculo de emissão de VOC
-    VE = 1000 * [(VC1 * COV1) + (VC2 * COV2) + Solv1 + Solv2 - (RSA + RSB)] / [(B1 * S1) + (B2 * S2)]
-    */
-    const VE = 1000 * [(volumeTintasMes * COV) + (volumePrimerMes * COV) + solventeTinta + solventePrimer] / (qtdCarroceriasMes * areaCarroceria);
+        /*
+        Cálculo de emissão de VOC
+        VE = 1000 * [(VC1 * COV1) + (VC2 * COV2) + Solv1 + Solv2 - (RSA + RSB)] / [(B1 * S1) + (B2 * S2)]
+        */
+        const VE = 1000 * [(volumeTintasMes * COV) + (volumePrimerMes * COV) + solventeTinta + solventePrimer] / (qtdCarroceriasMes * areaCarroceria);
+        
+        const simulador = document.getElementById('simulador');
+        const resultados = document.getElementById('resultados');
 
-    document.querySelector('.dados').classList.add('hidden');
-    document.getElementById('resultados').classList.remove('hidden');
-    resultados.innerHTML = `     
-    <br>A emissão de COV é <strong>${VE.toFixed(2)} g/m²</strong>, <span class="texto-vermelho"> ignorando métodos de controle de COVs</span>!
-     <table border="1">
-            <tr>
-                <th>Atividade</th>
-                <th>Instalações licenciadas antes de 2007</th>
-                <th>Instalações licenciadas a partir de 2007</th>
-            </tr>
-            <tr>
-                <td>Automóveis</td>
-                <td>Menor que 60 g/m²</td>
-                <td>15 a 45 g/m²</td>
-            </tr>
-            <tr>
-                <td>Cabine de caminhões, carrocerias de veículos
-                    utilitários, pick-up e caminhonete</td>
-                <td>90 g/m²</td>
-                <td>70 g/m²</td>
-            </tr>
-            <tr>
-                <td>Ônibus, Trator e veículos agrícolas e/ou utilizados
-                    na construção civil</td>
-                <td>225 g/m²</td>
-                <td>150 g/m²</td>
-            </tr>
-        </table>
-        <br>
+        if (simulador && resultados) {
+            simulador.classList.add('hidden');  // Oculta a primeira tela
+            resultados.classList.remove('hidden');  // Exibe a segunda tela
+        }
+        resultados.innerHTML = `
+            <div style="margin-top: 150px">
+                <p>Resultado: A emissão de COV é <span class="texto-azul"><strong>${VE.toFixed(2)} g/m²</strong></span>,
+                <span class="texto-vermelho2">ignorando métodos de controle de COVs!</span></p>
+            </div>
         `;
 
-    if (VE > limiteEmissoesCOV)
-            resultados.innerHTML += `Segundo a tabela apresentada acima, as emissões de COV estão acima do limite estabelecido
-             pela CETESB de <strong>${limiteEmissoesCOV.toFixed(2)}g/m².</strong> Você estará sujeito a tomar uma multa e a <strong>perder</strong> a licença de operação da fábrica, 
-             tendo o seu fechamento!<br>
-             <p class="msg">Quer garantir um monitoramento eficiente da sua fábrica?</p>
-             <div class="opcao">
-                <a href="home.html" target="_blank">Clique aqui e conheça a EnviroSense</a>
-             </div>`
-    else
-        resultados.innerHTML += `Segundo a tabela apresentada acima, as emissões de COV estão dentro do acordo estabelecido
-             pela lei que são <strong>${limiteEmissoesCOV.toFixed(2)}g/m².</strong>! 
-             <br> Parabéns, sua empresa está contribuindo com um ambiente <strong>mais colorido e sustentável</strong>!
-             <p class="msg">Quer garantir um monitoramento eficiente da sua fábrica?</p>
-             <div class="opcao">
-                <a href="home.html" target="_blank">Clique aqui e conheça a EnviroSense</a>
-             </div>` 
+        if (VE > limiteEmissoesCOV) {
+            resultados.innerHTML += `
+                <p>As emissões de COV estão acima do limite de <span class="texto-vermelho"><strong>${limiteEmissoesCOV.toFixed(2)} g/m²</strong>.</span> 
+                <span class="texto-vermelho">Você poderá ser multado!</span>
+                </p>
+                <p><span class="texto-vermelho">Atenção!</span> 
+                Emitir mais COV do que o permitido pela lei pode resultar em consequências graves, como:</p>
+                <ul>
+                    <li><span class="texto-vermelho2"><strong>Multas severas</strong></span> e até o 
+                    <span class="texto-vermelho2"><strong>fechamento temporário</strong></span> de suas operações.</li>
+
+                    <li>Comprometimento da <span class="texto-vermelho2"><strong>saúde de funcionários</strong></span>, com possíveis complicações respiratórias devido à exposição contínua.</li>
+
+                    <li>Impactos negativos ao meio ambiente, como a <span class="texto-vermelho2"><strong>poluição atmosférica</strong></span> e efeitos nocivos para a comunidade ao redor.</li>
+                </ul>
+                <p class="msg"><span class="texto-verde">Quer evitar esses riscos e monitorar eficientemente sua fábrica?</span></p>
+                <div class="opcao">
+                    <a href="index.html">Clique aqui e conheça a EnviroSense</a>
+                </div>
+            `;
+        } else {
+            resultados.innerHTML += `
+                <p>As emissões de COV estão dentro do limite legal de <span class="texto-verde"><strong>${limiteEmissoesCOV.toFixed(2)} g/m²</strong>.</span> <span class="texto-verde">Parabéns!</span></p>
+
+                <p>Manter suas emissões de COV dentro dos limites traz benefícios importantes:</p>
+                <ul>
+                    <li>Você está <span class="texto-verde"><strong>protegido contra multas e sanções</strong></span> por parte dos órgãos ambientais.</li>
+
+                    <li>Mostra responsabilidade com o <span class="texto-verde"><strong>meio ambiente</strong></span>, ajudando a reduzir a poluição e melhorando sua imagem no mercado.</li>
+
+                    <li>Garante um <span class="texto-verde"><strong>ambiente de trabalho seguro</strong></span>, minimizando o risco de problemas de saúde para seus funcionários.</li>
+                </ul>
+                <p class="msg"><span class="texto-verde">Quer monitorar eficientemente sua fábrica e garantir que tudo continue dentro dos conformes?</span></p>
+                <div class="opcao">
+                    <a href="index.html">Clique aqui e conheça a EnviroSense</a>
+                </div>
+            `;
+        }
+    }
 }   
 
 
