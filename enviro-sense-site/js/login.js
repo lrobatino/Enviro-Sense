@@ -88,6 +88,6 @@ function entrar() {
         alert("Erro no login!");
     } else {
         alert("Seja bem vindo!");
-        window.location.href = 'dashboards.html';
+        window.location.href = 'dashboard.html';
     }
 }
