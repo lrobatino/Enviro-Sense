@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>| Enviro Sense</title>
+    <link rel="stylesheet" href="css/style-dashboard.css">
+    <link rel="icon" type="image/png" href="images/icon-nonameAA.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="coluna-lateral">
+        <i class="bi bi-list"></i>
+        <select id="selCabine">
+            <option value="1">C1</option>
+            <option value="2">C2</option>
+            <option value="3">C3</option>
+            <option value="4">C4</option>
+            <option value="5">C5</option>
+            <option value="6">C6</option>
+            <option value="7">C7</option>
+            <option value="8">C8</option>
+            <option value="9">C9</option>
+            <option value="10">C10</option>
+            <option value="11">C11</option>
+            <option value="12">C12</option>
+            <option value="13">C13</option>
+            <option value="14">C14</option>
+            <option value="15">C15</option>
+        </select>
+    </div>
+    <div class="header-dashboard">
+        <div class="header">
+            <p>Bem-Vindo!</p>
+        </div>
+        <div class="dashboard">
+            <div class="coluna-grafico">
+                <div class="grafico">
+                <canvas id="myChart" style="position: relative; height: 52vh; width:60vw"></canvas>
+                </div>
+                <div class="grafico">   
+                <canvas id="myChart2" style="position: relative; height: 52vh; width:60vw"></canvas>
+                </div>
+            </div>
+            <div class="coluna-kpi-um">
+                <img src="images/media-cov-hoje.png" class="imagem-um">
+                <img src="images/cabine-em-uso.png" class="imagem-dois">
+            </div>
+            <div class="coluna-kpi-dois">
+                <img src="images/media-cov-semana.png" class="imagem-um">
+                <img src="images/cabine-no-padrao.png" class="imagem-dois">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    const labels = [
+        '12:05',
+        '12:10',
+        '12:15',
+        '12:20',
+        '12:25',
+        '12:30',
+    ];
+
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: 'Média de COV emitido (Tempo Real)',
+            backgroundColor: '#33c635',
+            borderColor: '#33c635',
+            data: [43, 45, 47, 44, 45, 42],
+        },
+        {
+            label: 'Limite Máximo',
+            backgroundColor: '#f32423',
+            borderColor: '#f32423',
+            data: [60, 60, 60, 60, 60, 60],
+        },
+        {
+            label: 'Zona de Risco',
+            backgroundColor: '#fed000',
+            borderColor: '#fed000',
+            data: [50, 50, 50, 50, 50, 50],
+        }
+    ]
+    };
+
+    const labels2 = [
+        'Cabine 1',
+        'Cabine 2',
+        'Cabine 3',
+        'Cabine 4',
+        'Cabine 5',
+        'Cabine 6',
+        'Cabine 7',
+        'Cabine 9',
+        'Cabine 10',
+        'Cabine 11',
+        'Cabine 12',
+        'Cabine 13',
+        'Cabine 14',
+        'Cabine 15',
+    ];
+
+    const data2 = {
+        labels: labels2,
+        datasets: [{
+            label: 'Quantidade de Alertas (hoje)',
+            backgroundColor: '#000044',
+            borderColor: '#000044',
+            data: [0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1],
+        },
+        {
+            label: 'Quantidade de Alertas (esta semana)',
+            backgroundColor: '#000066',
+            borderColor: '#000066',
+            data: [0, 0, 0, 5, 0, 0, 1, 0, 3, 0, 1, 0, 0, 0, 4],
+        },
+        {
+            label: 'Quantidade de Alertas (este mês)',
+            backgroundColor: '#000099',
+            borderColor: '#000099',
+            data: [1, 1, 0, 11, 0, 1, 3, 0, 6, 0, 4, 1, 0, 0, 9],
+        }
+    ]
+    };
+
+    const config = {
+        type: 'line',
+        data: data,
+        options: {}
+    };
+
+    const config2 = {
+        type: 'bar',
+        data: data2,
+        options: {}
+    };
+
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+
+    const myChart2 = new Chart(
+        document.getElementById('myChart2'),
+        config2
+    );
+</script>

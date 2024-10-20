@@ -1,0 +1,132 @@
+@font-face {
+    font-family: 'Fredoka';
+    src: url('../fonts/Fredoka-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    font-family: "Fredoka";
+    width: 100%;
+    height: 993px;
+    display: flex;
+}
+
+.dashboard{
+    padding-left: 20px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    padding-right: 40px;
+    width: 1780px;
+    height: 870px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.header p {
+    color: #15491a;
+    font-size: 30px;
+}
+
+.header-dashboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.dashboard .coluna-grafico{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 870px;
+    width: 900px;
+}
+
+.coluna-grafico .grafico{
+    border: 15px solid #EEEEEE;
+    width: 870px;
+    height: 400px;
+}
+
+.dashboard .coluna-kpi-um {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 430px;
+    height: 870px;
+}
+
+.dashboard .coluna-kpi-dois {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 430px;
+    height: 870px;
+}
+
+.dashboard .coluna-kpi-um .imagem-um {
+    width: 400px;
+    height: 400px;
+    border: 15px solid #EEEEEE;
+}
+
+.dashboard .coluna-kpi-um .imagem-dois {
+    width: 400px;
+    height: 400px;
+    border: 15px solid #EEEEEE;
+}
+
+.dashboard .coluna-kpi-dois .imagem-um  {
+    width: 400px;
+    height: 400px;
+    border: 15px solid #EEEEEE;
+}
+
+.dashboard .coluna-kpi-dois .imagem-dois  {
+    width: 400px;
+    height: 400px;
+    border: 15px solid #EEEEEE;
+}
+
+body .coluna-lateral {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background: linear-gradient(#228833, #228833);
+    width: 80px;
+    height: 993px;
+
+    i {
+        font-size: 60px;
+        padding-top: 5px;
+        color: #15491a;
+    }
+
+    #selCabine {
+        color: white;
+        border: none;
+        background-color: #15491a;
+        text-align: center;
+        font-size: 26px;
+        width: 50px;
+        height: 50px;
+        appearance: none;
+        outline: none;
+        cursor: pointer;
+    }
+}
+
+body .header {
+    background: linear-gradient(to right,#228833, #228833);
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
