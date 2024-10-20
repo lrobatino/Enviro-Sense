@@ -131,6 +131,11 @@ html {
     align-items: center;
 }
 
+.container-welcome .conteudo h1 {
+    color: #35b341;
+    font-size: 70px;
+}
+
 .container-welcome .conteudo span {
     color: rgb(220, 220, 220);
     font-size: 60px;
