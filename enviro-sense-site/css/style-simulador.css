@@ -231,22 +231,9 @@ html {
 
 
 .simulador .campo_veiculo #tipo_de_veiculo:hover{
-     background-color: #34ff34;
-    color: white;
+     background-color: #afacac;
+    color: rgb(0, 0, 0);
 }
-
-.simulador .campo_opcao{
-    font-size: 20px;
-    font-weight: bolder;
-    
-}
-
-.simulador .campo_opcao label:hover{
-    cursor: pointer;
-}
-
-
-
 
 #resultados {
     width: 100%;

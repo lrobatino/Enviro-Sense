@@ -1,6 +1,4 @@
 function calcularMonitoramentoCOV() {
-
-
     const volumeTintasMes = Number(document.getElementById('input_tinta').value);
     const COV = 0.42;                                                    // Estimando uma emissão de 0.42 g/m² de COV da tinta
     const volumePrimerMes = Number(document.getElementById('input_primer').value);
@@ -8,28 +6,19 @@ function calcularMonitoramentoCOV() {
     const areaCarroceria = Number(document.getElementById('input_area_carroceria').value);                                             
     const solventeTinta = (1 / 3) * volumeTintasMes * 0.825        // Diluição de tinta que costuma ser 3:1
     const solventePrimer = (1 / 5) * volumePrimerMes * 0.825       // Diluição de primer que costuma ser 5:1
-    const ano = document.querySelector('input[name="ano"]:checked').value;
     var limiteEmissoesCOV = 0
 
 
     if (!volumeTintasMes || !volumePrimerMes || !qtdCarroceriasMes || !areaCarroceria) {
         alert("Por favor, preencha todos os campos.");
     } else {
-        if (ano === 'antes_2007') {
-            if (tipo_de_veiculo.value == 'carro')
-                limiteEmissoesCOV = 60;
-            else if (tipo_de_veiculo.value == 'caminhao')
-                limiteEmissoesCOV = 90;
-            else if (tipo_de_veiculo.value == 'onibus')
-                limiteEmissoesCOV = 225;
-            } else {
-                if (tipo_de_veiculo.value == 'carro')
-                    limiteEmissoesCOV = 45;
-                else if (tipo_de_veiculo.value == 'caminhao')
-                    limiteEmissoesCOV = 70;
-                else if (tipo_de_veiculo.value == 'onibus')
-                    limiteEmissoesCOV = 150;
-            }
+        if (tipo_de_veiculo.value == 'carro')
+            limiteEmissoesCOV = 45;
+        else if (tipo_de_veiculo.value == 'caminhao')
+            limiteEmissoesCOV = 70;
+        else 
+            limiteEmissoesCOV = 150;
+        
 
         /*
         Cálculo de emissão de VOC
@@ -68,19 +57,19 @@ function calcularMonitoramentoCOV() {
             <a href="index.html">Clique aqui e conheça a EnviroSense</a>
         </div>`;
         else
-        resultados.innerHTML += `
-        <p>As emissões de COV estão dentro do limite legal de <span class="texto-verde"><strong>${limiteEmissoesCOV.toFixed(2)} g/m²</strong>.</span> <span class="texto-verde">Parabéns!</span></p>
-        <p>Manter suas emissões de COV dentro dos limites traz benefícios importantes:</p>
-        <ul>
-            <li>Você está <span class="texto-verde"><strong>protegido contra multas e sanções</strong></span> por parte dos órgãos ambientais.</li>
-            <li>Mostra responsabilidade com o <span class="texto-verde"><strong>meio ambiente</strong></span>, ajudando a reduzir a poluição e melhorando sua imagem no mercado.</li>
-            <li>Garante um <span class="texto-verde"><strong>ambiente de trabalho seguro</strong></span>, minimizando o risco de problemas de saúde para seus funcionários.</li>
-        </ul>
-        <p class="msg"><span class="texto-verde">Quer monitorar eficientemente sua fábrica e garantir que tudo continue dentro dos conformes?</span></p>
-        <div class="opcao">
-            <a href="index.html">Clique aqui e conheça a EnviroSense</a>
-        </div>`;
+            resultados.innerHTML += `
+            <p>As emissões de COV estão dentro do limite legal de <span class="texto-verde"><strong>${limiteEmissoesCOV.toFixed(2)} g/m²</strong>.</span> <span class="texto-verde">Parabéns!</span></p>
+            <p>Manter suas emissões de COV dentro dos limites traz benefícios importantes:</p>
+            <ul>
+                <li>Você está <span class="texto-verde"><strong>protegido contra multas e sanções</strong></span> por parte dos órgãos ambientais.</li>
+                <li>Mostra responsabilidade com o <span class="texto-verde"><strong>meio ambiente</strong></span>, ajudando a reduzir a poluição e melhorando sua imagem no mercado.</li>
+                <li>Garante um <span class="texto-verde"><strong>ambiente de trabalho seguro</strong></span>, minimizando o risco de problemas de saúde para seus funcionários.</li>
+            </ul>
+            <p class="msg"><span class="texto-verde">Quer monitorar eficientemente sua fábrica e garantir que tudo continue dentro dos conformes?</span></p>
+            <div class="opcao">
+                <a href="index.html">Clique aqui e conheça a EnviroSense</a>
+            </div>`;
     }
-}   
+} 
 
 
