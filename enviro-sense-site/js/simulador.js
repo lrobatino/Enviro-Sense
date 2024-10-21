@@ -1,5 +1,6 @@
 function calcularMonitoramentoCOV() {
 
+
     const volumeTintasMes = Number(document.getElementById('input_tinta').value);
     const COV = 0.42;                                                    // Estimando uma emissão de 0.42 g/m² de COV da tinta
     const volumePrimerMes = Number(document.getElementById('input_primer').value);
@@ -35,18 +36,17 @@ function calcularMonitoramentoCOV() {
         VE = 1000 * [(VC1 * COV1) + (VC2 * COV2) + Solv1 + Solv2 - (RSA + RSB)] / [(B1 * S1) + (B2 * S2)]
         */
         const VE = 1000 * [(volumeTintasMes * COV) + (volumePrimerMes * COV) + solventeTinta + solventePrimer] / (qtdCarroceriasMes * areaCarroceria);
-
+        div_simulador.innerHTML = `<div id="resultados">`
         const simulador = document.getElementById('simulador');
         const resultados = document.getElementById('resultados');
 
-        if (simulador && resultados) {
+        if (simulador) {
             simulador.classList.add('hidden');  // Oculta a primeira tela
-            resultados.classList.remove('hidden');  // Exibe a segunda tela
         }
 
         resultados.innerHTML = `     
-        <div style="margin-top: 150px">
-                <p>Resultado: A emissão de COV é <span class="texto-azul"><strong>${VE.toFixed(2)} g/m²</strong></span>,
+        <div>
+                <p>Resultado: A emissão de COV é <span class="texto-verde"><strong>${VE.toFixed(2)} g/m²</strong></span>,
                 <span class="texto-vermelho2">ignorando métodos de controle de COVs!</span></p>
         </div>`;
 
