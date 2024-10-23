@@ -17,7 +17,7 @@ html {
 .header {
     position: fixed;
     display: flex;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.5);
     flex-direction: row;
     align-items: center;
     width: 100%;
@@ -117,7 +117,7 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.1)), url('../images/background-home-welcome.png');
+    background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.2)), url('../images/background-home-welcome.png');
     background-position: center;
     background-size: cover;
 }
@@ -177,7 +177,7 @@ html {
     justify-content: space-between;
     padding-left: 50px;
     width: 700px;
-    height: 550px;
+    height: 430px;
     text-align: justify;
 }
 
@@ -189,7 +189,7 @@ html {
 
 .nossos-servicos a {
     color: rgb(200, 200, 200);
-    font-size: 40px;
+    font-size: 34px;
 }
 
 .nossos-servicos b {
