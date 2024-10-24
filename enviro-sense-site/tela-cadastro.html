@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="css/style-cadastro.css">
     <script src="js/script.js"></script>
     <script src="js/cadastro.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
 </head>
 
 <body>
@@ -65,7 +67,7 @@
 
             </div>
             <div class="conteudo2">
-                <div class="campo_login">
+                <div class="campo_cnpj">
                     <span>CNPJ:</span>
                     <input type="text" id="cnpj_input" placeholder="Insira seu CNPJ">
                 </div>
@@ -89,3 +91,5 @@
 </body>
 
 </html>
+
+<script>$('#cnpj_input').mask('00.000.000/0000-00', {reverse: true});</script>
