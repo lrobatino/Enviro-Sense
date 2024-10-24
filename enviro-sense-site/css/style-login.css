@@ -213,6 +213,7 @@ html {
 .login .campo_login input {
     width: 440px;
     height: 40px;
+    font-size: 20px;
     border: 2px solid #dce6dd;
     box-shadow: 0px 0px 6px 6px rgba(229, 241, 229, 0.14);
     border-radius: 10px;
@@ -226,6 +227,7 @@ html {
 .campo_senha input {
     width: 440px;
     height: 40px;
+    font-size: 20px;
     padding-right: 0px;
     border: 2px solid #dce6dd;
     box-shadow: 0px 6px 6px 6px rgba(229, 241, 229, 0.14);

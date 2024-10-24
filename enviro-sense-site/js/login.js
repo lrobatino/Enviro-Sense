@@ -21,7 +21,7 @@ function mostrarCaptcha() {
     div_campo_captcha.innerHTML = "";
     imagens.innerHTML = `Escolha a imagem que contém uma plantinha<br>`;
     for (var imagem = 1; imagem <= 9; imagem++) {
-        imagemSorteada = parseInt(Math.random() * 7 + 1);
+        imagemSorteada = parseInt(Math.random() * 6 + 1);
         if (imagemSorteada == 1) {
             if(imagemCorreta == 0){
                 imagemCorreta++     
@@ -46,7 +46,7 @@ function sortearCaptcha() {
 
     imagens.innerHTML = `Escolha a imagem que contém uma plantinha<br>`;
     for (var imagem = 1; imagem <= 9; imagem++) {
-        imagemSorteada = parseInt(Math.random() * 7 + 1);
+        imagemSorteada = parseInt(Math.random() * 6 + 1);
         if (imagemSorteada == 1) {
             if(imagemCorreta == 0){
                 imagemCorreta++
