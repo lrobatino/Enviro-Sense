@@ -23,3 +23,7 @@ function verConfirmaSenha() {
         confirmarIcon.className = 'bi bi-eye-slash';
     }
 }
+
+function entrarLogin () {
+    window.location.href = "tela-login.html"
+}

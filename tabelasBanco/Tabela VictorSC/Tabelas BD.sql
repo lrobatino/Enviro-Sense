@@ -76,3 +76,4 @@ insert into Registros (idRegistro , nvEmissaoCOV, nvAlerta, dtMedicao,fkSensor) 
 
 
 
+
