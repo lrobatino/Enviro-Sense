@@ -43,7 +43,7 @@ body {
 .container-slide {
     display: flex;
     gap: 20px;
-    height: 350px;
+    height: 550px;
     width: 100%;
     overflow-x: scroll;
     scroll-snap-type: x proximity;
@@ -51,7 +51,6 @@ body {
 
 .container-slide .conteudo {
     display: flex;
-    position: relative;
     scroll-snap-align: center;
     box-sizing: border-box;
     padding: 20px 30px;
@@ -64,7 +63,14 @@ body {
     text-align: center;
 }
 
+.container-slide .texto {
+    z-index: 1;
+    font-size: 20px;
+}
+
 .container-slide img {
-    width: 400px;
+    padding-top: 20px;
+    width: 350px;
     height: 300px;
+    transform: scale(2);
 }
