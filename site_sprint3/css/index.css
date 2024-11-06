@@ -40,37 +40,109 @@ body {
     transform: scale(1.2);
 }
 
-.container-slide {
+.carrosel {
+    background: url(../imgs/background.jpeg);
+    background-size: cover;
+    background-position:center;
+    position: relative;
     display: flex;
-    gap: 20px;
-    height: 550px;
+    height: 785px;
     width: 100%;
     overflow-x: scroll;
     scroll-snap-type: x proximity;
 }
 
-.container-slide .conteudo {
+.carrosel span{
+    font-size: 40px;
+}
+
+.carrosel .slide {
     display: flex;
+    flex-direction: column;
     scroll-snap-align: center;
     box-sizing: border-box;
     padding: 20px 30px;
     flex-shrink: 0;
-    width: 100%;
+    margin: 1% 20% 1% 20%;
+    width: 80%;
     text-align: justify;
 }
 
-.container-slide h1 {
+.carrosel .enviro{
+    display: flex;
+    flex-direction: column;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
     text-align: center;
 }
 
-.container-slide .texto {
-    z-index: 1;
-    font-size: 20px;
+.carrosel .simulador{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    text-align: center;
 }
 
-.container-slide img {
-    padding-top: 20px;
-    width: 350px;
-    height: 300px;
-    transform: scale(2);
+.simulador span{
+    font-size: 30px;
+}
+
+.carrosel .sobre{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    text-align: center;
+}
+.sobre span{
+    font-size: 30px;
+}
+
+.carrosel h1 {
+    text-align: center;
+    font-size: 100px;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    height: 80px;
+    background-color: #aeb5c6;
+}
+
+.carrosel button {
+    font-size: 15px;
+    height: 40px;
+    width: 40%;
+    background: rgba( 14, 42, 113, 1 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 7px );
+    -webkit-backdrop-filter: blur( 7px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    transition: transform 0.5s;
+}
+
+.carrosel button:hover{
+    
+    transform: scale(1.4);
 }
