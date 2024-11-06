@@ -35,7 +35,8 @@ function calcularMonitoramentoCOV() {
 
         resultados.innerHTML = `     
         <div>
-                <p>Resultado: A emissão de COV é <span class="texto-verde"><strong>${VE.toFixed(2)} g/m²</strong></span>,
+                <p><center><h1>RESULTADO !!!</h1></center></p><br>
+                <p>Aviso: A emissão de COV é <span class="texto-azul2"><strong>${VE.toFixed(2)} g/m²</strong></span>,
                 <span class="texto-vermelho2">ignorando métodos de controle de COVs!</span></p>
         </div>`;
 
@@ -52,7 +53,7 @@ function calcularMonitoramentoCOV() {
             <li>Comprometimento da <span class="texto-vermelho2"><strong>saúde de funcionários</strong></span>, com possíveis complicações respiratórias devido à exposição contínua.</li>
             <li>Impactos negativos ao meio ambiente, como a <span class="texto-vermelho2"><strong>poluição atmosférica</strong></span> e efeitos nocivos para a comunidade ao redor.</li>
         </ul>
-        <p class="msg"><span class="texto-verde">Quer evitar esses riscos e monitorar eficientemente sua fábrica?</span></p>
+        <p class="msg"><span class="texto-azul2">Quer evitar esses riscos e monitorar eficientemente sua fábrica?</span></p>
         <div class="opcao">
             <a href="index.html">Clique aqui e conheça a EnviroSense</a>
         </div>`;
@@ -61,11 +62,11 @@ function calcularMonitoramentoCOV() {
             <p>As emissões de COV estão dentro do limite legal de <span class="texto-verde"><strong>${limiteEmissoesCOV.toFixed(2)} g/m²</strong>.</span> <span class="texto-verde">Parabéns!</span></p>
             <p>Manter suas emissões de COV dentro dos limites traz benefícios importantes:</p>
             <ul>
-                <li>Você está <span class="texto-verde"><strong>protegido contra multas e sanções</strong></span> por parte dos órgãos ambientais.</li>
-                <li>Mostra responsabilidade com o <span class="texto-verde"><strong>meio ambiente</strong></span>, ajudando a reduzir a poluição e melhorando sua imagem no mercado.</li>
-                <li>Garante um <span class="texto-verde"><strong>ambiente de trabalho seguro</strong></span>, minimizando o risco de problemas de saúde para seus funcionários.</li>
+                <li>Você está <span class="texto-verde2"><strong>protegido contra multas e sanções</strong></span> por parte dos órgãos ambientais.</li>
+                <li>Mostra responsabilidade com o <span class="texto-verde2"><strong>meio ambiente</strong></span>, ajudando a reduzir a poluição e melhorando sua imagem no mercado.</li>
+                <li>Garante um <span class="texto-verde2"><strong>ambiente de trabalho seguro</strong></span>, minimizando o risco de problemas de saúde para seus funcionários.</li>
             </ul>
-            <p class="msg"><span class="texto-verde">Quer monitorar eficientemente sua fábrica e garantir que tudo continue dentro dos conformes?</span></p>
+            <p class="msg"><span class="texto-azul2">Quer monitorar eficientemente sua fábrica e garantir que tudo continue dentro dos conformes?</span></p>
             <div class="opcao">
                 <a href="index.html">Clique aqui e conheça a EnviroSense</a>
             </div>`;
