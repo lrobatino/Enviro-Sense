@@ -11,3 +11,7 @@ function passarCarrosel() {
   slidejs[posicao-1].style.display = "block"; 
   setTimeout(passarCarrosel, 2000); 
 }
+
+function mostrarMenu() {
+  
+}
