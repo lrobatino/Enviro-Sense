@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style-dashboard.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="cabecalho">
+        <div id="conteudo-cabecalho">
+            <img id="icone-menu" tabindex="-1" src="images/menu-icon.png" draggable="false" onclick="mostrarEsconderMenu()">
+        </div>
+    </div>
+    <div id="tela-principal">
+        <div id="menu">
+            <div id="opcoes">
+                <div class="opcao">
+                    <img src="images/alerta.png" id="icone-alerta"><p>Gerenciar Alertas</p>
+                </div>
+                <div class="opcao">
+                    <img src="images/informacao.png" id="icone-informacao"><p>Alterar Informações</p>
+                </div>
+                <div class="opcao">
+                    <img src="images/usuario.png" id="icone-usuario"><p>Cadastrar Usuários</p>
+                </div>
+            </div>
+        </div>
+        <div id="dashboard">
+            <div id="informacao-individual">
+                <div class="grafico">
+
+                </div>
+                <div class="kpi">
+
+                </div>
+                <div class="kpi">
+
+                </div>
+            </div>
+            <div id="informacao-geral">
+                <div class="grafico">
+
+                </div>
+                <div class="kpi">
+
+                </div>
+                <div class="kpi">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    var menu = document.getElementById('menu')
+
+    function mostrarEsconderMenu() {
+        if (menu.classList.contains('visivel')){
+            menu.classList.remove('visivel')
+            menu.classList.add('invisivel')
+        } else {
+            menu.classList.remove('invisivel')
+            menu.classList.add('visivel')
+        }
+    }
+
+</script>
