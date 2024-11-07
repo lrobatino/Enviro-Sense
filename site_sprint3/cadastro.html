@@ -4,21 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/cadastro-style.css">
+    <link rel="stylesheet" href="js/cadastro.js">
     <title>Enviro Sense</title>
 </head>
 <body>
     <div class="container">
         <div class="cadastro">
-        <h2>Faça seu cadastro</h2>
-            CNPJ: <br>
-            <input id="input_cnpj"> <br>
-            Nome fantasia: <br>
+            <h2>Faça seu cadastro</h2>
+            <div id="form-content">
+                <!-- Primeiros campos -->
+                CNPJ: <br>
+                <input id="input_cnpj"> <br>
+                Nome fantasia: <br>
                 <input id="input_nome_fantasia"> <br>
-            Razão social: <br>
+                Razão social: <br>
                 <input id="input_razao"> <br>
-            Telefone: <br>
+                Telefone: <br>
                 <input id="input_telefone"> <br>
+    
+                <!-- Campos que serão exibidos após clicar em "Continuar" -->
+                <div class="hidden" id="address-fields">
+                    Logradouro: <br>
+                    <input id="input_logradouro"> <br>
+                    CEP: <br>
+                    <input id="input_cep"> <br>
+                    Número: <br>
+                    <input id="input_numero"> <br>
+                    Bairro: <br>
+                    <input id="input_bairro"> <br>
+                </div>
+            </div>
+            <button id="continue-button" onclick="proximosCampos()">Continuar</button>
+            <button id="cadsdtrar" class="hidden">Cadastrar</button>
         </div>
     </div>    
+    
+        
 </body>
 </html>
