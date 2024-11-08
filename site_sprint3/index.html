@@ -7,6 +7,13 @@
     <title>Enviro Sense</title>
 </head>
 <body>
+    <div class="login" id="menuLogin">
+        <h1>Entrar</h1>
+        <input type="text" id="inp_email" placeholder="Insira seu E-mail">
+        <input type="text" id="inp_senha" placeholder="Insira sua senha">
+
+    </div>
+
     <!-- Navbar -->
     <div class="navbar">
         <div class="logo">
@@ -17,8 +24,8 @@
             <a href="">Sobre Nós</a>
             <a href="">Nossos Serviços</a>
         </div>
-        <div class="hamburguer" onclick="window.location.href='login.html'">
-            <img src="imgs/menu-de-hamburguer.png">
+        <div class="hamburguer">
+            <img src="imgs/menu-de-hamburguer.png" onclick="mostrarMenu()">
         </div>
     </div>
     
@@ -27,9 +34,7 @@
         <div class="slide enviro">
                 <h1><b>EnviroSense</b></h1>
                 <span>
-                    <b>Controle</b> a emissão, <b>proteja</b> o futuro.
-                </span>
-                <span>
+                    <b>Controle</b> a emissão, <b>proteja</b> o futuro.<br>
                     <b>Monitoramento de COV</b> para um amanhã <b>limpo e seguro</b>.
                 </span>
         </div>
@@ -37,9 +42,7 @@
         <div class="slide simulador">
                 <h1><b>Simulador</b></h1>
                 <span>
-                    Faça uma rápida simulação
-                </span>
-                <span>
+                    Faça uma rápida simulação<br>
                     E descobra se sua fábrica esta nos conformes
                 </span><br><br>
                 <button onclick="window.location.href='simulador.html'">Simular</button>
@@ -48,21 +51,28 @@
         <div class="slide sobre">
                 <h1><b>Sobre nós</b></h1>
                 <span>
-                    Interessado em nos conhecer melhor
-                </span>
-                <span>Clique no botão abaixo</span>
+                    Interessado em nos conhecer melhor<br>
+                    Clique no botão abaixo</span>
                 <br><br>
                 <button>Nos conhecer</button>
         </div>
-
+        <div class="linhaSetas">
+            <div class="setaEsquerda" onclick="passarSlide(-1)">&#10094;</div>
+            <div class="setaDireita" onclick="passarSlide(1)">&#10095;</div>
+        </div>
+        <div class="linhaSeletores">
+            <span class="seletorSlide" onclick="slideAtual(1)"></span>
+            <span class="seletorSlide" onclick="slideAtual(2)"></span>
+            <span class="seletorSlide" onclick="slideAtual(3)"></span>
+        </div>
     </div>
 
     <!--Footer-->
     <div class="footer">
         <b>&#169;2024 Enviro Sense. All Rights Reserved.</b>
     </div>
+    <script src="js/index.js"></script>
 
-    <!-- <script src="js/index.js"></script> -->
 
 </body>
 </html>
