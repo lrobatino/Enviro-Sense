@@ -29,50 +29,56 @@
         </div>
     </div>
     
-    <div class="carrosel">
-
-        <div class="slide enviro">
-                <h1><b>EnviroSense</b></h1>
-                <span>
-                    <b>Controle</b> a emissão, <b>proteja</b> o futuro.<br>
-                    <b>Monitoramento de COV</b> para um amanhã <b>limpo e seguro</b>.
-                </span>
+        <div class="carrosel">
+            <div class="slider">
+                
+                <div id="s1" class="slide enviro">
+                        <h1><b>EnviroSense</b></h1>
+                        <span>
+                            <b>Controle</b> a emissão, <b>proteja</b> o futuro.<br>
+                            <b>Monitoramento de COV</b> para um amanhã <b>limpo e seguro</b>.
+                        </span>
+                </div>
+                <div id="s2" class="slide simulador">
+                        <h1><b>Simulador</b></h1>
+                        <span>
+                            Faça uma rápida simulação<br>
+                            E descobra se sua fábrica esta nos conformes
+                        </span><br><br>
+                        <p><button onclick="window.location.href='simulador.html'">Simular</button></p>
+                </div>
+                <div id="s3" class="slide sobre">
+                        <h1><b>Sobre nós</b></h1>
+                        <span>
+                            Interessado em nos conhecer melhor<br>
+                            Clique no botão abaixo</span>
+                        <br><br>
+                        <p><button>Nos conhecer</button></p>
+                </div>
+                
+            </div>
+            <div class="slider-nav">
+                <a href="#s1"></a>
+                <a href="#s2"></a>
+                <a href="#s3"></a>
+            </div>
         </div>
-
-        <div class="slide simulador">
-                <h1><b>Simulador</b></h1>
-                <span>
-                    Faça uma rápida simulação<br>
-                    E descobra se sua fábrica esta nos conformes
-                </span><br><br>
-                <button onclick="window.location.href='simulador.html'">Simular</button>
-        </div>
-        
-        <div class="slide sobre">
-                <h1><b>Sobre nós</b></h1>
-                <span>
-                    Interessado em nos conhecer melhor<br>
-                    Clique no botão abaixo</span>
-                <br><br>
-                <button>Nos conhecer</button>
-        </div>
-        <div class="linhaSetas">
-            <div class="setaEsquerda" onclick="passarSlide(-1)">&#10094;</div>
-            <div class="setaDireita" onclick="passarSlide(1)">&#10095;</div>
-        </div>
-        <div class="linhaSeletores">
-            <span class="seletorSlide" onclick="slideAtual(1)"></span>
-            <span class="seletorSlide" onclick="slideAtual(2)"></span>
-            <span class="seletorSlide" onclick="slideAtual(3)"></span>
-        </div>
-    </div>
-
+    
     <!--Footer-->
     <div class="footer">
         <b>&#169;2024 Enviro Sense. All Rights Reserved.</b>
     </div>
     <script src="js/index.js"></script>
-
-
+    
+    
 </body>
 </html>
+
+<!-- <div class="linhaSetas">
+    <div class="setaEsquerda" onclick="passarSlide(-1)">&#10094;</div>
+    <div class="setaDireita" onclick="passarSlide(1)">&#10095;</div>
+</div> -->
+
+<!-- <img id="slide-1" src="imgs/3409297.jpg">
+<img id="slide-2" src="imgs/3409390.jpg">
+<img id="slide-3" src="imgs/6037795.jpg"> -->
