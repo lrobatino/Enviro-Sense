@@ -58,17 +58,73 @@ body {
 }
 
 .login {
+    display: flex;
+    flex-direction: column;
     position: absolute;
     z-index: 1;
     height: max-content;
     background-color: #092f94;
-    display: none;
-    flex-direction: column;
     right: 0;
     width: 400px;
     height: 100%;
 }
 
+.login #sair {
+    position: absolute;
+    font-size: 30px;
+    top: 5px;
+    right: 5%;
+    font-weight: bold;
+    border: transparent;
+    height: 40px;
+    width: 40px;
+    background-color: transparent;
+    transition: color 0.5s;
+}
+
+.login #sair:hover {
+    color: red;
+}
+
+.login .container {
+    display: flex;
+    flex-direction: column;
+    margin: 40px;
+}
+
+.login input{
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 40px;
+}
+
+.login h1{
+    font-size: 40px;
+}
+
+.login button{
+    cursor: pointer;
+    border: transparent;
+    border-radius: 5px;
+    font-size: 30px;
+    text-align: start;
+    height: 40px;
+    margin-bottom: 20px;
+}
+
+.login #entrar{
+    background-color: #a4bcfc;
+    opacity: 0.8;
+    transition: opacity 0.5s;
+}
+
+.login #entrar:hover{
+    opacity: 1;
+}
+
+.login #cadastro{
+    background-color: transparent;
+}
 
 .carrosel {
     color: #aeb5c6;
