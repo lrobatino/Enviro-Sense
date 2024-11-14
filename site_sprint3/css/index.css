@@ -11,9 +11,6 @@ body {
     width: 100%;
     height: 80px;
     background: rgba( 174, 181, 198, 0.25 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 4px );
-    -webkit-backdrop-filter: blur( 4px );
 }
 
 .navbar .logo img {
@@ -33,7 +30,9 @@ body {
     transition: transform 0.3s ease;
 }
 
+
 .hamburguer img:hover {
+    cursor: pointer;
     transform: scale(1.1);
 }
 
@@ -58,21 +57,22 @@ body {
 }
 
 .login {
-    display: flex;
-    flex-direction: column;
     position: absolute;
     z-index: 1;
     height: max-content;
-    background-color: #092f94;
+    background-color: rgb(198, 204, 218);
     right: 0;
     width: 400px;
     height: 100%;
+    display: none;
+    flex-direction: column;
+    transition: transform ease;
 }
 
 .login #sair {
     position: absolute;
-    font-size: 30px;
-    top: 5px;
+    font-size: 40px;
+    top: 15px;
     right: 5%;
     font-weight: bold;
     border: transparent;
@@ -96,6 +96,7 @@ body {
     border: 1px solid black;
     border-radius: 5px;
     height: 40px;
+    outline: none;
 }
 
 .login h1{
@@ -113,9 +114,10 @@ body {
 }
 
 .login #entrar{
-    background-color: #a4bcfc;
+    background-color: #092f94;
     opacity: 0.8;
     transition: opacity 0.5s;
+    font-weight: bold;
 }
 
 .login #entrar:hover{
@@ -127,6 +129,7 @@ body {
 }
 
 .carrosel {
+    background: url(../imgs/3409297.jpg);
     color: #aeb5c6;
     position: relative;
 }
@@ -149,8 +152,8 @@ body {
 }
 
 .slider-nav a {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     background-color: #fff;
     opacity: 0.75;
@@ -183,18 +186,6 @@ body {
     box-shadow: inset 20px 20px 100px rgba(0, 0, 0, 0.7), inset -20px -20px 100px rgba(0, 0, 0, 0.7);
 }
 
-.carrosel .enviro{
-    background: url(../imgs/3409297.jpg);
-}
-
-.carrosel .simulador{
-    background: url(../imgs/3409390.jpg);
-}
-
-.carrosel .sobre{
-    background: url(../imgs/3409297.jpg);
-}
-
 
 .slide h1,span,p{
     padding-left: 50px;
@@ -213,7 +204,7 @@ body {
 }
 
 
-.carrosel button {
+.carrosel .slide button {
     font-size: 15px;
     font-weight: bold;
     height: 40px;
@@ -230,9 +221,8 @@ body {
     transform: scale(1.4);
 }
 
-/* .linhaSetas{
+.setas{
     user-select: none;
-    color: #aeb5c6;
     width: 100%;
     position: absolute;
     top: 50%;
@@ -245,22 +235,29 @@ body {
 
 }
 
-.setaEsquerda {
-    font-size: 40px;
+.voltar {
     margin-left: 5px;
 }
 
-.setaEsquerda:hover{
+.voltar:hover{
     cursor: pointer;
     transform: scale(1.3);
 }
 
-.setaDireita {
+.avancar {
+    margin-right: 10px;
+}
+
+.avancar:hover{
+    cursor: pointer;
+    transform: scale(1.3);
+}
+
+.setas button {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    outline: none;
+    border: none;
     font-size: 40px;
-    margin-right: 5px;
 }
-
-.setaDireita:hover{
-    cursor: pointer;
-    transform: scale(1.3);
-} */
