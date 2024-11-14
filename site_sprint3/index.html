@@ -7,16 +7,15 @@
     <title>Enviro Sense</title>
 </head>
 <body>
-    <div class="login" id="menuLogin">
+    <div class="login esconder" id="menuLogin">
         <div class="container">
-            <button id="sair">X</button>
+            <button id="sair" onclick="mostrarMenu()">X</button>
             <h1>Entrar</h1>
             <input type="text" id="inp_email" placeholder="Insira seu E-mail"><br>
             <input type="text" id="inp_senha" placeholder="Insira sua senha"><br>
             <button id="entrar">Entrar</button>
             <button id="cadastro">Criar Conta</button>
         </div>
-
     </div>
 
     <!-- Navbar -->
@@ -36,7 +35,10 @@
     
         <div class="carrosel">
             <div class="slider">
-                
+                <div class="setas">
+                    <button class="voltar"><</button>
+                    <button class="avancar">></button>
+                </div>
                 <div id="s1" class="slide enviro">
                         <h1><b>EnviroSense</b></h1>
                         <span>
@@ -48,7 +50,7 @@
                         <h1><b>Simulador</b></h1>
                         <span>
                             Faça uma rápida simulação<br>
-                            E descobra se sua fábrica esta nos conformes
+                            E descubra se sua fábrica esta nos conformes
                         </span><br><br>
                         <p><button onclick="window.location.href='simulador.html'">Simular</button></p>
                 </div>
