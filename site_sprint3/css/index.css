@@ -134,7 +134,7 @@ body {
 .slider {
     display: flex;
     overflow-x: hidden;
-    height: 600px;
+    height: 800px;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
 }
