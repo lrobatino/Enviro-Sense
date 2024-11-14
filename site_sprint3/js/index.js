@@ -20,11 +20,12 @@
 // }
 
 
-// function mostrarMenu() {
-//   var menu = document.getElementById('menuLogin')
-//   if(menu.classList.contains('aparecer')){
-//      menu.classList.remove('aparecer')
-//   } else{
-//     menu.classList.add('aparecer')
-//   }
-// }
+function mostrarMenu() {
+  var login = document.getElementsByClassName('login')[0]
+  if(login.style.display == 'none'){
+     login.style.display = 'flex'
+     login.style.transform = 'translate(0%)'
+  } else{
+    login.style.display = 'none'
+  }
+}
