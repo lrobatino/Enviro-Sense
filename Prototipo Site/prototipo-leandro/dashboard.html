@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style-dashboard.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/style-dashboard.css">
+    <script src="js/script-dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Enviro App</title>
 </head>
 <body>
     <div id="cabecalho">
@@ -19,11 +21,11 @@
     <div id="tela-principal">
         <div id="menu">
             <div id="opcoes">
-                <div class="opcao">
+                <div class="opcao" onclick="dashboard()">
                     <img src="images/dashboard.png" id="icone-dashboard" draggable="false"><p>Dashboard</p> 
                 </div>
                 <div class="opcao">
-                    <img src="images/alerta.png" id="icone-alerta" draggable="false"><p>Gerenciar Alertas</p>
+                    <img src="images/alerta.png" id="icone-alerta" draggable="false"><p>Alertas</p>
                 </div>
                 <div class="opcao">
                     <img src="images/chamado.png" id="icone-chamado" draggable="false"><p>Abrir Chamado</p>
@@ -34,48 +36,136 @@
                 <div class="opcao">
                     <img src="images/usuario.png" id="icone-usuario" draggable="false"><p>Cadastrar Usuários</p>
                 </div>
+                <div class="opcao">
+                    <img src="images/robo.png" id="icone-robo" draggable="false"><p>Consultar BOB IA</p>
+                </div>
             </div>
             <button id="btnSair">Sair</button>
         </div>
         <div id="dashboard">
-            <div id="informacao-individual">
-                <div class="grafico">
-
-                </div>
-                <div class="kpi">
-
-                </div>
-                <div class="kpi">
-
-                </div>
+            <div class="parametro">
+                <p>FABRICA A</p>
             </div>
             <div id="informacao-geral">
                 <div class="grafico">
-
+                    <canvas id="alertas-cabines"></canvas>
                 </div>
                 <div class="kpi">
-
+                    <span>CABINES DE PINTURA</span>
+                    <div id="mural-cabines">
+                        <div class="cabine" id="cabine1">1</div>
+                        <div class="cabine" id="cabine2">2</div>
+                        <div class="cabine" id="cabine3">3</div>
+                        <div class="cabine" id="cabine4">4</div>
+                        <div class="cabine" id="cabine5">5</div>
+                        <div class="cabine" id="cabine6">6</div>
+                        <div class="cabine" id="cabine7">7</div>
+                        <div class="cabine" id="cabine8">8</div>
+                        <div class="cabine" id="cabine9">9</div>
+                        <div class="cabine" id="cabine10">10</div>
+                        <div class="cabine" id="cabine11">11</div>
+                        <div class="cabine" id="cabine12">12</div>
+                    </div>
+                    <div id="legenda">
+                        <div id="on"></div><a>Em Atividade</a>
+                        <div id="off"></div><a>Fora de Atividade</a>
+                    </div>
                 </div>
                 <div class="kpi">
-
+                    <canvas id="porcentagem-ok"></canvas>
+                </div>
+            </div>
+            <div id="informacao-individual">
+                <div class="parametro">
+                    <p>CABINE 1</p>
+                </div>
+                <div class="grafico">
+            
+                </div>
+                <div class="kpi">
+    
+                </div>
+                <div class="kpi">
+    
                 </div>
             </div>
         </div>
     </div>
 </body>
 </html>
-
 <script>
-    var menu = document.getElementById('menu')
+    const ctxA = document.getElementById('captacao-sensor');
+    const ctxB = document.getElementById('alertas-cabines');
+    const ctxC = document.getElementById('porcentagem-ok');
 
-    function mostrarEsconderMenu() {
-        if (menu.classList.contains('visivel')){
-            menu.classList.remove('visivel')
-            menu.classList.add('invisivel')
-        } else {
-            menu.classList.remove('invisivel')
-            menu.classList.add('visivel')
+    const captacaoSensor = new Chart(ctxA, {
+    type: 'bar',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+        y: {
+            beginAtZero: true
+        }
         }
     }
+    });
 
+    const alertasCabines = new Chart(ctxB, {
+    type: 'bar',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+        y: {
+            beginAtZero: true
+        }
+        }
+    }
+    });
+    const porcentagemOk = new Chart(ctxC, {
+    type: 'pie',
+    data: {
+        datasets: [{
+            data: [30, 20, 25, 25],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(255, 206, 86, 0.6)',
+                'rgba(75, 192, 192, 0.6)' 
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            tooltip: {
+                enabled: true
+            }
+            
+        }
+    }
+    });
 </script>
