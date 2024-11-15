@@ -3,42 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/cadastro-style.css">
-    <link rel="stylesheet" href="js/cadastro.js">
+    <link rel="stylesheet" href="css/cadastro.css">
+   <script src="js/cadastro.js"></script>
     <title>Enviro Sense</title>
 </head>
 <body>
+
+  <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="imgs/enviro-sense-logo.png">
+        </div>
+        <div class="container">
+            <a href="index.html">Home</a>
+            <a href="">Sobre Nós</a>
+            <a href="">Nossos Serviços</a>
+        </div>
+    </div>
+
     <div class="container">
+        <div class="texto-cadastro">
+            <h2>Enviro Sense </h2>
+            <p>Garanta o compromisso ambiental da sua empresa e esteja à frente do mercado! Ao se cadastrar conosco, você terá acesso ao monitoramento especializado da emissão de Compostos Orgânicos Voláteis (COV) em sua fábrica de pintura automotiva, assegurando não apenas a conformidade com as normas ambientais, mas também a confiança dos seus clientes e parceiros. 
+            </p>
+        </div>
         <div class="cadastro">
-            <h2>Faça seu cadastro</h2>
-            <div id="form-content">
-                <!-- Primeiros campos -->
-                CNPJ: <br>
-                <input id="input_cnpj"> <br>
-                Nome fantasia: <br>
-                <input id="input_nome_fantasia"> <br>
-                Razão social: <br>
-                <input id="input_razao"> <br>
-                Telefone: <br>
-                <input id="input_telefone"> <br>
-    
-                <!-- Campos que serão exibidos após clicar em "Continuar" -->
-                <div class="hidden" id="address-fields">
-                    Logradouro: <br>
-                    <input id="input_logradouro"> <br>
-                    CEP: <br>
-                    <input id="input_cep"> <br>
-                    Número: <br>
-                    <input id="input_numero"> <br>
-                    Bairro: <br>
-                    <input id="input_bairro"> <br>
-                </div>
+            <div class="texto-solutions">
+                <p>Informe agora alguns dados da sua empresa para ter a melhor solução.</p>
             </div>
-            <button id="continue-button" onclick="proximosCampos()">Continuar</button>
-            <button id="cadsdtrar" class="hidden">Cadastrar</button>
+            <div class="etapas hide">
+                Aqui serão as etapas
+            </div>
+            <div id="formulario" class="formulario">
+                <label class="campo-cadastro">Código de ativação:</label>
+                <input id="input_cod_ativacao" placeholder="#ABCDEF" class="campo-cadastro">
+            
+                <label class="campo-cadastro">CNPJ:</label>
+                <input id="input_cnpj" placeholder="XX.XXX.XXX/0001-XX" class="campo-cadastro"> 
+            
+                <label class="campo-cadastro">Nome fantasia:</label>
+                <input id="input_nome_fantasia" placeholder="Nome da sua empresa" class="campo-cadastro"> 
+            
+                <label class="campo-cadastro">Razão social:</label>
+                <input id="input_razao" placeholder="Razão social da sua empresa" class="campo-cadastro"> 
+            
+                <label class="campo-cadastro">Telefone:</label>
+                <input id="input_telefone" placeholder="11 91234-1234" class="campo-cadastro"> 
+            
+                <label class="hide escondido">Logradouro:</label>
+                <input id="input_logradouro" class="hide escondido" placeholder="Nome da rua"> 
+            
+                <label class="hide escondido">CEP:</label>
+                <input id="input_cep" class="hide escondido" placeholder="12312-123"> 
+            
+                <label class="hide escondido">Número:</label>
+                <input id="input_numero" class="hide escondido" placeholder="123"> 
+            
+                <label class="hide escondido">Bairro:</label>
+                <input id="input_bairro" class="hide escondido" placeholder="Nome do Bairro"> 
+            </div>
+            <button id="continue-button" class="botao">Continuar</button>
+            <button id="cadastrar" class="hide botao">Cadastrar</button>
         </div>
     </div>    
-    
         
 </body>
 </html>
+
