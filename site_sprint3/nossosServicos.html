@@ -1,60 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nossos Serviços</title>
-    <link rel="stylesheet" href="../site_sprint3/css/nossosServicos.css">        
-    <link rel="shortcut icon" href="../site_sprint3/imgs/enviro-sense-logo.png" type="image/x-icon">
+    <title>Nossos Serviços | Enviro Sense</title>
+    <link rel="stylesheet" href="css/nossosServicos.css">
 </head>
 <body>
 
-    <!-- Navbar -->
-    <div class="navbar">
-        <div class="logo">
-            <img src="imgs/enviro-sense-logo.png">
-        </div>
+    <header id="header">
         <div class="container">
-            <a href="index.html">Home</a>
-            <a href="">Sobre Nós</a>
-            <a href="">Nossos Serviços</a>
+            <div class="navbar">
+                <div class="logo">
+                </div>
+                <div class="opcoes">
+                    <a class="opcao" href="index.html">Home</a>
+                    <a class="opcao" href="sobre-nos.html">Sobre Nós</a>
+                    <a class="opcao" href="servicos.html">Nossos Serviços</a>
+                    <a class="opcao" href="simulador.html">Simulador</a>
+                </div>
+            </div>
+            <div class="botoes">
+                <button onclick="window.location.href='login.html'">Login</button>
+                <button onclick="window.location.href='cadastro.html'">Cadastro</button>
+            </div>
+        </div>
+    </header>
+    
+    <div class="servicos">
+        <div class="mensagem-servicos">
+            <h2> Nossos Serviços</h2>
+                <span>A Enviro Sense oferece soluções inovadoras para o monitoramento de COV no setor automotivo, garantindo qualidade e sustentabilidade no processo de pintura.
+                </span>
         </div>
     </div>
 
-    <div class="mensagem-servicos">
-        <h1>Nossos Serviços</h1>
-        <span>A Enviro Sense oferece soluções inovadoras para o monitoramento de COV no setor automotivo, garantindo qualidade e sustentabilidade no processo de pintura.</span>
-    </div>
-
-    <section class="servicos-grid">
-        <div class="servicos">
-            <img src="../site_sprint3/imgs/monitoramento.png" alt="Ícone Monitoramento">
+    <div class="monitoramento">
+        <div class="monitoramento-texto">
             <h2>Monitoramento em Tempo Real</h2>
-            <span>Utilizamos sensores de gás para monitorar os níveis de COV em tempo real, garantindo precisão e resposta rápida em casos de emergência.</span>
+                <span>Utilizamos sensores de gás para monitorar os níveis de COV em tempo real, garantindo precisão e resposta rápida em casos de emergência.
+                </span>
         </div>
+        <div class="imagem-monitoramento"><img src="imgs/monitoramento.png" alt=""></div>
+    </div>
 
-        <div class="servicos">
-            <img src="../site_sprint3/imgs/relatorio.png" alt="Ícone Relatórios">
+    <div class="relatorio">
+        <div class="relatorio-texto">
             <h2>Relatórios e Análise de Dados</h2>
-            <span>Geração de relatórios detalhados através de Dasbhoards e KPIS para análise de dados, permitindo tomadas de decisões estratégicas sobre o seu negócio</span>
+                <span>Geração de relatórios detalhados para análise de dados, permitindo insights sobre a qualidade do ar e níveis de emissão de COV. 
+                </span>
+            </div>
+        <div class="imagem-relatorio">
+            <img src="imgs/relatorio.png" alt="">
         </div>
+    </div>
 
-        <div class="servicos">
-            <img src="../site_sprint3/imgs/alerta.png" alt="Ícone Alertas">
+    <div class="alerta">
+        <div class="alerta-texto">
             <h2>Alertas e Notificações</h2>
-            <span>Receba alertas e notificações instantâneas quando os níveis de COV ultrapassarem os limites seguros.</span>
+                <span>Receba alertas e notificações instantâneas quando os níveis de COV ultrapassarem os limites seguros.
+                </span>
+            </div>
+            <div class="imagem-alerta">
+                <img src="imgs/alerta.png" alt="">
+            </div>
         </div>
+    </div>
 
-        <div class="servicos">
-            <img src="../site_sprint3/imgs/consultoria.png" alt="Ícone ">
-            <h2>Consultoria e Suporte</h2>
-            <span>Oferecemos consultoria especializada e suporte contínuo para ajudar as empresas a manterem conformidade e melhorar processos.</span>
+    <div class="suporte">
+        <div class="suporte-texto">
+            <h2>Suporte</h2>
+            <span>Oferecemos suporte contínuo para ajudar as empresas a manterem conformidade e melhorar processos.</span>
+            </div>
+            <div class="imagem-suporte">
+                <img src="imgs/suporte.png" alt="">
+            </div>
         </div>
-    </section>
+    </div>
 
-    <section class="cta-section">
-        <a href="contato.html"><button class="cta-button">Entre em Contato</button></a>
-    </section>
+    <div class="footer">
+        <div class="container">
+            <b>&#169; Enviro Sense</b>
+            <div class="caixa">
+                <span>Empresa</span>
+                <a>Nossa Equipe</a>
+                <a>Fundação</a>
+            </div>
+            <div class="caixa">
+                <span>Serviços</span>
+                <a>Instalação</a>
+                <a>Fale Conosco</a>
+            </div>
+            <div class="caixa1">
+                <span>Redes Sociais</span>
+                <div class="icones">
+                    <img src="images/instagram-icon.png">
+                    <img src="images/linkedin-icon.png">
+                    <img src="images/twitter-icon.png">
+                    <img src="images/facebook-icon.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        addEventListener('scroll', function(){
+            const header = document.getElementById('header')
+            if (window.scrollY > 50)
+                header.classList.add('scrolled')
+            else
+                header.classList.remove('scrolled')
+        })
+    </script>
 
 </body>
 </html>

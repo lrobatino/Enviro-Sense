@@ -1,100 +1,279 @@
-body {
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/*Estilização do Header*/
+header {
+    position: fixed;
+    top: 0;
     width: 100%;
-    height: 80px;
-    background-color: #aeb5c6;
+    padding: 20px;
+    background-color: #0E2A71;
+    transition: background-color 0.3s;
+    z-index: 10;
 }
 
-.navbar .logo img {
-    position: absolute;
-    top: 5%;
-    left: 0;
-    width: 70px;
-    height: 70px;
+header.scrolled {
+    background-color: whitesmoke;
+    box-shadow:  0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
-.navbar .container {
-    width: 60%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.navbar .container a{
-    font-size: larger;
+header.scrolled .container .navbar .opcoes .opcao{
     color: black;
+}
+
+
+header .container {
+    padding-left: 1%;
+    padding-right: 2%;
+    display: flex;
+    width: 95%;
+    height: 95%;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+header .container .navbar .logo {
+    width: 50px;
+    height: 50px;
+    background-image: url(imagens-sobre-nos/E.png);
+    background-size: cover;
+}
+
+header.scrolled .container .navbar .logo {
+    width: 50px;
+    height: 50px;
+    background-image: url(imagens-sobre-nos/es.png);
+    background-size: cover;
+}
+
+.container .navbar {
+    display: flex;
+    width: 1000px;
+    height: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container .opcoes {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 600px;
+    min-width: 450px;
+    font-size: 15px;
     font-weight: bold;
-    text-decoration:none;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
-
-.container a:hover{
-    color: #092f94;
-    transition: transform 0.5s;
-    transform: scale(1.2);
-}
-
-.mensagem-servicos{
-    padding: 20px;
-    font-size: 24px;
-    text-align: center;
-    color: #092f94;
-}
-
-.servicos-grid .servicos img{
-    height: 70px;
-}
-
-.servicos-grid{
-    text-align: center;
-    color: #000;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 20px;
-    gap: 20px;
-    
-}
-
-.servicos h2{
-    margin-bottom: 0;
-}
-
-.servicos{
-    background-color: #a4bcfc;;
-    border-radius: 10px;
-    width: 100%;
-    height: 200px;
-    box-shadow: 2px 2px 2px black;
-    font-size: 20px;
-    padding-top: 10px;
-
-}
-
-.cta-section {
-    text-align: center;
-    padding: 30px 0;
-}
-
-.cta-button  {
-    font-size: 1.2em;
-    padding: 10px 20px;
-    color: #fff;
-    background-color: #1a73e8;
+.opcao{
+    display: inline-block;
     text-decoration: none;
+    color: whitesmoke;
+}
+
+.container .botoes {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 220px;
+    min-width: 220px;
+}
+
+.botoes button {
+    width: 100px;
+    height: 30px;
+    border: 2px solid;
     border-radius: 5px;
-    /* transition: background-color 0.3s ease;*/
-    transition: background-color 0.3s ease, transform 0.5s ease;
+    color:  black;
+    font-size: 16px;
+    font-weight: lighter;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    transition: transform 0.5s ease;
+}
+
+.botoes button:hover {
+    transform: scale(1.2);
     cursor: pointer;
 }
+/*Fim da estilização do Header*/
 
-.cta-button:hover {
-    background-color: #1558b0;
-    transform: scale(1.2);
+
+/*Começo da estilização da tela dos nossos serviços*/
+.servicos {
+    width: 100%;
+    height: 600px;
+    font-size: 30px;
+    background-size: cover;
+    background-position: center;
+    background-color: #0E2A71;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    padding-top: 80px;
+    height: 500px;
+}
+
+.servicos .mensagem-servicos {
+    height: 80%;
+    width: 70%;
+    padding-top: 5%;
+}
+
+.servicos .mensagem-servicos h2 {
+    margin-bottom: 20px;
+    color: #a4bcfc;
+    text-align: center;
+}
+
+.servicos .mensagem-servicos span{
+    color: #fff;
+    text-align: justify;
+}
+
+.monitoramento, .alerta{
+    width: 100%;
+    height: 600px;
+    font-size: 30px;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}   
+
+.relatorio, .suporte{
+    width: 100%;
+    height: 600px;
+    font-size: 30px;
+    background-color: #0E2A71;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.monitoramento, .alerta h2{
+    color: #0E2A71;
+}
+.monitoramento .monitoramento-texto span,
+.alerta .alerta-texto span{
+    color: #000;
+}
+
+
+.relatorio, .suporte h2{
+    color: #a4bcfc
+}
+
+.relatorio .relatorio-texto span,
+.suporte .suporte-texto span
+{
+    color: #fff;    
+}
+
+.monitoramento .monitoramento-texto,
+.relatorio .relatorio-texto,
+.alerta .alerta-texto,
+.suporte .suporte-texto{
+    height: 50%;
+    width: 50%;
+}
+
+
+
+
+/*Começo da estilização do footer*/
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(#0E2A71, #000000);
+    background-size: cover;
+    width: 100%;
+    height: 300px;
+}
+
+
+
+.footer .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 1000px;
+    height: 100px;
+    font-size: 24px;
+    
+    color: #f5f5f5;
+
+}
+
+.footer .container .caixa {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    text-align: left;
+
+    height: 100px;
+    span {
+        font-size: 24px;
+        font-weight: bold;
+        color: #f5f5f5;
+    }
+
+    a {
+        font-size: 18px;
+        color: #EEEEEE;
+    }
+
+    .icones {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+
+.footer .container .caixa1 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    text-align: left;
+    height: 70px;
+    span {
+        font-size: 24px;
+        font-weight: bold;
+        color: #EEEEEE;
+    }
+
+    a {
+        font-size: 18px;
+        color: #EEEEEE;
+    }
+
+    .icones {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
 }
