@@ -16,6 +16,6 @@ window.onload = function() {
         document.getElementById('continue-button').classList.add('hide');
         document.getElementById('cadastrar').classList.remove('hide');
 
-        document.querySelector('.cadastro').style.height = "65vh";
+        
     };
 };
