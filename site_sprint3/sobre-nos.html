@@ -8,19 +8,32 @@
     <link rel="icon" type="image/png" href="imgs/es.png">
 </head>
 <body>
-    <header id="header">
+    <div class="login esconder" id="menuLogin">
         <div class="container">
-            <div class="navbar">
-                <div class="logo">
-                </div>
-                <div class="opcoes">
-                    <a class="opcao" href="index.html">Home</a>
-                    <a class="opcao" href="sobre-nos.html">Sobre Nós</a>
-                    <a class="opcao" href="nossosServicos.html">Nossos Serviços</a>
-                </div>
-            </div>
+            <button id="sair" onclick="mostrarMenu()">X</button>
+            <h1>Entrar</h1>
+            <input type="text" id="inp_email" placeholder="Insira seu E-mail"><br>
+            <input type="text" id="inp_senha" placeholder="Insira sua senha"><br>
+            <button id="entrar">Entrar</button>
+            <button id="cadastro">Criar Conta</button>
         </div>
-    </header>
+    </div>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="imgs/NUVEMSEMFUNDO.png">
+        </div>
+        <div class="container">
+            <a href="index.html">Home</a>
+            <a href="sobre-nos.html">Sobre Nós</a>
+            <a href="nossosServicos.html">Nossos Serviços</a>
+        </div>
+        <div class="hamburguer">
+            <img src="imgs/menu-de-hamburguer.png" onclick="mostrarMenu()">
+        </div>
+    </div>
+
     <div class="home">
         <div class="texto-home"><h2>Somos a Enviro Sense</h2>
             <p>Uma empresa focada no objetivo de ajudar o meio-ambiente, por meio da conscientização

@@ -3,34 +3,58 @@ body {
     font-family: Arial, sans-serif;
 }
 
-header {
+.navbar {
     position: fixed;
-    top: 0;
-    width: 100%;
-    padding: 20px;
-    background-color: #0E2A71;
-    transition: background-color 0.3s;
-    z-index: 10;
-}
-
-header.scrolled {
-    background-color: whitesmoke;
-    box-shadow:  0 4px 20px rgba(0, 0, 0, 0.5);
-}
-
-header.scrolled .container .navbar .opcoes .opcao{
-    color: black;
-}
-
-header .container {
-    padding-left: 1%;
-    padding-right: 2%;
     display: flex;
-    width: 95%;
-    height: 95%;
     align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 80px;
+    background: rgba( 174, 181, 198, 0.25 );
+}
+
+.navbar .logo img {
+    position: absolute;
+    top: 5%;
+    left: 0;
+    width: 70px;
+    height: 70px;
+}
+
+.navbar .hamburguer img{
+    position: absolute;
+    top: 30%;
+    right: 2%;
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease;
+}
+
+
+.hamburguer img:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.navbar .container {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.navbar .container a{
+    font-size: larger;
+    color: black;
+    font-weight: bold;
+    transition: transform 0.5s;
+    text-decoration:none;
+}
+
+.navbar .container a:hover{
+    color: #092f94;
+    transform: scale(1.2);
 }
 
 header .container .navbar .logo {
@@ -47,73 +71,76 @@ header.scrolled .container .navbar .logo {
     background-size: cover;
 }
 
-.header .container .navbar .hamburguer{
-    position: absolute;
-    top: 30%;
-    right: 2%;
-    width: 10px;
-    height: 10px;
-    transition: transform 0.3s ease;
-}
-
-
-.hamburguer img:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-}
-
-.container .navbar {
-    display: flex;
-    width: 1000px;
+.login {
+    position: fixed;
+    z-index: 1;
+    height: max-content;
+    background-color: rgb(198, 204, 218);
+    right: 0;
+    width: 400px;
     height: 100%;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    display: none;
+    flex-direction: column;
+    transition: transform ease;
 }
 
-.container .opcoes {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 600px;
-    min-width: 450px;
-    font-size: 15px;
+.login #sair {
+    position: absolute;
+    font-size: 40px;
+    top: 15px;
+    right: 5%;
     font-weight: bold;
-    padding-left: 20px;
-    padding-right: 20px;
+    border: transparent;
+    height: 40px;
+    width: 40px;
+    background-color: transparent;
+    transition: color 0.5s;
 }
 
-.opcao{
-    display: inline-block;
-    text-decoration: none;
-    color: whitesmoke;
+.login #sair:hover {
+    color: red;
 }
 
-.container .botoes {
+.login .container {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 220px;
-    min-width: 220px;
+    flex-direction: column;
+    margin: 40px;
 }
 
-.botoes button {
-    width: 100px;
-    height: 30px;
-    border: 2px solid;
+.login input{
+    border: 1px solid black;
     border-radius: 5px;
-    color:  black;
-    font-size: 16px;
-    font-weight: lighter;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    transition: transform 0.5s ease;
+    height: 40px;
+    outline: none;
 }
 
-.botoes button:hover {
-    transform: scale(1.2);
+.login h1{
+    font-size: 40px;
+}
+
+.login button{
     cursor: pointer;
+    border: transparent;
+    border-radius: 5px;
+    font-size: 30px;
+    text-align: start;
+    height: 40px;
+    margin-bottom: 20px;
+}
+
+.login #entrar{
+    background-color: #092f94;
+    opacity: 0.8;
+    transition: opacity 0.5s;
+    font-weight: bold;
+}
+
+.login #entrar:hover{
+    opacity: 1;
+}
+
+.login #cadastro{
+    background-color: transparent;
 }
 
 .home {

@@ -6,3 +6,13 @@
         header.classList.remove('scrolled');
     }
 });
+
+function mostrarMenu() {
+    var login = document.getElementsByClassName('login')[0]
+    if(login.style.display == 'none'){
+       login.style.display = 'flex'
+       login.style.transform = 'translate(0%)'
+    } else{
+      login.style.display = 'none'
+    }
+  }

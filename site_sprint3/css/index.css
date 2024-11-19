@@ -57,7 +57,7 @@ body {
 }
 
 .login {
-    position: absolute;
+    position: fixed;
     z-index: 1;
     height: max-content;
     background-color: rgb(198, 204, 218);
