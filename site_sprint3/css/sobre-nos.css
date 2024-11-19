@@ -47,6 +47,21 @@ header.scrolled .container .navbar .logo {
     background-size: cover;
 }
 
+.header .container .navbar .hamburguer{
+    position: absolute;
+    top: 30%;
+    right: 2%;
+    width: 10px;
+    height: 10px;
+    transition: transform 0.3s ease;
+}
+
+
+.hamburguer img:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
 .container .navbar {
     display: flex;
     width: 1000px;
