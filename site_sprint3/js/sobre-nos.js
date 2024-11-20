@@ -1,5 +1,5 @@
     window.addEventListener('scroll', function() {
-    const header = document.getElementById('header');
+    const navbar = document.getElementById('navbar');
     if (window.scrollY > 50) { // Mude 50 para o valor que preferir
         header.classList.add('scrolled');
     } else {
