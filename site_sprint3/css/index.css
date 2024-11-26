@@ -36,7 +36,7 @@ header .container {
 
 .container .navbar {
     display: flex;
-    width: 1500px;
+    width: 100%;
     height: 100%;
     flex-direction: row;
     align-items: center;
@@ -108,17 +108,19 @@ header .container .navbar .entrar button{
 
 
 .login {
-    padding-top: 50px;
     position: fixed;
-    z-index: 2;
+    z-index: 999;
     height: max-content;
     background-color: rgb(245, 245, 245);
-    right: 0;
+    right: -400px;
     width: 400px;
     height: 100%;
-    display: none;
     flex-direction: column;
-    transition: transform ease;
+    transition: right 0.3s ease;
+}
+
+.login.mostrar{
+    right: 0;
 }
 
 .login #sair {
