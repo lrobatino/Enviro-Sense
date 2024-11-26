@@ -10,7 +10,7 @@ header {
     padding: 20px;
     background-color: #0E2A71;
     transition: background-color 0.3s;
-    z-index: 10;
+    z-index: 1;
 }
 
 header.scrolled {
@@ -32,20 +32,6 @@ header .container {
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
-}
-
-header .container .navbar .logo {
-    width: 50px;
-    height: 50px;
-    background-image: url(imagens-sobre-nos/E.png);
-    background-size: cover;
-}
-
-header.scrolled .container .navbar .logo {
-    width: 50px;
-    height: 50px;
-    background-image: url(imagens-sobre-nos/es.png);
-    background-size: cover;
 }
 
 .container .navbar {
@@ -76,31 +62,6 @@ header.scrolled .container .navbar .logo {
     color: whitesmoke;
 }
 
-.container .botoes {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 220px;
-    min-width: 220px;
-}
-
-.botoes button {
-    width: 100px;
-    height: 30px;
-    border: 2px solid;
-    border-radius: 5px;
-    color:  black;
-    font-size: 16px;
-    font-weight: lighter;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    transition: transform 0.5s ease;
-}
-
-.botoes button:hover {
-    transform: scale(1.2);
-    cursor: pointer;
-}
 
 header .container .navbar .logo {
     width: 50px;
@@ -116,17 +77,40 @@ header.scrolled .container .navbar .logo {
     background-size: cover;
 }
 
-header .container .navbar .hamburguer {
-    width: 30px;
-    height: 30px;
-    background-image: url('../imgs/menu-de-hamburguer.png');
+header .container .navbar .entrar {
+    width: 50px;
+    height: 50px;
+    background-image: url('../imgs/entrar2-removebg-preview.png');
+    background-size: cover;
+    transition: transform 0.5s ease;
+}
+
+header.scrolled .container .navbar .entrar {
+    width: 50px;
+    height: 50px;
+    background-image: url('../imgs/entrar-removebg-preview.png');
+    background-size: cover;
+    transition: transform 0.5s ease;
+}
+
+header .container .navbar .entrar:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+header .container .navbar .entrar button{
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid rgba(0, 0, 0, 0);  
     background-size: cover;
 }
+
 
 .login {
     padding-top: 50px;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     height: max-content;
     background-color: rgb(245, 245, 245);
     right: 0;
@@ -147,11 +131,12 @@ header .container .navbar .hamburguer {
     height: 40px;
     width: 40px;
     background-color: transparent;
-    transition: color 0.5s;
+    transition: transform 0.5s ease;
 }
 
 .login #sair:hover {
-    color: red;
+    transform: scale(1.2);
+    cursor: pointer;
 }
 
 .login .container {

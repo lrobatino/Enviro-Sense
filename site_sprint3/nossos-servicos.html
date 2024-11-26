@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nossos Serviços | Enviro Sense</title>
-    <link rel="stylesheet" href="css/nossosServicos.css">
+    <link rel="stylesheet" href="css/nossos-servicos.css">
 </head>
+
 <body>
+    <div class="login esconder" id="menuLogin">
+        <div class="container">
+            <button id="sair" onclick="mostrarMenu()">
+                <img height="20px" width="20px" src="imgs/fechar.png">
+            </button>
+            <h1>Entrar</h1>
+            <input type="text" id="inp_email" placeholder="Insira seu E-mail"><br>
+            <input type="text" id="inp_senha" placeholder="Insira sua senha"><br>
+            <button id="entrar">Entrar</button>
+            <button id="cadastro">Criar Conta</button>
+        </div>
+    </div>
 
     <header id="header">
         <div class="container">
@@ -16,29 +30,30 @@
                 <div class="opcoes">
                     <a class="opcao" href="index.html">Home</a>
                     <a class="opcao" href="sobre-nos.html">Sobre Nós</a>
-                    <a class="opcao" href="servicos.html">Nossos Serviços</a>
+                    <a class="opcao" href="nossos-servicos.html">Nossos Serviços</a>
                 </div>
-            </div>
-            <div class="botoes">
-                <button onclick="window.location.href='login.html'">Login</button>
-                <button onclick="window.location.href='cadastro.html'">Cadastro</button>
+                <div class="entrar">
+                    <button onclick="mostrarMenu()"></button>
+                </div>
             </div>
         </div>
     </header>
-    
+
     <div class="servicos">
         <div class="mensagem-servicos">
             <h2> Nossos Serviços</h2>
-                <span>A Enviro Sense oferece soluções inovadoras para o monitoramento de COV no setor automotivo, garantindo qualidade e sustentabilidade no processo de pintura.
-                </span>
+            <span>A Enviro Sense oferece soluções inovadoras para o monitoramento de COV no setor automotivo, garantindo
+                qualidade e sustentabilidade no processo de pintura.
+            </span>
         </div>
     </div>
 
     <div class="monitoramento">
         <div class="monitoramento-texto">
             <h2>Monitoramento em Tempo Real</h2>
-                <span>Utilizamos sensores de gás para monitorar os níveis de COV em tempo real, garantindo precisão e resposta rápida em casos de emergência.
-                </span>
+            <span>Utilizamos sensores de gás para monitorar os níveis de COV em tempo real, garantindo precisão e
+                resposta rápida em casos de emergência.
+            </span>
         </div>
         <div class="imagem-monitoramento"><img src="imgs/monitoramento.png" alt=""></div>
     </div>
@@ -46,9 +61,10 @@
     <div class="relatorio">
         <div class="relatorio-texto">
             <h2>Relatórios e Análise de Dados</h2>
-                <span>Geração de relatórios detalhados para análise de dados, permitindo insights sobre a qualidade do ar e níveis de emissão de COV. 
-                </span>
-            </div>
+            <span>Geração de relatórios detalhados para análise de dados, permitindo insights sobre a qualidade do ar e
+                níveis de emissão de COV.
+            </span>
+        </div>
         <div class="imagem-relatorio">
             <img src="imgs/relatorio.png" alt="">
         </div>
@@ -57,24 +73,25 @@
     <div class="alerta">
         <div class="alerta-texto">
             <h2>Alertas e Notificações</h2>
-                <span>Receba alertas e notificações instantâneas quando os níveis de COV ultrapassarem os limites seguros.
-                </span>
-            </div>
-            <div class="imagem-alerta">
-                <img src="imgs/alerta.png" alt="">
-            </div>
+            <span>Receba alertas e notificações instantâneas quando os níveis de COV ultrapassarem os limites seguros.
+            </span>
         </div>
+        <div class="imagem-alerta">
+            <img src="imgs/alerta.png" alt="">
+        </div>
+    </div>
     </div>
 
     <div class="suporte">
         <div class="suporte-texto">
             <h2>Suporte</h2>
-            <span>Oferecemos suporte contínuo para ajudar as empresas a manterem conformidade e melhorar processos.</span>
-            </div>
-            <div class="imagem-suporte">
-                <img src="imgs/suporte.png" alt="">
-            </div>
+            <span>Oferecemos suporte contínuo para ajudar as empresas a manterem conformidade e melhorar
+                processos.</span>
         </div>
+        <div class="imagem-suporte">
+            <img src="imgs/suporte.png" alt="">
+        </div>
+    </div>
     </div>
 
     <div class="footer">
@@ -101,16 +118,8 @@
             </div>
         </div>
     </div>
-
-    <script>
-        addEventListener('scroll', function(){
-            const header = document.getElementById('header')
-            if (window.scrollY > 50)
-                header.classList.add('scrolled')
-            else
-                header.classList.remove('scrolled')
-        })
-    </script>
+<script src="js/sobre-nos.js"></script>
 
 </body>
+
 </html>

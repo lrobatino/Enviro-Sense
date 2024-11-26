@@ -9,6 +9,36 @@
 <body>
     <div class="login esconder" id="menuLogin">
         <div class="container">
+            <button id="sair" onclick="mostrarMenu()">
+                <img height="20px" width="20px" src="imgs/fechar.png">
+            </button>
+            <h1>Entrar</h1>
+            <input type="text" id="inp_email" placeholder="Insira seu E-mail"><br>
+            <input type="text" id="inp_senha" placeholder="Insira sua senha"><br>
+            <button id="entrar">Entrar</button>
+            <button id="cadastro">Criar Conta</button>
+        </div>
+    </div>
+
+    <header id="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                </div>
+                <div class="opcoes">
+                    <a class="opcao" href="index.html">Home</a>
+                    <a class="opcao" href="sobre-nos.html">Sobre Nós</a>
+                    <a class="opcao" href="nossos-servicos.html">Nossos Serviços</a>
+                </div>
+                <div class="entrar">
+                    <button onclick="mostrarMenu()"></button>
+                </div>
+            </div> 
+        </div>
+    </header>
+
+    <!-- <div class="login esconder" id="menuLogin">
+        <div class="container">
             <button id="sair" onclick="mostrarMenu()">X</button>
             <h1>Entrar</h1>
             <input type="text" id="inp_email" placeholder="Insira seu E-mail"><br>
@@ -16,22 +46,22 @@
             <button id="entrar" onclick="validarInputs()">Entrar</button>
             <button id="cadastro" onclick="window.location.href='cadastro.html'">Criar Conta</button>
         </div>
-    </div>
+    </div> -->
 
     <!-- Navbar -->
-    <div class="navbar">
+    <!-- <div class="navbar">
         <div class="logo">
             <img src="imgs/enviro-sense-logo.png">
         </div>
         <div class="container">
             <a href="index.html">Home</a>
-            <a href="">Sobre Nós</a>
-            <a href="">Nossos Serviços</a>
+            <a href="sobre-nos.html">Sobre Nós</a>
+            <a href="nossosServicos.html">Nossos Serviços</a>
         </div>
         <div class="hamburguer">
             <img src="imgs/menu-de-hamburguer.png" onclick="mostrarMenu()">
         </div>
-    </div>
+    </div> -->
     
         <div class="carrosel">
             <div class="slider">
@@ -52,7 +82,7 @@
                             Faça uma rápida simulação<br>
                             E descubra se sua fábrica esta nos conformes
                         </span><br><br>
-                        <p><button onclick="window.location.href='simulador.html'">Simular</button></p>
+                        <p><button onclick="window.location.href='simulador2.html'">Simular</button></p>
                 </div>
                 <div id="s3" class="slide sobre">
                         <h1><b>Sobre nós</b></h1>
