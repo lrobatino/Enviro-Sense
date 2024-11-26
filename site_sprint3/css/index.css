@@ -4,136 +4,166 @@ body {
 }
 
 header {
-    position: fixed;
-    top: 0;
+    position: relative;
     width: 100%;
-    padding: 20px;
-    background-color: #0E2A71;
+    padding: 20px 0px;
+    background-color: whitesmoke;
     transition: background-color 0.3s;
     z-index: 1;
+    
+    .container {
+        display: flex;
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 0px 20px;
+            width: 100%;
+            
+            .logo {
+                width: 50px;
+                height: 50px;
+                background-image: url('../imgs/NUVEMSEMFUNDO.png');
+                background-size: cover;
+            }
+            
+            .entrar {
+                width: 50px;
+                height: 50px;
+                background-image: url('../imgs/entrar-removebg-preview.png');
+                background-size: cover;
+                transition: transform 0.5s ease;
+
+                button{
+                    width: 50px;
+                    height: 50px;
+                    background-color: rgba(0, 0, 0, 0);
+                    border: 2px solid rgba(0, 0, 0, 0);  
+                    background-size: cover;
+                }
+            }
+        }
+        .opcoes {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 600px;
+            min-width: 450px;
+            font-size: 15px;
+            font-weight: bold;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .opcao{
+            display: inline-block;
+            text-decoration: none;
+            color: #0E2A71;
+            transition: transform 0.3s;
+        }
+    }
 }
 
-header.scrolled {
-    background-color: whitesmoke;
-    box-shadow:  0 4px 20px rgba(0, 0, 0, 0.5);
+header .entrar:hover {
+    transform: scale(1.2);
+    cursor: pointer;
 }
-
-header.scrolled .container .navbar .opcoes .opcao{
-    color: black;
-}
-
-
-header .container {
-    padding-left: 1%;
-    padding-right: 2%;
-    display: flex;
-    width: 95%;
-    height: 95%;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
-}
-
-.container .navbar {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.container .opcoes {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 600px;
-    min-width: 450px;
-    font-size: 15px;
-    font-weight: bold;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-.opcao{
-    display: inline-block;
-    text-decoration: none;
-    color: whitesmoke;
-}
-
-
-header .container .navbar .logo {
-    width: 50px;
-    height: 50px;
-    background-image: url('../imgs/NUVEMBRANCA.png');
-    background-size: cover;
-}
-
-header.scrolled .container .navbar .logo {
-    width: 50px;
-    height: 50px;
-    background-image: url('../imgs/NUVEMSEMFUNDO.png');
-    background-size: cover;
-}
-
-header .container .navbar .entrar {
-    width: 50px;
-    height: 50px;
-    background-image: url('../imgs/entrar2-removebg-preview.png');
-    background-size: cover;
-    transition: transform 0.5s ease;
-}
-
-header.scrolled .container .navbar .entrar {
-    width: 50px;
-    height: 50px;
-    background-image: url('../imgs/entrar-removebg-preview.png');
-    background-size: cover;
-    transition: transform 0.5s ease;
-}
-
-header .container .navbar .entrar:hover {
+header .opcao:hover {
     transform: scale(1.2);
     cursor: pointer;
 }
 
-header .container .navbar .entrar button{
-    width: 50px;
-    height: 50px;
-    background-color: rgba(0, 0, 0, 0);
-    border: 2px solid rgba(0, 0, 0, 0);  
-    background-size: cover;
-}
 
 
 .login {
     position: fixed;
     z-index: 999;
-    height: max-content;
     background-color: rgb(245, 245, 245);
     right: -400px;
     width: 400px;
     height: 100%;
     flex-direction: column;
     transition: right 0.3s ease;
+
+    
+    #sair {
+        position: absolute;
+        font-size: 40px;
+        top: 15px;
+        right: 5%;
+        font-weight: bold;
+        border: transparent;
+        height: 40px;
+        width: 40px;
+        background-color: transparent;
+        transition: transform 0.5s ease;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        margin: 40px;
+        
+        input{
+            border: 1px solid black;
+            border-radius: 5px;
+            height: 40px;
+            outline: none;
+        }
+        
+        h1{
+            padding-top: 6%;
+            font-size: 40px;
+        }
+        button{
+            cursor: pointer;
+            border: transparent;
+            border-radius: 5px;
+            font-size: 30px;
+            text-align: start;
+            height: 40px;
+            margin-bottom: 20px;
+        }
+
+        .campo-cadastro{
+            display: flex;
+            align-items: center;
+            width: 100%;
+            position: relative;
+            transition: padding-right 0.5s ease;
+
+            p {
+                font-size: 30px;
+                padding-bottom: 20px;
+                cursor: pointer;
+            }
+
+        }
+
+    }
+
+    .campo-cadastro button:hover {
+        padding-right: 10px;
+    }
+    
+    .campo-cadastro p:hover {
+        padding-left: 5px;
+    }
+    
+    
+    #entrar{
+        background-color: #092f94;
+        opacity: 0.8;
+        transition: opacity 0.5s;
+        font-weight: bold;
+    }
+    
+    #cadastro{
+        background-color: transparent;
+    }
 }
 
 .login.mostrar{
     right: 0;
-}
-
-.login #sair {
-    position: absolute;
-    font-size: 40px;
-    top: 15px;
-    right: 5%;
-    font-weight: bold;
-    border: transparent;
-    height: 40px;
-    width: 40px;
-    background-color: transparent;
-    transition: transform 0.5s ease;
 }
 
 .login #sair:hover {
@@ -141,109 +171,79 @@ header .container .navbar .entrar button{
     cursor: pointer;
 }
 
-.login .container {
-    display: flex;
-    flex-direction: column;
-    margin: 40px;
-}
-
-.login input{
-    border: 1px solid black;
-    border-radius: 5px;
-    height: 40px;
-    outline: none;
-}
-
-.login h1{
-    font-size: 40px;
-}
-
-.login button{
-    cursor: pointer;
-    border: transparent;
-    border-radius: 5px;
-    font-size: 30px;
-    text-align: start;
-    height: 40px;
-    margin-bottom: 20px;
-}
-
-.login #entrar{
-    background-color: #092f94;
-    opacity: 0.8;
-    transition: opacity 0.5s;
-    font-weight: bold;
-}
-
 .login #entrar:hover{
     opacity: 1;
 }
 
-.login #cadastro{
-    background-color: transparent;
-}
 
 .carrosel {
-    background: url(../imgs/3409297.jpg);
-    color: #aeb5c6;
     position: relative;
+    width: 100%;
+    height: 700px;
+    overflow: hidden;
+    color: #aeb5c6;
+    background: url(../imgs/3409297.jpg);
+    box-shadow: inset 20px 20px 100px rgba(0, 0, 0, 0.7),
+                inset -20px -20px 100px rgba(0, 0, 0, 0.7);
+    
+    .slider {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+
+        .slide {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 100%;
+
+        }
+    }
+    
+    span{
+        font-size: 40px;
+    }
+    h1 {
+         font-size: 100px;
+    }
+    
+    button {
+        font-size: 15px;
+        font-weight: bold;
+        height: 40px;
+        width: 200px;
+        border-radius: 10px;
+        transition: transform 0.5s;
+    }
 }
 
-.slider {
-    display: flex;
-    overflow-x: hidden;
-    height: 800px;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
+.carrosel button:hover{
+    transform: scale(1.4);
 }
+
 
 .slider-nav {
-    display: flex;
-    column-gap: 1rem;
     position: absolute;
     bottom: 10px;
     left: 50%;
-    z-index: 1;
-}
-
-.slider-nav a {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: #fff;
-    opacity: 0.75;
-    transition: opacity ease 250ms;
-}
-
-.slider-nav a:hover {
-    opacity: 1;
-}
-
-.carrosel span{
-    font-size: 40px;
-}
-
-.carrosel h1 {
-    font-size: 100px;
-}
-
-.carrosel .slide {
+    transform: translateX(-50%);
     display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
-    scroll-snap-align: center;
-    box-sizing: border-box;
-    padding: 20px 30px;
-    flex: 1 0 100%;
-    width: 100%;
-    text-align: start;
-    box-shadow: inset 20px 20px 100px rgba(0, 0, 0, 0.7), inset -20px -20px 100px rgba(0, 0, 0, 0.7);
+    gap: 10px;
+
+    .navegador{
+        width: 10px;
+        height: 10px;
+        background-color: gray;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
 }
 
-
-.slide h1,span,p{
-    padding-left: 50px;
+.navegador.active{
+    background-color: #fff;
 }
 
 .footer {
@@ -252,67 +252,6 @@ header .container .navbar .entrar button{
     justify-content: center;
     width: 100%;
     height: 75px;
-    background: rgba( 174, 181, 198, 0.25 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 4px );
-    -webkit-backdrop-filter: blur( 4px );
+    background-color: whitesmoke;
 }
 
-
-.carrosel .slide button {
-    font-size: 15px;
-    font-weight: bold;
-    height: 40px;
-    width: 200px;
-    background: rgba( 174, 181, 198, 1 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 4px );
-    -webkit-backdrop-filter: blur( 4px );
-    border-radius: 10px;
-    transition: transform 0.5s;
-}
-
-.carrosel button:hover{
-    transform: scale(1.4);
-}
-
-.setas{
-    user-select: none;
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.linhaSetas div{
-    transition: transform 0.5s ease;
-
-}
-
-.voltar {
-    margin-left: 5px;
-}
-
-.voltar:hover{
-    cursor: pointer;
-    transform: scale(1.3);
-}
-
-.avancar {
-    margin-right: 10px;
-}
-
-.avancar:hover{
-    cursor: pointer;
-    transform: scale(1.3);
-}
-
-.setas button {
-    width: 40px;
-    height: 40px;
-    background-color: transparent;
-    outline: none;
-    border: none;
-    font-size: 40px;
-}

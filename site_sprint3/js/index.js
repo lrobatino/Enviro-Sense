@@ -65,4 +65,33 @@ function senhaValida(senha){
     
 }
 
+const slider = document.querySelector('.slider');
+const navegadores = document.querySelectorAll('.navegador');
+let posicaoAtual = 0;
+const intervalo = 7000; // 7 segundos
 
+function atualizarCarrosel(posicao) {
+  slider.style.transform = `translateX(-${posicao * 100}%)`;
+  navegadores.forEach((navegador, i) => {
+    navegador.classList.toggle('active', i === posicao);
+  });
+}
+
+function proximoSlide() {
+  posicaoAtual = (posicaoAtual + 1) % navegadores.length;
+  atualizarCarrosel(posicaoAtual);
+}
+
+// Adiciona evento de clique nos indicadores
+navegadores.forEach((navegador, posicao) => {
+  navegador.addEventListener('click', () => {
+    posicaoAtual = posicao; // Usa o índice do indicador diretamente
+    atualizarCarrosel(posicaoAtual);
+  });
+});
+
+// Inicia o carrossel automático
+setInterval(proximoSlide, intervalo);
+
+// Configuração inicial
+atualizarCarrosel(posicaoAtual);

@@ -7,7 +7,7 @@
     <title>Enviro Sense</title>
 </head>
 <body>
-    <div class="login esconder" id="menuLogin">
+    <div class="login" id="menuLogin">
         <div class="container">
             <button id="sair" onclick="mostrarMenu()">
                 <img height="20px" width="20px" src="imgs/fechar.png">
@@ -16,7 +16,10 @@
             <input type="text" id="inp_email" placeholder="Insira seu E-mail"><br>
             <input type="text" id="inp_senha" placeholder="Insira sua senha"><br>
             <button id="entrar">Entrar</button>
-            <button id="cadastro">Criar Conta</button>
+            <div class="campo-cadastro">
+                <button id="cadastro" onclick="window.location.href='cadastro.html'">Criar Conta</button>
+                <p onclick="window.location.href='cadastro.html'">&rarr;</p>
+            </div>
         </div>
     </div>
 
@@ -39,18 +42,14 @@
     
         <div class="carrosel">
             <div class="slider">
-                <div class="setas">
-                    <button class="voltar"><</button>
-                    <button class="avancar">></button>
-                </div>
-                <div id="s1" class="slide enviro">
+                <div class="slide">
                         <h1><b>EnviroSense</b></h1>
                         <span>
                             <b>Controle</b> a emissão, <b>proteja</b> o futuro.<br>
                             <b>Monitoramento de COV</b> para um amanhã <b>limpo e seguro</b>.
                         </span>
                 </div>
-                <div id="s2" class="slide simulador">
+                <div class="slide">
                         <h1><b>Simulador</b></h1>
                         <span>
                             Faça uma rápida simulação<br>
@@ -58,7 +57,7 @@
                         </span><br><br>
                         <p><button onclick="window.location.href='simulador2.html'">Simular</button></p>
                 </div>
-                <div id="s3" class="slide sobre">
+                <div class="slide">
                         <h1><b>Sobre nós</b></h1>
                         <span>
                             Interessado em nos conhecer melhor<br>
@@ -69,9 +68,9 @@
                 
             </div>
             <div class="slider-nav">
-                <a href="#s1"></a>
-                <a href="#s2"></a>
-                <a href="#s3"></a>
+                <span class="navegador"></span>
+                <span class="navegador"></span>
+                <span class="navegador"></span>
             </div>
         </div>
     
@@ -84,12 +83,3 @@
     
 </body>
 </html>
-
-<!-- <div class="linhaSetas">
-    <div class="setaEsquerda" onclick="passarSlide(-1)">&#10094;</div>
-    <div class="setaDireita" onclick="passarSlide(1)">&#10095;</div>
-</div> -->
-
-<!-- <img id="slide-1" src="imgs/3409297.jpg">
-<img id="slide-2" src="imgs/3409390.jpg">
-<img id="slide-3" src="imgs/6037795.jpg"> -->
