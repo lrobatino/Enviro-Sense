@@ -19,27 +19,32 @@
             </div>
         </div>
     </div>
-    <div id="tela-principal">
-        <div id="menu">
-            <div id="opcoes">
-                <div class="opcao" onclick="dashboard()">
-                    <img src="images/dashboard.png" id="icone-dashboard" draggable="false"><p>Dashboard</p> 
-                </div>
-                <div class="opcao">
-                    <img src="images/alerta.png" id="icone-alerta" draggable="false"><p>Alertas</p>
-                </div>
-                <div class="opcao">
-                    <img src="images/informacao.png" id="icone-informacao" draggable="false"><p>Alterar Informações</p>
-                </div>
-                <div class="opcao">
-                    <img src="images/usuario.png" id="icone-usuario" draggable="false"><p>Cadastrar Usuários</p>
-                </div>
+    <div id="menu">
+        <div id="opcoes">
+            <img id="icone-menu" tabindex="-1" src="images/fechar.png" draggable="false" onclick="mostrarEsconderMenu()">
+            <div class="opcao" onclick="dashboard()">
+                <img src="images/dashboard.png" id="icone-dashboard" draggable="false"><p>Dashboard</p> 
             </div>
-            <button id="btnSair">Sair</button>
+            <div class="opcao">
+                <img src="images/alerta.png" id="icone-alerta" draggable="false"><p>Alertas</p>
+            </div>
+            <div class="opcao" onclick="cadastrarUsuarios()">
+                <img src="images/usuario.png" id="icone-usuario" draggable="false"><p>Cadastrar Usuários</p>
+            </div>
+            <div class="opcao" onclick="cadastrarEmpresas()">
+                <img src="images/empresa.png" id="icone-empresa" draggable="false"><p>Cadastrar Empresas</p>
+            </div>
         </div>
+        <button id="btnSair">Sair</button>
+    </div>
+    <div id="tela-principal">
         <div id="dashboard">
-            <div class="parametro">
-                <p>FABRICA A</p>
+            <div id="navbar-dashboard">
+                <img onclick="sairCabine()" id="icone-voltar" src="images/voltar.png">
+                <div id="titulo">
+                    <p id="idFabrica">Fabrica Albert Einstein</p>
+                    <p id="idCabine" hidden>Cabine 1</p>
+                </div>
             </div>
             <div id="informacao-geral">
                 <div class="grafico">
@@ -48,18 +53,18 @@
                 <div class="kpi">
                     <span>CABINES DE PINTURA</span>
                     <div id="mural-cabines">
-                        <div class="cabine" id="cabine1">1</div>
-                        <div class="cabine" id="cabine2">2</div>
-                        <div class="cabine" id="cabine3">3</div>
-                        <div class="cabine" id="cabine4">4</div>
-                        <div class="cabine" id="cabine5">5</div>
-                        <div class="cabine" id="cabine6">6</div>
-                        <div class="cabine" id="cabine7">7</div>
-                        <div class="cabine" id="cabine8">8</div>
-                        <div class="cabine" id="cabine9">9</div>
-                        <div class="cabine" id="cabine10">10</div>
-                        <div class="cabine" id="cabine11">11</div>
-                        <div class="cabine" id="cabine12">12</div>
+                        <div onclick="entrarCabine()" class="cabine" id="cabine1">1</div>
+                        <div onclick="entrarCabine()" class="cabine" id="cabine2">2</div>
+                        <div onclick="entrarCabine()" class="cabine" id="cabine3">3</div>
+                        <div onclick="entrarCabine()" class="cabine" id="cabine4">4</div>
+                        <div onclick="entrarCabine()" class="cabine" id="cabine5">5</div>
+                        <div onclick="entrarCabine()" class="cabine" id="cabine6">6</div>
+                        <div onclick="entrarCabine()" class="cabine" id="cabine7">7</div>
+                        <div onclick="entrarCabine()" class="cabine" id="cabine8">8</div>
+                        <div onclick="entrarCabine()" class="cabine" id="cabine9">9</div>
+                        <div onclick="entrarCabine()" class="cabine" id="cabine10">10</div>
+                        <div onclick="entrarCabine()" class="cabine" id="cabine11">11</div>
+                        <div onclick="entrarCabine()" class="cabine" id="cabine12">12</div>
                     </div>
                     <div id="legenda">
                         <div id="on"></div><a>Em Atividade</a>
@@ -71,52 +76,71 @@
                 </div>
             </div>
             <div id="informacao-individual">
-                <div class="parametro">
-                    <p>CABINE 1</p>
-                </div>
                 <div class="grafico">
             
                 </div>
                 <div class="kpi">
-    
+                    <span>Média de COV emitido (hoje)</span>
+                    <div class="medidor">
+                        <div id="verde">
+                            <div id="agulha">
+                            </div>
+                        </div>
+                        <div id="amarelo">
+
+                        </div>
+                        <div id="laranja">
+
+                        </div>
+                        <div id="vermelho">
+
+                        </div>
+                    </div>
+                    <p>25 g/m²</p>
                 </div>
                 <div class="kpi">
     
                 </div>
             </div>
         </div>
-        <div id="alterar-informacoes" style="display: none;">
-            <span>Alterar Informações de Cadastro</span>
-            <div class="registro" id="identificacao">
-                <label for="inpCNPJ">CNPJ:</label>
-                <input type="text" id="inpCNPJ">
-                <label for="inpRazaoSocial">Razão Social:</label>
-                <input type="text" id="inpRazaoSocial">
-                <label for="inpNomeFantasia">Nome Fantasia:</label>
-                <input type="text" id="inpNomeFantasia">
+        <div id="cadastrar-usuarios">
+            <p>Cadastrar Novo Usuário</p>
+            <div id="campos">
+                <label for="inpNome">Nome:</label>
+                <input type="text" id="inpNome">
+                <label for="inpUsuario">Usuário:</label>
+                <input type="text" id="inpUsuario">
+                <label for="inpEmail">E-mail:</label>
+                <input type="text" id="inpEmail">
+                <label for="inpSenha">Senha:</label>
+                <div id="senha-visualizar">
+                    <input type="password" id="inpSenha">
+                    <img id="imgSenha" src="images/esconder.png" onclick="mostrarSenha()">
+                </div>
+                <label for="inpConfirmarSenha">Confirmar Senha:</label>
+                <input type="password" id="inpConfirmarSenha">
             </div>
-            <div class="registro" id="contato">
-                <label for="inpEmail1">E-mail 1:</label>
-                <input type="text" id="inpEmai1">
-                <label for="inpEmail2">E-mail 2:</label>
-                <input type="text" id="inpEmail2">
-                <label for="inpTelefone1">Telefone 1:</label>
-                <input type="text" id="inpTelefone1">
-                <label for="inpTelefone2">Telefone 2:</label>
-                <input type="text" id="inpTelefone2">
+            <button id="btnCadastrarUsuario">Cadastrar</button>
+        </div>
+        <div id="cadastrar-empresas">
+            <p>Cadastrar Nova Empresa</p>
+            <div id="campos-cadastro">
+                <div class="campos">
+                    <label for="inpCNPJ">CNPJ:</label>
+                    <input type="text" id="inpCNPJ" placeholder="Ex: XX.XXX.XXX/YYYY-ZZ">
+                    <label for="inpRazaoSocial">Razão Social:</label>
+                    <input type="text" id="inpRazaoSocial" placeholder="Ex: AutoPaint Colorações">
+                    <label for="inpNomeFabrica">Nome da Fábrica:</label>
+                    <input type="text" id="inpNomeFabrica" placeholder="Ex: Fábrica José dos Pinhais">
+                    <label for="inpNumeroCabines">Número de Cabines:</label>
+                    <input type="text" id="inpNumeroCabines" placeholder="Ex: 15">
+                    <label for="inpEmail">E-mail:</label>
+                    <input type="text" id="inpEmail" placeholder="Ex: gerencia@autopaint.com">
+                    <label for="inpTelefone">Telefone:</label>
+                    <input type="text" id="inpTelefone" placeholder="Ex: (11) 92222-4444">
+                </div>
             </div>
-            <div class="registro" id="endereco">
-                <label for="inpCEP">CEP:</label>
-                <input type="text" id="inpCEP">
-                <label for="inpLogradouro">Logradouro:</label>
-                <input type="text" id="inpLogradouro">
-                <label for="inpNumero">N°:</label>
-                <input type="text" id="inpNumero">
-                <label for="inpBairro">Bairro:</label>
-                <input type="text" id="inpBairro">
-                <label for="inpUF" id="inpUF">UF:</label>
-                <input type="text" id="inpUF">
-            </div>
+            <button id="btnCadastrarUsuario">Cadastrar</button>
         </div>
     </div>
 </body>
