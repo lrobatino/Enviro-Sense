@@ -12,34 +12,34 @@ function mostrarEsconderMenu() {
 function dashboard() {
     var dashboard = document.getElementById('dashboard')
     var cadastrarUsuarios = document.getElementById('cadastrar-usuarios')
-    var cadastrarEmpresas = document.getElementById('cadastrar-empresas')
+    var cadastrarFabricas = document.getElementById('cadastrar-fabricas')
     mostrarEsconderMenu()
 
     cadastrarUsuarios.style.display = 'none'
-    cadastrarEmpresas.style.display = 'none'
+    cadastrarFabricas.style.display = 'none'
     dashboard.style.display = 'flex'
 }
 
 function cadastrarUsuarios() {
     var dashboard = document.getElementById('dashboard')
     var cadastrarUsuarios = document.getElementById('cadastrar-usuarios')
-    var cadastrarEmpresas = document.getElementById('cadastrar-empresas')
+    var cadastrarFabricas = document.getElementById('cadastrar-fabricas')
     mostrarEsconderMenu()
 
     dashboard.style.display = 'none'
-    cadastrarEmpresas.style.display = 'none'
+    cadastrarFabricas.style.display = 'none'
     cadastrarUsuarios.style.display = 'flex'
 }
 
-function cadastrarEmpresas() {
+function cadastrarFabricas() {
     var dashboard = document.getElementById('dashboard')
     var cadastrarUsuarios = document.getElementById('cadastrar-usuarios')
-    var cadastrarEmpresas = document.getElementById('cadastrar-empresas')
+    var cadastrarFabricas = document.getElementById('cadastrar-fabricas')
     mostrarEsconderMenu()
 
     dashboard.style.display = 'none'
     cadastrarUsuarios.style.display = 'none'
-    cadastrarEmpresas.style.display = 'flex'
+    cadastrarFabricas.style.display = 'flex'
 }
 
 function entrarCabine(numeroCabine) {

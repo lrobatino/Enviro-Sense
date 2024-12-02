@@ -31,8 +31,8 @@
             <div class="opcao" onclick="cadastrarUsuarios()">
                 <img src="images/usuario.png" id="icone-usuario" draggable="false"><p>Cadastrar Usuários</p>
             </div>
-            <div class="opcao" onclick="cadastrarEmpresas()">
-                <img src="images/empresa.png" id="icone-empresa" draggable="false"><p>Cadastrar Empresas</p>
+            <div class="opcao" onclick="cadastrarFabricas()">
+                <img src="images/fabrica.png" id="icone-fabrica" draggable="false"><p>Cadastrar Fábricas</p>
             </div>
         </div>
         <button id="btnSair">Sair</button>
@@ -106,12 +106,14 @@
         <div id="cadastrar-usuarios">
             <p>Cadastrar Novo Usuário</p>
             <div id="campos">
+                <label for="inpCodigoFabrica">Código da Fábrica</label>
+                <input type="text" id="inpCodigoFabrica" placeholder="A3X7V">
                 <label for="inpNome">Nome:</label>
-                <input type="text" id="inpNome">
+                <input type="text" id="inpNome" placeholder="Claudio Frizzarini">
                 <label for="inpUsuario">Usuário:</label>
-                <input type="text" id="inpUsuario">
+                <input type="text" id="inpUsuario" placeholder="cfrizza">
                 <label for="inpEmail">E-mail:</label>
-                <input type="text" id="inpEmail">
+                <input type="text" id="inpEmail" placeholder="claudio.frizzarini@email.com">
                 <label for="inpSenha">Senha:</label>
                 <div id="senha-visualizar">
                     <input type="password" id="inpSenha">
@@ -122,25 +124,27 @@
             </div>
             <button id="btnCadastrarUsuario">Cadastrar</button>
         </div>
-        <div id="cadastrar-empresas">
-            <p>Cadastrar Nova Empresa</p>
+        <div id="cadastrar-fabricas">
+            <p>Cadastrar Nova Fábrica</p>
             <div id="campos-cadastro">
                 <div class="campos">
-                    <label for="inpCNPJ">CNPJ:</label>
-                    <input type="text" id="inpCNPJ" placeholder="Ex: XX.XXX.XXX/YYYY-ZZ">
-                    <label for="inpRazaoSocial">Razão Social:</label>
-                    <input type="text" id="inpRazaoSocial" placeholder="Ex: AutoPaint Colorações">
                     <label for="inpNomeFabrica">Nome da Fábrica:</label>
-                    <input type="text" id="inpNomeFabrica" placeholder="Ex: Fábrica José dos Pinhais">
-                    <label for="inpNumeroCabines">Número de Cabines:</label>
-                    <input type="text" id="inpNumeroCabines" placeholder="Ex: 15">
-                    <label for="inpEmail">E-mail:</label>
-                    <input type="text" id="inpEmail" placeholder="Ex: gerencia@autopaint.com">
-                    <label for="inpTelefone">Telefone:</label>
-                    <input type="text" id="inpTelefone" placeholder="Ex: (11) 92222-4444">
+                    <input type="text" id="inpNomeFabrica" placeholder="Fábrica José dos Pinhais">
+                    <label for="inpQtdCabines">Quantidade de Cabines:</label>
+                    <input type="text" id="inpQtdCabines" placeholder="15">
+                    <label for="inpCEP">CEP:</label>
+                    <input type="text" id="inpRazaoSocial" placeholder="12248-700">
+                    <label for="inpRua">Rua:</label>
+                    <input type="text" id="inpRua" placeholder="Av. José dos Pinhais">
+                    <label for="inpNumero">N°:</label>
+                    <input type="text" id="inpNumero" placeholder="1777">
+                    <label for="inpBairro">Bairro:</label>
+                    <input type="text" id="inpBairro" placeholder="Frei Galvão">
+                    <label for="inpCidade">Cidade:</label>
+                    <input type="text" id="inpUF" placeholder="São José dos Campos">
                 </div>
             </div>
-            <button id="btnCadastrarUsuario">Cadastrar</button>
+            <button id="btnCadastrarFabricas">Cadastrar</button>
         </div>
     </div>
 </body>

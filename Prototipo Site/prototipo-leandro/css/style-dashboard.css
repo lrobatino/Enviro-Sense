@@ -222,8 +222,8 @@ body {
         content: url('../images/robo-azul.png');
     }
 
-    #icone-empresa {
-        content: url('../images/empresa-azul.png');
+    #icone-fabrica {
+        content: url('../images/fabrica-azul.png');
     }
 }
 
@@ -556,9 +556,9 @@ body {
     }
 }
 
-#cadastrar-empresas {
+#cadastrar-fabricas {
     width: 700px;
-    height: 600px;
+    height: 700px;
     background-color: #092f94;
     border-radius: 7px;
     overflow: auto;
@@ -576,7 +576,7 @@ body {
     }
 
     .campos {
-        height: 400px;
+        height: 500px;
         width: 500px;
         display: flex;
         flex-direction: column;
