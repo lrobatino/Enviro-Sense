@@ -1,118 +1,75 @@
-CREATE DATABASE enviro;
-USE enviro;
+create database enviro;
+use enviro;
 
-CREATE TABLE empresa (
-idEmpresa INT PRIMARY KEY AUTO_INCREMENT, 
-email VARCHAR(100), 
-senha VARCHAR(32),
-cnpj CHAR(14),
-nomeFantasia VARCHAR(50),
-razaoSocial VARCHAR(50),
-telefone CHAR(11),
-email2 VARCHAR(100),
-telefone2 CHAR(11));
-
-CREATE TABLE funcionario (
-idFuncionario INT AUTO_INCREMENT,
-fkEmpresa INT,
-	PRIMARY KEY(idFuncionario, fkEmpresa),
-nome VARCHAR(45),
-dtNasc DATE,
-fkSupervisor INT,
-	CONSTRAINT fkSupervisorFunc FOREIGN KEY (fkSupervisor) 
-		REFERENCES funcionario (idFuncionario),
-	CONSTRAINT fkEmpresaFunc FOREIGN KEY (fkEmpresa)
-		REFERENCES empresa (idEmpresa)
-    );
-    
-    
-CREATE TABLE fabrica (
-idFabrica INT AUTO_INCREMENT,
-fkEmpresa INT,
-	PRIMARY KEY(idFabrica, fkEmpresa),
-nome VARCHAR(45),
-limiteDeAlerta VARCHAR(45),
-	CONSTRAINT fkEmpresaFabrica FOREIGN KEY (fkEmpresa)
-		REFERENCES empresa (idEmpresa));
-        
+show tables;
+-- Criação da tabela Endereço
 CREATE TABLE endereco (
-idEndereco INT PRIMARY KEY AUTO_INCREMENT,
-logradouro VARCHAR(45),
-cep CHAR(8),
-numero INT,
-bairro VARCHAR(45),
-fkFabrica INT,
-fkEmpresa INT,
-	CONSTRAINT fkFabricaEndereco FOREIGN KEY (fkFabrica)
-    REFERENCES fabrica (idFabrica),
-    CONSTRAINT fkEmpresaEndereco FOREIGN KEY (fkEmpresa)
-    REFERENCES empresa (idEmpresa));
-    
+    idEndereco INT AUTO_INCREMENT PRIMARY KEY,
+    cep CHAR(9),
+    cidade VARCHAR(45),
+    bairro VARCHAR(45),
+    numero INT,
+    logradouro VARCHAR(100)
+);
 
+-- Criação da tabela Fábrica
+CREATE TABLE fabrica (
+    idFabrica INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(45),
+    qtdeCabine INT,
+    fkEndereco INT,
+    codAtivacao CHAR(5),
+    FOREIGN KEY (fkEndereco) REFERENCES endereco(idEndereco)
+);
+
+-- Criação da tabela Cabine
 CREATE TABLE cabine (
-idCabine INT,
-qtdAlerta INT,
-fkFabrica INT,
-fkEmpresaFabrica INT,
-fkSensor INT,
-	PRIMARY KEY (idCabine, fkFabrica, fkEmpresaFabrica),
-    CONSTRAINT fkFabricaCabine FOREIGN KEY (fkFabrica)
-    REFERENCES fabrica (idFabrica),
-    CONSTRAINT fkEmpresaFabricaCabine FOREIGN KEY (fkEmpresaFabrica)
-    REFERENCES empresa (idEmpresa));
-    
+    idCabine INT AUTO_INCREMENT PRIMARY KEY,
+    qtdeAlerta VARCHAR(45),
+    fkFabrica INT,
+    fkEmpresaFabrica INT,
+    FOREIGN KEY (fkFabrica) REFERENCES fabrica(idFabrica)
+);
+
+-- Criação da tabela Sensor
 CREATE TABLE sensor (
-idSensor INT PRIMARY KEY AUTO_INCREMENT,
-tipoSensor VARCHAR(10),
-dtInstalacao DATE);
+    idSensor INT AUTO_INCREMENT PRIMARY KEY,
+    tipoSensor VARCHAR(45),
+    dtInstalacao DATE,
+    fkCabine INT,
+    FOREIGN KEY (fkCabine) REFERENCES cabine(idCabine)
+);
 
+-- Criação da tabela Registros
 CREATE TABLE registros (
-idRegistro INT AUTO_INCREMENT,
-nvMedicao VARCHAR(20),
-nvAlerta VARCHAR(20),
-dtRegistro DATE,
-fkSensor INT,
-	PRIMARY KEY(idRegistro, fkSensor),
-    CONSTRAINT fkSensorRegistros FOREIGN KEY (fkSensor)
-    REFERENCES sensor (idSensor));
-    
-    
-select * from empresa;
-select * from funcionario; 
-select * from fabrica; 
-select * from endereco; 
-select * from cabine; 
-select * from sensor;
+    idRegistro INT AUTO_INCREMENT PRIMARY KEY,
+    nvMedicao VARCHAR(20),
+    nvAlerta VARCHAR(20),
+    dtRegistro DATETIME,
+    fkSensor INT,
+    FOREIGN KEY (fkSensor) REFERENCES sensor(idSensor)
+);
 
-	SELECT 
-    f.nome AS 'Nome Funcionario', 
-    e.nome AS 'Nome Empresa'
-FROM 
-    funcionario f
-JOIN 
-    empresa e ON f.fkEmpresa = e.idEmpresa;
-    
-    SELECT 
-    en.cidade AS Cidade, 
-    e.nome AS 'Nome Empresa'
-FROM 
-    fabrica f
-JOIN 
-    endereco en ON f.idFabrica = en.fkFabrica
-JOIN 
-    empresa e ON en.fkEmpresa = e.idEmpresa;
+-- Criação da tabela Funcionário
+CREATE TABLE funcionario (
+    idFuncionario INT AUTO_INCREMENT PRIMARY KEY,
+    fkFabrica INT,
+    nome VARCHAR(45),
+    email VARCHAR(100),
+    senha VARCHAR(25),
+    FOREIGN KEY (fkFabrica) REFERENCES fabrica(idFabrica)
+);
 
-    
-    
-    
-    
+-- Criação da tabela Funcionário Supervisor
+CREATE TABLE funcionarioSupervisor (
+    fkFuncionario INT,
+    fkFabrica INT,
+    fkSupervisor INT,
+    PRIMARY KEY (fkFuncionario, fkSupervisor),
+    FOREIGN KEY (fkFuncionario) REFERENCES funcionario(idFuncionario),
+    FOREIGN KEY (fkFabrica) REFERENCES fabrica(idFabrica),
+    FOREIGN KEY (fkSupervisor) REFERENCES funcionario(idFuncionario)
+);
 
 
 
-
-
-
-
-
-
-    
