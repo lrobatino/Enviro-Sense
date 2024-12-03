@@ -1,80 +1,80 @@
 create database enviro;
 use enviro;
 
+CREATE TABLE Fabrica (
+    idFabrica INT PRIMARY KEY,
+    nome VARCHAR(45),
+    qtdCabine INT,
+    codAtivacao CHAR(5)
+);
 
-
-show tables;
--- Criação da tabela Endereço
-CREATE TABLE endereco (
-    idEndereco INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE Endereco (
+    idEndereco INT PRIMARY KEY,
     cep CHAR(9),
     cidade VARCHAR(45),
     bairro VARCHAR(45),
     numero INT,
-    logradouro VARCHAR(100)
-);
-
--- Criação da tabela Fábrica
-CREATE TABLE fabrica (
-    idFabrica INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(45),
-    qtdeCabine INT,
-    fkEndereco INT,
-    codAtivacao CHAR(5),
-    FOREIGN KEY (fkEndereco) REFERENCES endereco(idEndereco)
-);
-insert into fabrica values 
-	(default,"FabricaTeste", 4,null,'abcde');
-
--- Criação da tabela Cabine
-CREATE TABLE cabine (
-    idCabine INT AUTO_INCREMENT PRIMARY KEY,
-    qtdeAlerta VARCHAR(45),
+    logradouro VARCHAR(100),
     fkFabrica INT,
-    fkEmpresaFabrica INT,
-    FOREIGN KEY (fkFabrica) REFERENCES fabrica(idFabrica)
+    FOREIGN KEY (fkFabrica) REFERENCES Fabrica(idFabrica)
 );
 
--- Criação da tabela Sensor
-CREATE TABLE sensor (
-    idSensor INT AUTO_INCREMENT PRIMARY KEY,
-    tipoSensor VARCHAR(45),
-    dtInstalacao DATE,
-    fkCabine INT,
-    FOREIGN KEY (fkCabine) REFERENCES cabine(idCabine)
-);
-
--- Criação da tabela Registros
-CREATE TABLE registros (
-    idRegistro INT AUTO_INCREMENT PRIMARY KEY,
-    nvMedicao VARCHAR(20),
-    nvAlerta VARCHAR(20),
-    dtRegistro DATETIME,
-    fkSensor INT,
-    FOREIGN KEY (fkSensor) REFERENCES sensor(idSensor)
-);
-
--- Criação da tabela Funcionário
-CREATE TABLE funcionario (
-    idFuncionario INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE Funcionario (
+    idFuncionario INT,
     fkFabrica INT,
+		PRIMARY KEY(idFuncionario, fkFabrica),
     nome VARCHAR(45),
     email VARCHAR(100),
     senha VARCHAR(25),
-    FOREIGN KEY (fkFabrica) REFERENCES fabrica(idFabrica)
+    FOREIGN KEY (fkFabrica) REFERENCES Fabrica(idFabrica)
 );
 
--- Criação da tabela Funcionário Supervisor
-CREATE TABLE funcionarioSupervisor (
+CREATE TABLE areas (
     fkFuncionario INT,
     fkFabrica INT,
     fkSupervisor INT,
-    PRIMARY KEY (fkFuncionario, fkSupervisor),
-    FOREIGN KEY (fkFuncionario) REFERENCES funcionario(idFuncionario),
-    FOREIGN KEY (fkFabrica) REFERENCES fabrica(idFabrica),
-    FOREIGN KEY (fkSupervisor) REFERENCES funcionario(idFuncionario)
+    nome VARCHAR(45),
+    FOREIGN KEY (fkFuncionario) REFERENCES Funcionario(idFuncionario),
+    FOREIGN KEY (fkFabrica) REFERENCES Fabrica(idFabrica),
+    PRIMARY KEY (fkFuncionario, fkFabrica, fkSupervisor)
 );
 
+CREATE TABLE Cabine (
+    idCabine INT PRIMARY KEY,
+    fkFabrica INT,
+    FOREIGN KEY (fkFabrica) REFERENCES Fabrica(idFabrica)
+);
+
+CREATE TABLE Sensor (
+    idSensor INT,
+    tipoSensor VARCHAR(45),
+    dtInstalacao DATE,
+    fkCabine INT,
+    fkCabineFabrica INT,
+    FOREIGN KEY (fkCabine) REFERENCES Cabine(idCabine),
+    FOREIGN KEY (fkCabineFabrica) REFERENCES Fabrica(idFabrica),
+    PRIMARY KEY(idSensor, fkCabine, fkCabineFabrica)
+);
+
+CREATE TABLE Alertas (
+    idAlerta INT,
+    fkSensor INT,
+    fkSensorCabine INT,
+    fkSensorCabineFabrica INT,
+    tipoAlerta VARCHAR(45),
+    dtAlerta DATETIME,
+    FOREIGN KEY (fkSensor) REFERENCES Sensor(idSensor),
+    PRIMARY KEY(idAlerta, fkSensor, fkSensorCabine, fkSensorCabineFabrica)
+);
+
+CREATE TABLE Registros (
+    idRegistro INT,
+    nvMedicao VARCHAR(20),
+    dtRegistro DATETIME,
+    fkSensor INT,
+    FOREIGN KEY (fkSensor) REFERENCES Sensor(idSensor),
+    PRIMARY KEY(idRegistro, fkSensor)
+);
 
 
 
