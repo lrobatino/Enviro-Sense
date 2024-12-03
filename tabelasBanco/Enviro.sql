@@ -1,6 +1,8 @@
 create database enviro;
 use enviro;
 
+
+
 show tables;
 -- Criação da tabela Endereço
 CREATE TABLE endereco (
