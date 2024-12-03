@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style-dashboard.css">
+    <script src="js/script-dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script data-jsd-embedded data-key="0e2775f3-461d-4b7e-9bcc-48d3cb207a3a" data-base-url="https://jsd-widget.atlassian.com" src="https://jsd-widget.atlassian.com/assets/embed.js"></script>
+    <title>Enviro App</title>
+</head>
+<body>
+    <div id="cabecalho">
+        <div id="conteudo-cabecalho">
+            <img id="icone-menu" tabindex="-1" src="imgs/menu-icon.png" draggable="false" onclick="mostrarEsconderMenu()">
+            <div id="informacao-usuario">
+                <p>LEANDRO ROBATINO</p>
+                <img src="imgs/sem-avatar.png" draggable="false">
+            </div>
+        </div>
+    </div>
+    <div id="menu">
+        <div id="opcoes">
+            <img id="icone-menu" tabindex="-1" src="imgs/fechar.png" draggable="false" onclick="mostrarEsconderMenu()">
+            <div class="opcao" onclick="dashboard()">
+                <img src="imgs/dashboard.png" id="icone-dashboard" draggable="false"><p>Dashboard</p> 
+            </div>
+            <div class="opcao">
+                <img src="imgs/alerta.png" id="icone-alerta" draggable="false"><p>Alertas</p>
+            </div>
+            <div class="opcao" onclick="cadastrarUsuarios()">
+                <img src="imgs/usuario.png" id="icone-usuario" draggable="false"><p>Cadastrar Usuários</p>
+            </div>
+            <div class="opcao" onclick="cadastrarFabricas()">
+                <img src="imgs/fabrica.png" id="icone-fabrica" draggable="false"><p>Cadastrar Fábricas</p>
+            </div>
+        </div>
+        <button id="btnSair">Sair</button>
+    </div>
+    <div id="tela-principal">
+        <div id="dashboard">
+            <div id="navbar-dashboard">
+                <img onclick="sairCabine()" id="icone-voltar" src="imgs/voltar.png">
+                <div id="titulo">
+                    <p id="idFabrica">Fabrica Albert Einstein</p>
+                    <p id="idCabine" hidden>Cabine 1</p>
+                </div>
+            </div>
+            <div id="informacao-geral">
+                <div class="grafico">
+                    <canvas id="alertas-cabines"></canvas>
+                </div>
+                <div class="kpi">
+                    <span>CABINES DE PINTURA</span>
+                    <div id="mural-cabines">
+                        <div onclick="entrarCabine()" class="cabine" id="cabine1">1</div>
+                        <div onclick="entrarCabine()" class="cabine" id="cabine2">2</div>
+                        <div onclick="entrarCabine()" class="cabine" id="cabine3">3</div>
+                        <div onclick="entrarCabine()" class="cabine" id="cabine4">4</div>
+                        <div onclick="entrarCabine()" class="cabine" id="cabine5">5</div>
+                        <div onclick="entrarCabine()" class="cabine" id="cabine6">6</div>
+                        <div onclick="entrarCabine()" class="cabine" id="cabine7">7</div>
+                        <div onclick="entrarCabine()" class="cabine" id="cabine8">8</div>
+                        <div onclick="entrarCabine()" class="cabine" id="cabine9">9</div>
+                        <div onclick="entrarCabine()" class="cabine" id="cabine10">10</div>
+                        <div onclick="entrarCabine()" class="cabine" id="cabine11">11</div>
+                        <div onclick="entrarCabine()" class="cabine" id="cabine12">12</div>
+                    </div>
+                    <div id="legenda">
+                        <div id="on"></div><a>Em Atividade</a>
+                        <div id="off"></div><a>Fora de Atividade</a>
+                    </div>
+                </div>
+                <div class="kpi">
+                    <canvas id="porcentagem-ok"></canvas>
+                </div>
+            </div>
+            <div id="informacao-individual">
+                <div class="grafico">
+            
+                </div>
+                <div class="kpi">
+                    <span>Média de COV emitido (hoje)</span>
+                    <div class="medidor">
+                        <div id="verde">
+                            <div id="agulha">
+                            </div>
+                        </div>
+                        <div id="amarelo">
+
+                        </div>
+                        <div id="laranja">
+
+                        </div>
+                        <div id="vermelho">
+
+                        </div>
+                    </div>
+                    <p>25 g/m²</p>
+                </div>
+                <div class="kpi">
+    
+                </div>
+            </div>
+        </div>
+        <div id="cadastrar-usuarios">
+            <p>Cadastrar Novo Usuário</p>
+            <div id="campos">
+                <label for="inpCodigoFabrica">Código da Fábrica</label>
+                <input type="text" id="inpCodigoFabrica" placeholder="A3X7V">
+                <label for="inpNome">Nome:</label>
+                <input type="text" id="inpNome" placeholder="Claudio Frizzarini">
+                <label for="inpUsuario">Usuário:</label>
+                <input type="text" id="inpUsuario" placeholder="cfrizza">
+                <label for="inpEmail">E-mail:</label>
+                <input type="text" id="inpEmail" placeholder="claudio.frizzarini@email.com">
+                <label for="inpSenha">Senha:</label>
+                <div id="senha-visualizar">
+                    <input type="password" id="inpSenha">
+                    <img id="imgSenha" src="imgs/esconder.png" onclick="mostrarSenha()">
+                </div>
+                <label for="inpConfirmarSenha">Confirmar Senha:</label>
+                <input type="password" id="inpConfirmarSenha">
+            </div>
+            <button id="btnCadastrarUsuario">Cadastrar</button>
+        </div>
+        <div id="cadastrar-fabricas">
+            <p>Cadastrar Nova Fábrica</p>
+            <div id="campos-cadastro">
+                <div class="campos">
+                    <label for="inpNomeFabrica">Nome da Fábrica:</label>
+                    <input type="text" id="inpNomeFabrica" placeholder="Fábrica José dos Pinhais">
+                    <label for="inpQtdCabines">Quantidade de Cabines:</label>
+                    <input type="text" id="inpQtdCabines" placeholder="15">
+                    <label for="inpCEP">CEP:</label>
+                    <input type="text" id="inpRazaoSocial" placeholder="12248-700">
+                    <label for="inpRua">Rua:</label>
+                    <input type="text" id="inpRua" placeholder="Av. José dos Pinhais">
+                    <label for="inpNumero">N°:</label>
+                    <input type="text" id="inpNumero" placeholder="1777">
+                    <label for="inpBairro">Bairro:</label>
+                    <input type="text" id="inpBairro" placeholder="Frei Galvão">
+                    <label for="inpCidade">Cidade:</label>
+                    <input type="text" id="inpUF" placeholder="São José dos Campos">
+                </div>
+            </div>
+            <button id="btnCadastrarFabricas">Cadastrar</button>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    const ctxA = document.getElementById('captacao-sensor');
+    const ctxB = document.getElementById('alertas-cabines');
+    const ctxC = document.getElementById('porcentagem-ok');
+
+    const captacaoSensor = new Chart(ctxA, {
+    type: 'bar',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+        y: {
+            beginAtZero: true
+        }
+        }
+    }
+    });
+
+    const alertasCabines = new Chart(ctxB, {
+    type: 'bar',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+        y: {
+            beginAtZero: true
+        }
+        }
+    }
+    });
+    const porcentagemOk = new Chart(ctxC, {
+    type: 'pie',
+    data: {
+        datasets: [{
+            data: [30, 20, 25, 25],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(255, 206, 86, 0.6)',
+                'rgba(75, 192, 192, 0.6)' 
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            tooltip: {
+                enabled: true
+            }
+            
+        }
+    }
+    });
+</script>

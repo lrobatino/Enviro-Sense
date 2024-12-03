@@ -23,6 +23,8 @@ CREATE TABLE fabrica (
     codAtivacao CHAR(5),
     FOREIGN KEY (fkEndereco) REFERENCES endereco(idEndereco)
 );
+insert into fabrica values 
+	(default,"FabricaTeste", 4,null,'abcde');
 
 -- Criação da tabela Cabine
 CREATE TABLE cabine (
@@ -72,6 +74,8 @@ CREATE TABLE funcionarioSupervisor (
     FOREIGN KEY (fkFabrica) REFERENCES fabrica(idFabrica),
     FOREIGN KEY (fkSupervisor) REFERENCES funcionario(idFuncionario)
 );
+
+
 
 
 
