@@ -11,34 +11,23 @@ function mostrarEsconderMenu() {
 
 function dashboard() {
     var dashboard = document.getElementById('dashboard')
-    var cadastrarUsuarios = document.getElementById('cadastrar-usuarios')
     var cadastrarFabricas = document.getElementById('cadastrar-fabricas')
+    var bobia = document.getElementById('tela-bobia')
     mostrarEsconderMenu()
 
-    cadastrarUsuarios.style.display = 'none'
     cadastrarFabricas.style.display = 'none'
+    bobia.style.display = 'none'
     dashboard.style.display = 'flex'
-}
-
-function cadastrarUsuarios() {
-    var dashboard = document.getElementById('dashboard')
-    var cadastrarUsuarios = document.getElementById('cadastrar-usuarios')
-    var cadastrarFabricas = document.getElementById('cadastrar-fabricas')
-    mostrarEsconderMenu()
-
-    dashboard.style.display = 'none'
-    cadastrarFabricas.style.display = 'none'
-    cadastrarUsuarios.style.display = 'flex'
 }
 
 function cadastrarFabricas() {
     var dashboard = document.getElementById('dashboard')
-    var cadastrarUsuarios = document.getElementById('cadastrar-usuarios')
     var cadastrarFabricas = document.getElementById('cadastrar-fabricas')
+    var bobia = document.getElementById('tela-bobia')
     mostrarEsconderMenu()
 
     dashboard.style.display = 'none'
-    cadastrarUsuarios.style.display = 'none'
+    bobia.style.display = 'none'
     cadastrarFabricas.style.display = 'flex'
 }
 
@@ -60,30 +49,13 @@ function sairCabine() {
     informacaoIndividual.style.display = 'none'
 }
 
-function mostrarSenha() {
-    var senha = document.getElementById('inpSenha')
-    var senhaEmpresa = document.getElementById('inpSenhaEmpresa')
-    var imgSenha = document.getElementById('imgSenha')
-    var imgSenhaEmpresa = document.getElementById('imgSenhaEmpresa')
+function consultarBobia() {
+    var dashboard = document.getElementById('dashboard')
+    var cadastrarFabricas = document.getElementById('cadastrar-fabricas')
+    var bobia = document.getElementById('tela-bobia')
+    mostrarEsconderMenu()
 
-    senha.type = 'text'
-    imgSenha.src = 'imgs/visualizar.png'
-    imgSenha.onclick = esconderSenha
-    senhaEmpresa.type = 'text'
-    imgSenhaEmpresa.src = 'imgs/visualizar.png'
-    imgSenhaEmpresa.onclick = esconderSenha
-}
-
-function esconderSenha() {
-    var senha = document.getElementById('inpSenha')
-    var senhaEmpresa = document.getElementById('inpSenhaEmpresa')
-    var imgSenha = document.getElementById('imgSenha')
-    var imgSenhaEmpresa = document.getElementById('imgSenhaEmpresa')
-
-    senha.type = 'password'
-    imgSenha.src = 'imgs/esconder.png'
-    imgSenha.onclick = mostrarSenha
-    senhaEmpresa.type = 'password'
-    imgSenhaEmpresa.src = 'imgs/esconder.png'
-    imgSenhaEmpresa.onclick = mostrarSenha
+    dashboard.style.display = 'none'
+    cadastrarFabricas.style.display = 'none'
+    bobia.style.display = 'flex'
 }

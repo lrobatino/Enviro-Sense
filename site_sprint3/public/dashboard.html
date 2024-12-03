@@ -28,11 +28,11 @@
             <div class="opcao">
                 <img src="imgs/alerta.png" id="icone-alerta" draggable="false"><p>Alertas</p>
             </div>
-            <div class="opcao" onclick="cadastrarUsuarios()">
-                <img src="imgs/usuario.png" id="icone-usuario" draggable="false"><p>Cadastrar Usuários</p>
-            </div>
             <div class="opcao" onclick="cadastrarFabricas()">
                 <img src="imgs/fabrica.png" id="icone-fabrica" draggable="false"><p>Cadastrar Fábricas</p>
+            </div>
+            <div class="opcao" onclick="consultarBobia()">
+                <img src="imgs/icone-bobia.png" id="icone-bobia" draggable="false"><p>Consultar BOBIA</p>
             </div>
         </div>
         <button id="btnSair">Sair</button>
@@ -77,10 +77,10 @@
             </div>
             <div id="informacao-individual">
                 <div class="grafico">
-            
+                    <canvas id="captacao-sensor" width="800" height="400"></canvas>
                 </div>
                 <div class="kpi">
-                    <span>Média de COV emitido (hoje)</span>
+                    <span>Média de COV Emitido (Hoje)</span>
                     <div class="medidor">
                         <div id="verde">
                             <div id="agulha">
@@ -99,30 +99,25 @@
                     <p>25 g/m²</p>
                 </div>
                 <div class="kpi">
-    
+                    <span>Média de COV Emitido (Esta Semana)</span>
+                    <div class="medidor">
+                        <div id="verde">
+                            <div id="agulha">
+                            </div>
+                        </div>
+                        <div id="amarelo">
+
+                        </div>
+                        <div id="laranja">
+
+                        </div>
+                        <div id="vermelho">
+
+                        </div>
+                    </div>
+                    <p>25 g/m²</p>
                 </div>
             </div>
-        </div>
-        <div id="cadastrar-usuarios">
-            <p>Cadastrar Novo Usuário</p>
-            <div id="campos">
-                <label for="inpCodigoFabrica">Código da Fábrica</label>
-                <input type="text" id="inpCodigoFabrica" placeholder="A3X7V">
-                <label for="inpNome">Nome:</label>
-                <input type="text" id="inpNome" placeholder="Claudio Frizzarini">
-                <label for="inpUsuario">Usuário:</label>
-                <input type="text" id="inpUsuario" placeholder="cfrizza">
-                <label for="inpEmail">E-mail:</label>
-                <input type="text" id="inpEmail" placeholder="claudio.frizzarini@email.com">
-                <label for="inpSenha">Senha:</label>
-                <div id="senha-visualizar">
-                    <input type="password" id="inpSenha">
-                    <img id="imgSenha" src="imgs/esconder.png" onclick="mostrarSenha()">
-                </div>
-                <label for="inpConfirmarSenha">Confirmar Senha:</label>
-                <input type="password" id="inpConfirmarSenha">
-            </div>
-            <button id="btnCadastrarUsuario">Cadastrar</button>
         </div>
         <div id="cadastrar-fabricas">
             <p>Cadastrar Nova Fábrica</p>
@@ -146,6 +141,9 @@
             </div>
             <button id="btnCadastrarFabricas">Cadastrar</button>
         </div>
+        <div id="tela-bobia">
+
+        </div>
     </div>
 </body>
 </html>
@@ -155,19 +153,91 @@
     const ctxC = document.getElementById('porcentagem-ok');
 
     const captacaoSensor = new Chart(ctxA, {
-    type: 'bar',
+    type: 'line',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: ['12:00:00', '12:00:05', '12:00:10', '12:00:15', '12:00:20', '12:00:25'],
         datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1
-        }]
+        data: [15, 15, 5, 5, 15, 15],
+        borderColor: '#00CC00',
+        borderWidth: 3,
+        backgroundColor: '#00CC00',
+        },
+        {
+        data: [45, 45, 45, 45, 45, 45],
+        borderColor: '#FF0000',
+        borderWidth: 3,
+        backgroundColor: '#FF0000',
+        pointRadius: 0
+        },
+        {
+        data: [35, 35, 35, 35, 35, 35],
+        borderColor: '#FFAA00',
+        borderWidth: 3,
+        backgroundColor: '#FFAA00',
+        pointRadius: 0
+        }
+        ]
     },
     options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                display: false
+            },
+            title: {
+                display: true,
+                text: 'Nível de COV Emitido (Tempo Real)',
+                color: '#092f94',
+                font: {
+                    size: 20,
+                    weight: 'bold'
+                }
+            }
+        },
         scales: {
         y: {
-            beginAtZero: true
+            beginAtZero: true,
+            min: 0,
+            max: 50,
+            ticks: {
+                color: '#092f94',
+                stepSize: 5,
+                callback: function(value) {
+                    return value + ' g/m²'
+                },
+                font: {
+                    size: 16,
+                }
+            },
+            title: {
+                color: '#092f94',
+                display: true,
+                text: 'Unidade de Medida (g/m²)',
+                font: {
+                    weight: 'bold',
+                    size: 16,
+                }
+            }
+        },
+        x: {
+            grid: {
+                display: false
+            },
+            ticks: {
+                color: '#092f94',
+                font: {
+                    size: 16,
+                }
+            },
+            title: {
+                color: '#092f94',
+                display: true,
+                text: 'Horário da Captação',
+                font: {
+                    weight: 'bold',
+                    size: 16,
+                }
+            }
         }
         }
     }
@@ -176,10 +246,10 @@
     const alertasCabines = new Chart(ctxB, {
     type: 'bar',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9', 'C10', 'C11', 'C12', 'C13', 'C14', 'C15'],
         datasets: [{
         label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
         borderWidth: 1
         }]
     },
