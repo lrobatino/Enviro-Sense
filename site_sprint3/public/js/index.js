@@ -4,16 +4,15 @@ function mostrarMenu() {
   menu.classList.toggle('mostrar');
 }
 
-function validarInputs() {
-   var email = inp_email.value
-   var senha = inp_senha.value
+function validarInputs(email,senha) {
 
    if(!emailValido(email)){
-      return alert("Email inválido. Email deve conter '@' e '.' após o arroba")
+      return alert("Email inválido. Email deve conter '@' e '.' após o @")
    }
    if(!senhaValida(senha)){
     return alert("Senha inválida. Senha deve conter pelo menos um caractere especial\numa letra maiuscula e um numero\nE ter pelo menos 8 digitos")
    }
+   return true
 }
 
 function emailValido(email){
