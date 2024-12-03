@@ -12,22 +12,18 @@ function mostrarEsconderMenu() {
 function dashboard() {
     var dashboard = document.getElementById('dashboard')
     var cadastrarFabricas = document.getElementById('cadastrar-fabricas')
-    var bobia = document.getElementById('tela-bobia')
     mostrarEsconderMenu()
 
     cadastrarFabricas.style.display = 'none'
-    bobia.style.display = 'none'
     dashboard.style.display = 'flex'
 }
 
 function cadastrarFabricas() {
     var dashboard = document.getElementById('dashboard')
     var cadastrarFabricas = document.getElementById('cadastrar-fabricas')
-    var bobia = document.getElementById('tela-bobia')
     mostrarEsconderMenu()
 
     dashboard.style.display = 'none'
-    bobia.style.display = 'none'
     cadastrarFabricas.style.display = 'flex'
 }
 
@@ -49,13 +45,4 @@ function sairCabine() {
     informacaoIndividual.style.display = 'none'
 }
 
-function consultarBobia() {
-    var dashboard = document.getElementById('dashboard')
-    var cadastrarFabricas = document.getElementById('cadastrar-fabricas')
-    var bobia = document.getElementById('tela-bobia')
-    mostrarEsconderMenu()
 
-    dashboard.style.display = 'none'
-    cadastrarFabricas.style.display = 'none'
-    bobia.style.display = 'flex'
-}

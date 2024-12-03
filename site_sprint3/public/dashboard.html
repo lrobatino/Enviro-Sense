@@ -31,7 +31,7 @@
             <div class="opcao" onclick="cadastrarFabricas()">
                 <img src="imgs/fabrica.png" id="icone-fabrica" draggable="false"><p>Cadastrar Fábricas</p>
             </div>
-            <div class="opcao" onclick="consultarBobia()">
+            <div class="opcao" onclick="window.location='http://localhost:3000'">
                 <img src="imgs/icone-bobia.png" id="icone-bobia" draggable="false"><p>Consultar BOBIA</p>
             </div>
         </div>
@@ -140,9 +140,6 @@
                 </div>
             </div>
             <button id="btnCadastrarFabricas">Cadastrar</button>
-        </div>
-        <div id="tela-bobia">
-
         </div>
     </div>
 </body>
@@ -265,7 +262,7 @@
     type: 'pie',
     data: {
         datasets: [{
-            data: [30, 20, 25, 25],
+            data: [30, 70],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.6)',
                 'rgba(54, 162, 235, 0.6)',
