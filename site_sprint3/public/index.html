@@ -42,14 +42,14 @@
     
         <div class="carrosel">
             <div class="slider">
-                <div class="slide">
-                        <h1><b>EnviroSense</b></h1>
+                <div class="slide1">
+                        <h1><b>ENVIRO SENSE</b></h1>
                         <span>
                             <b>Controle</b> a emissão, <b>proteja</b> o futuro.<br>
                             <b>Monitoramento de COV</b> para um amanhã <b>limpo e seguro</b>.
                         </span>
                 </div>
-                <div class="slide">
+                <div class="slide2">
                         <h1><b>Simulador</b></h1>
                         <span>
                             Faça uma rápida simulação<br>
@@ -57,7 +57,7 @@
                         </span><br><br>
                         <p><button onclick="window.location.href='simulador2.html'">Simular</button></p>
                 </div>
-                <div class="slide">
+                <div class="slide3">
                         <h1><b>Sobre nós</b></h1>
                         <span>
                             Interessado em nos conhecer melhor<br>
@@ -72,6 +72,9 @@
                 <span class="navegador"></span>
                 <span class="navegador"></span>
             </div>
+        </div>
+        <div class="info-index">
+
         </div>
     
     <!--Footer-->
@@ -145,4 +148,13 @@
     inp_senha.value = ""
     
   }
+
+  window.addEventListener('scroll', function() {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 50) { // Mude 50 para o valor que preferir
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
 </script>
