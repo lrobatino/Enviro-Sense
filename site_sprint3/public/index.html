@@ -11,15 +11,14 @@
     <div class="login" id="menuLogin">
         <div class="container">
             <button id="sair" onclick="mostrarMenu()">
-                <img height="20px" width="20px" src="imgs/fechar.png">
+                <img height="20px" width="20px" src="imgs/close.png">
             </button>
-            <h1>Entrar</h1>
+            <h1>Faça seu Login</h1>
             <input type="text" id="inp_email" placeholder="Insira seu E-mail"><br>
             <input type="password" id="inp_senha" placeholder="Insira sua senha"><br>
             <button id="entrar" onclick="entrar()">Entrar</button>
-            <div class="campo-cadastro" onclick="window.location = 'cadastro.html'"">
-                <button id="cadastro">Criar Conta</button>
-                <p>&rarr;</p>
+            <div class="campo-cadastro">
+                <a>ou Registre-se <u onclick="window.location = 'cadastro.html'">Aqui</u></a>
             </div>
         </div>
     </div>

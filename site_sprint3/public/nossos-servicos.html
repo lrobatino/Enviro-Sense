@@ -6,12 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nossos Serviços | Enviro Sense</title>
     <link rel="stylesheet" href="css/nossos-servicos.css">
+    <link rel="stylesheet" href="css/index.css">
     <link rel="icon" href="imgs/NUVEMSEMFUNDO.png" type="image/png">
 
 </head>
 
 <body>
-    <div class="login esconder" id="menuLogin">
+
+    <div class="login" id="menuLogin">
+        <div class="container">
+            <button id="sair" onclick="mostrarMenu()">
+                <img height="20px" width="20px" src="imgs/close.png">
+            </button>
+            <h1>Faça seu Login</h1>
+            <input type="text" id="inp_email" placeholder="Insira seu E-mail"><br>
+            <input type="password" id="inp_senha" placeholder="Insira sua senha"><br>
+            <button id="entrar" onclick="entrar()">Entrar</button>
+            <div class="campo-cadastro">
+                <a>ou Registre-se <u onclick="window.location = 'cadastro.html'">Aqui</u></a>
+            </div>
+        </div>
+    </div>
+   <!--  <div class="login esconder" id="menuLogin">
         <div class="container">
             <button id="sair" onclick="mostrarMenu()">
                 <img height="20px" width="20px" src="imgs/fechar.png">
@@ -22,7 +38,7 @@
             <button id="entrar">Entrar</button>
             <button id="cadastro">Criar Conta</button>
         </div>
-    </div>
+    </div> -->
 
     <header id="header">
         <div class="container">
@@ -121,7 +137,74 @@
         </div>
     </div>
 <script src="js/sobre-nos.js"></script>
-
+<script src="js/index.js"></script>
 </body>
-
 </html>
+
+<script>
+    function entrar() {
+        
+        var emailVar = inp_email.value;
+        var senhaVar = inp_senha.value;
+        
+        if(!validarInputs(emailVar,senhaVar)){
+            return 
+        }
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+    
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+    
+            if (resposta.ok) {
+                console.log(resposta);
+    
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.idFuncionario;
+                });
+            
+                
+                    limparFormulario()
+                    window.location.href = "dashboard.html";
+                    
+                    
+            } else {
+    
+                console.log("Houve um erro ao tentar realizar o login!");
+    
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+    
+                
+            }
+    
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+    
+        return false;
+    }
+
+    function limparFormulario(){
+    
+    inp_email.value = ""
+    inp_senha.value = ""
+    
+  }
+
+
+</script>

@@ -136,6 +136,8 @@ header.scrolled .container .navbar .entrar {
             border-radius: 5px;
             height: 40px;
             outline: none;
+            font-size: 18px;
+            color: black;
         }
         
         h1{
@@ -154,17 +156,20 @@ header.scrolled .container .navbar .entrar {
 
         .campo-cadastro{
             display: flex;
+            flex-direction: row;
+            justify-content: center;
             align-items: center;
-            width: 100%;
+            width: 162px;
+            height: 50px;
             position: relative;
             transition: padding-right 0.5s ease;
+            font-size: 18px;
+            color: #3c404e;  
 
-            p {
-                font-size: 30px;
-                padding-bottom: 20px;
+            u {
                 cursor: pointer;
+                color: #092f94;
             }
-
         }
 
     }
@@ -179,15 +184,28 @@ header.scrolled .container .navbar .entrar {
     
     
     #entrar{
+        width: 150px;
+        height: 40px;
         background-color: #092f94;
-        opacity: 0.8;
-        transition: opacity 0.5s;
+        font-size: 20px;
+        color: whitesmoke;
         font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.2s ease;
+    }
+
+    #entrar:hover {
+        transform: scale(1.1);
+        filter: brightness(1.2);
+    }
+
+    #entrar:active {
+        transform: scale(0.9);
+        filter: brightness(0.8);
     }
     
-    #cadastro{
-        background-color: transparent;
-    }
 }
 
 .login.mostrar{
