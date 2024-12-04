@@ -139,7 +139,7 @@
                     <input type="text" id="inpCidade" placeholder="São José dos Campos">
                 </div>
             </div>
-            <button id="btnCadastrarFabricas" onclick="chamarCadastros()">Cadastrar</button>
+            <button id="btnCadastrarFabricas" onclick="cadastrarInfoFabrica()">Cadastrar</button>
         </div>
     </div>
 </body>
@@ -293,13 +293,8 @@
     });
 
 
-function chamarCadastros(){
-    cadastrarInfoFabrica()
-    setTimeout(() => {
-            listar()
-            cadastrarInfoEndereco()
-    }, "1000");
-}
+    
+            
 
 function cadastrarInfoFabrica() {
 
@@ -339,7 +334,7 @@ function cadastrarInfoFabrica() {
 
       if (resposta.ok) {
         alert("Fábrica registrada com sucesso")
-
+        listar()
         limparFormulario();
       } else {
         throw "Houve um erro ao tentar realizar o cadastro!";
@@ -425,6 +420,7 @@ function listar() {
         resposta.json().then((empresas) => {
           empresas.forEach((empresa) => {
             listaFabricasCadastradas.push(empresa);
+            cadastrarInfoEndereco()
 
             console.log("listaFabricasCadastradas")
           });
