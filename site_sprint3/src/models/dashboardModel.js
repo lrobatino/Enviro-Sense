@@ -20,6 +20,19 @@ function cadastrarInfoEndereco(cep,cidade,bairro,numero,logradouro,nomeFabrica) 
     return database.executar(instrucaoSql);
 }
 
+function cadastrarAlerta(fkSensor, fkSensorCabine, fkSensorCabineFabrica, tipoAlerta) {
+    console.log("Inserindo alerta no banco de dados");
+
+    const instrucaoSql = `
+        INSERT INTO Alertas 
+        VALUES (default,${fkSensor}, ${fkSensorCabine}, ${fkSensorCabineFabrica}, '${tipoAlerta}', NOW());
+    `;
+
+    console.log("Executando a instrução SQL:\n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
 function calcularMediaDia() {
     console.log("Tô na funcao de media dia");
     
@@ -71,5 +84,6 @@ module.exports = {
     cadastrarInfoEndereco,
     calcularMediaDia,
     calcularMediaSemana,
-    captarCOV
+    captarCOV,
+    cadastrarAlerta
 };
