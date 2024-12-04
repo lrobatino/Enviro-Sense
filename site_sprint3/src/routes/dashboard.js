@@ -24,4 +24,8 @@ router.get("/captarCOV", function (req, res) {
     dashboardController.captarCOV(req, res);
 })
 
+router.post("/cadastrarAlerta", (req, res) => {
+    dashboardController.cadastrarAlerta(req, res);
+});
+
 module.exports = router;
