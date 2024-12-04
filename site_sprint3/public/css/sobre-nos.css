@@ -55,7 +55,7 @@ header {
             justify-content: space-between;
             width: 600px;
             min-width: 450px;
-            font-size: 15px;
+            font-size: 20px;
             font-weight: bold;
             padding-left: 20px;
             padding-right: 20px;
@@ -197,6 +197,7 @@ header.scrolled .container .navbar .entrar {
     height: 80%;
     width: 70%;
     padding-top: 5%;
+    text-align: justify;
 }
 
 .home .texto-home h2 {
@@ -235,6 +236,7 @@ header.scrolled .container .navbar .entrar {
     font-size: 30px;
     background-color: whitesmoke;
     display: flex;
+    padding-bottom: 5% ;
     justify-content: center;
     align-items: center;
     height: 500px;
@@ -281,21 +283,21 @@ header.scrolled .container .navbar .entrar {
 }
 
 .informacoes1 .imagem-missao {
-    background-image: url(imagens-sobre-nos/missao.png);
+    background-image: url('../imgs/missao.png');
     background-size: cover;
     background-position: center;
     height: 80%;
     width: 30%;
 }
 .informacoes2 .imagem-visao {
-    background-image: url(imagens-sobre-nos/visao.png);
+    background-image: url('../imgs/visao.png');
     background-size: cover;
     background-position: center;
-    height: 58%;
+    height: 70%;
     width: 30%;
 }
 .informacoes3 .imagem-valores {
-    background-image: url(imagens-sobre-nos/valores.png);
+    background-image: url('../imgs/valores.png');
     background-size: cover;
     background-position: center;
     height: 80%;

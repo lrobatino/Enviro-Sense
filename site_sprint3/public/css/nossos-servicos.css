@@ -55,7 +55,7 @@ header {
             justify-content: space-between;
             width: 600px;
             min-width: 450px;
-            font-size: 15px;
+            font-size: 20px;
             font-weight: bold;
             padding-left: 20px;
             padding-right: 20px;
@@ -200,12 +200,13 @@ header.scrolled .container .navbar .entrar {
     height: 80%;
     width: 70%;
     padding-top: 5%;
+    text-align: justify;
 }
 
 .servicos .mensagem-servicos h2 {
     margin-bottom: 20px;
     color: #a4bcfc;
-    text-align: center;
+    text-align: justify;
 }
 
 .servicos .mensagem-servicos span{

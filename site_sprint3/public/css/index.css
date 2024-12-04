@@ -55,8 +55,8 @@ header {
             justify-content: space-between;
             width: 600px;
             min-width: 450px;
-            font-size: 15px;
-            font-weight: bold;
+            font-size: 20px;
+            font-weight: bolder;
             padding-left: 20px;
             padding-right: 20px;
         }
@@ -267,17 +267,26 @@ header.scrolled .container .navbar .entrar {
     }
     
     button {
-        font-size: 15px;
-        font-weight: bold;
         height: 40px;
         width: 200px;
-        border-radius: 10px;
-        transition: transform 0.5s;
+        font-weight: bold;
+        border-radius: 50px;
+        font-size: 20px;
+        border: 0;
+        color: whitesmoke;
+        background-color: #0E2A71;
+        transition: 0.2s ease;
     }
 }
 
 .carrosel button:hover{
-    transform: scale(1.4);
+    transform: scale(1.1);
+    filter: brightness(1.2); 
+}
+
+.carrosel button:active{
+    transform: scale(0.8);
+    filter: brightness(0.8); 
 }
 
 
@@ -313,8 +322,154 @@ header.scrolled .container .navbar .entrar {
 }
 
 .info-index {
-    background-color: whitesmoke;
-    height: 700px;
     width: 100%;
+    height: 100vh;
+    font-size: 25px;
+    background-size: cover;
+    background-position: center;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    height: 500px;
+}
+
+.info-index .texto-index {
+    height: 100%;
+    width: 80%;
+    text-align: start;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-index2 {
+    width: 100%;
+    height: 100vh;
+    font-size: 25px;
+    background-size: cover;
+    background-position: center;
+    background-color: #0E2A71;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    height: 500px;
+}
+
+.info-index2 .texto-index2 {
+    height: 100%;
+    width: 80%;
+    text-align: start;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-index2 .texto-index2 h2{
+    margin-bottom: 20px;
+    color: #a4bcfc;
+}
+
+.info-index .texto-index button{
+    height: 10%;
+    width: 30%;
+    font-weight: bold;
+    border-radius: 50px;
+    font-size: 20px;
+    border: 0;
+    color: whitesmoke;
+    background-color: #0E2A71;
+    transition: 0.2s ease;
+}
+
+.info-index .texto-index button:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2); 
+}
+
+.info-index .texto-index button:active {
+    transform: scale(0.8);
+    filter: brightness(0.8); 
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(#0E2A71, #000000);
+    background-size: cover;
+    width: 100%;
+    height: 500px;
+}
+
+.footer .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 1000px;
+    height: 100px;
+    font-size: 24px;
+    color: #f5f5f5;
+}
+
+.footer .container .caixa {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    text-align: left;
+    height: 100px;
+    span {
+        font-size: 24px;
+        font-weight: bold;
+        color: #f5f5f5;
+    }
+
+    a {
+        font-size: 18px;
+        color: #EEEEEE;
+    }
+
+    .icones {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+
+.footer .container .caixa1 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    text-align: left;
+    height: 70px;
+    span {
+        font-size: 24px;
+        font-weight: bold;
+        color: #0E2A71;
+    }
+
+    a {
+        font-size: 18px;
+        color: #EEEEEE;
+    }
+
+    .icones {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
 }
 
