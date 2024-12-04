@@ -25,9 +25,6 @@
             <div class="opcao" onclick="dashboard()">
                 <img src="imgs/dashboard.png" id="icone-dashboard" draggable="false"><p>Dashboard</p> 
             </div>
-            <div class="opcao">
-                <img src="imgs/alerta.png" id="icone-alerta" draggable="false"><p>Alertas</p>
-            </div>
             <div class="opcao" onclick="cadastrarFabricas()">
                 <img src="imgs/fabrica.png" id="icone-fabrica" draggable="false"><p>Cadastrar Fábricas</p>
             </div>
@@ -67,12 +64,13 @@
                         <div onclick="entrarCabine()" class="cabine" id="cabine12">12</div>
                     </div>
                     <div id="legenda">
-                        <div id="on"></div><a>Em Atividade</a>
-                        <div id="off"></div><a>Fora de Atividade</a>
+                        <div id="on"></div><b>Em Atividade</b>
+                        <div id="off"></div><b>Fora de Atividade</b>
                     </div>
                 </div>
                 <div class="kpi">
-                    <canvas id="porcentagem-ok"></canvas>
+                    <span>Sua Fábrica Emitiu</span>
+                    <a id="mostrarAlertas"></a>
                 </div>
             </div>
             <div id="informacao-individual">
@@ -398,17 +396,68 @@
                 datasets: [{
                     label: 'Quantidade de alertas',
                     data: qtdAlertaCabs,
-                    borderWidth: 1
+                    borderColor: '#092f94',
+                    backgroundColor: '#092f94'
                 }]
             },
             options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
+        responsive: true,
+        plugins: {
+            legend: {
+                display: false
+            },
+            title: {
+                display: true,
+                text: 'Visão Geral da Fábrica',
+                color: '#092f94',
+                font: {
+                    size: 20,
+                    weight: 'bold'
                 }
             }
-        });
+        },
+        scales: {
+        y: {
+            beginAtZero: true,
+            ticks: {
+                color: '#092f94',
+                font: {
+                    size: 16,
+                }
+            },
+            title: {
+                color: '#092f94',
+                display: true,
+                text: 'Quantidade de Alertas',
+                font: {
+                    weight: 'bold',
+                    size: 16,
+                }
+            }
+        },
+        x: {
+            grid: {
+                display: false
+            },
+            ticks: {
+                color: '#092f94',
+                font: {
+                    size: 16,
+                }
+            },
+            title: {
+                color: '#092f94',
+                display: true,
+                text: 'Cabines',
+                font: {
+                    weight: 'bold',
+                    size: 16,
+                }
+            }
+        }
+        }
+    }
+    });
     }
     
     function contarAlertas(){
@@ -427,10 +476,8 @@
             }
 
         }).then(dados => {
-
-                qtdAlertaTotais = dados[0].qtdAlertas + dados[1].qtdAlertas
-                
-            
+            qtdAlertaTotais = dados[0].qtdAlertas + dados[1].qtdAlertas
+            mostrarAlertas.innerHTML = `${qtdAlertaTotais} Alertas`
         })
     }
         
