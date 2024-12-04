@@ -182,7 +182,7 @@ header.scrolled .container .navbar .entrar {
 /*Começo da estilização da tela dos nossos serviços*/
 .servicos {
     width: 100%;
-    height: 600px;
+    height: 500px;
     font-size: 30px;
     background-size: cover;
     background-position: center;
@@ -193,7 +193,6 @@ header.scrolled .container .navbar .entrar {
     align-items: center;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     padding-top: 80px;
-    height: 500px;
 }
 
 .servicos .mensagem-servicos {
@@ -216,7 +215,7 @@ header.scrolled .container .navbar .entrar {
 
 .monitoramento, .alerta{
     width: 100%;
-    height: 600px;
+    height: 500px;
     font-size: 30px;
     background-color: whitesmoke;
     display: flex;
@@ -226,12 +225,29 @@ header.scrolled .container .navbar .entrar {
 
 .relatorio, .suporte{
     width: 100%;
-    height: 600px;
+    height: 500px;
     font-size: 30px;
     background-color: #0E2A71;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.monitoramento img {
+    height: 400px;
+    width: 400px;
+}
+.relatorio img {
+    height: 400px;
+    width: 400px;
+}
+.alerta img {
+    height: 400px;
+    width: 400px;
+}
+.suporte img {
+    height: 400px;
+    width: 400px;
 }
 
 .monitoramento, .alerta h2{
