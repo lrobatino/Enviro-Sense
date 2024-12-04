@@ -44,5 +44,3 @@ function sairCabine() {
     informacaoGeral.style.display = 'flex'
     informacaoIndividual.style.display = 'none'
 }
-
-

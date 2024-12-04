@@ -128,7 +128,7 @@
                     <label for="inpQtdCabines">Quantidade de Cabines:</label>
                     <input type="text" id="inpQtdCabines" placeholder="15">
                     <label for="inpCEP">CEP:</label>
-                    <input type="text" id="inpRazaoSocial" placeholder="12248-700">
+                    <input type="text" id="inpCEP" placeholder="12248-700">
                     <label for="inpRua">Rua:</label>
                     <input type="text" id="inpRua" placeholder="Av. José dos Pinhais">
                     <label for="inpNumero">N°:</label>
@@ -136,15 +136,16 @@
                     <label for="inpBairro">Bairro:</label>
                     <input type="text" id="inpBairro" placeholder="Frei Galvão">
                     <label for="inpCidade">Cidade:</label>
-                    <input type="text" id="inpUF" placeholder="São José dos Campos">
+                    <input type="text" id="inpCidade" placeholder="São José dos Campos">
                 </div>
             </div>
-            <button id="btnCadastrarFabricas">Cadastrar</button>
+            <button id="btnCadastrarFabricas" onclick="chamarCadastros()">Cadastrar</button>
         </div>
     </div>
 </body>
 </html>
 <script>
+
     const ctxA = document.getElementById('captacao-sensor');
     const ctxB = document.getElementById('alertas-cabines');
     const ctxC = document.getElementById('porcentagem-ok');
@@ -239,7 +240,6 @@
         }
     }
     });
-
     const alertasCabines = new Chart(ctxB, {
     type: 'bar',
     data: {
@@ -291,4 +291,156 @@
         }
     }
     });
+
+
+function chamarCadastros(){
+    cadastrarInfoFabrica()
+    setTimeout(() => {
+            listar()
+            cadastrarInfoEndereco()
+    }, "1000");
+}
+
+function cadastrarInfoFabrica() {
+
+  var nomeVar = inpNomeFabrica.value;
+  var qtdCabines = inpQtdCabines.value;
+
+  if (
+    nomeVar == "" ||
+    qtdCabines == ""
+  ) {
+   return alert("Campos em branco\nPor favor, preencha todos os campos")
+  } 
+
+  var codAtivacao = ''
+  var alfabeto = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+
+  for(var i = 0;i<5;i++){
+    codAtivacao += alfabeto[parseInt(Math.random()*26 + 1)]
+  }
+  
+
+  // Enviando o valor da nova input
+  fetch("/dashboard/cadastrarInfoFabrica", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      // Agora vá para o arquivo routes/usuario.js
+      nomeServer: nomeVar,
+      qtdCabinesServer: qtdCabines,
+      codAtivacaoServer: codAtivacao
+    }),
+  })
+    .then(function (resposta) {
+      console.log("resposta: ", resposta);
+
+      if (resposta.ok) {
+        alert("Fábrica registrada com sucesso")
+
+        limparFormulario();
+      } else {
+        throw "Houve um erro ao tentar realizar o cadastro!";
+      }
+    })
+    .catch(function (resposta) {
+      console.log(`#ERRO: ${resposta}`);
+    });
+
+  return false;
+}
+
+let listaFabricasCadastradas = [];
+
+function cadastrarInfoEndereco() {
+
+var nomeFabrica = inpNomeFabrica.value;
+var cepVar = inpCEP.value;
+var cidadeVar = inpCidade.value;
+var bairroVar = inpBairro.value;
+var numeroVar = inpNumero.value;
+var logradouroVar = inpRua.value;
+var nomeFabricaVincular
+
+if (
+    nomeFabrica == ""||
+  cepVar == "" ||
+  cidadeVar == "" ||
+  bairroVar == "" ||
+  numeroVar == "" ||
+  logradouroVar == ""
+) {
+ return alert("Campos em branco\nPor favor, preencha todos os campos")
+} 
+
+for (let i = 0; i < listaFabricasCadastradas.length; i++) {
+      if (listaFabricasCadastradas[i].nome == nomeFabrica) {
+        nomeFabricaVincular = listaFabricasCadastradas[i].nome
+        console.log("idFabrica obtido");
+        break;
+      }
+    }
+
+// Enviando o valor da nova input
+fetch("/dashboard/cadastrarInfoEndereco", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    // Agora vá para o arquivo routes/dashboard.js
+    cepServer: cepVar,
+    cidadeServer: cidadeVar,
+    bairroServer: bairroVar,
+    numeroServer: numeroVar,
+    logradouroServer: logradouroVar,
+    nomeFabricaVincularServer: nomeFabricaVincular
+  }),
+})
+  .then(function (resposta) {
+    console.log("resposta: ", resposta);
+
+    if (resposta.ok) {
+      alert("Endereço registrado com sucesso")
+
+      limparFormulario();
+    } else {
+      throw "Houve um erro ao tentar realizar o cadastro!";
+    }
+  })
+  .catch(function (resposta) {
+    console.log(`#ERRO: ${resposta}`);
+  });
+
+return false;
+}
+
+function listar() {
+    fetch("/empresas/listar", {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((empresas) => {
+          empresas.forEach((empresa) => {
+            listaFabricasCadastradas.push(empresa);
+
+            console.log("listaFabricasCadastradas")
+          });
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
+
+function limparFormulario(){
+    inpCEP.value;
+    inpCidade.value;
+    inpBairro.value;
+    inpNumero.value;
+    inpRua.value;
+}
+
 </script>

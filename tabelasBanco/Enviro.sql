@@ -2,22 +2,27 @@ create database enviro;
 use enviro;
 
 CREATE TABLE Fabrica (
-    idFabrica INT PRIMARY KEY,
-    nome VARCHAR(45),
+    idFabrica INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(45) UNIQUE,
     qtdCabine INT,
     codAtivacao CHAR(5)
 );
 
+
+select * from fabrica;
+
 CREATE TABLE Endereco (
-    idEndereco INT PRIMARY KEY,
+    idEndereco INT PRIMARY KEY AUTO_INCREMENT,
     cep CHAR(9),
     cidade VARCHAR(45),
     bairro VARCHAR(45),
     numero INT,
     logradouro VARCHAR(100),
-    fkFabrica INT,
-    FOREIGN KEY (fkFabrica) REFERENCES Fabrica(idFabrica)
+    fkFabrica varchar(45),
+    FOREIGN KEY (fkFabrica) REFERENCES Fabrica(nome)
 );
+
+select * from endereco;
 
 CREATE TABLE Funcionario (
     idFuncionario INT,
