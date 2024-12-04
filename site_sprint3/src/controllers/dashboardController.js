@@ -124,11 +124,36 @@ function captarCOV(req, res) {
                 }
         );
 }
+
+function puxarAlertas(req, res) {
+
+    dashboardModel.puxarAlertas()
+        .then(
+            function (resultado) {  
+                console.log(`Resultados: ${JSON.stringify(resultado)}`); 
+                res.json(resultado);
+                }
+        );
+}
+
+function contarAlertas(req, res) {
+
+    dashboardModel.contarAlertas()
+        .then(
+            function (resultado) {  
+                console.log(`Resultados: ${JSON.stringify(resultado)}`); 
+                res.json(resultado);
+                }
+        );
+}
+
 module.exports = {
     cadastrarInfoFabrica,
     cadastrarInfoEndereco,
     calcularMediaDia,
     calcularMediaSemana,
     captarCOV,
-    cadastrarAlerta
+    cadastrarAlerta,
+    puxarAlertas,
+    contarAlertas
 }

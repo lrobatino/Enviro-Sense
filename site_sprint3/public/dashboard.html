@@ -145,8 +145,15 @@
 </body>
 </html>
 <script>
+    window.onload = chamarGraficos()
+
+    function chamarGraficos(){
+        puxarAlertas()
+        contarAlertas()
+    }
 
     function entrarCabine(numeroCabine) {
+
     var informacaoIndividual = document.getElementById('informacao-individual')
     var informacaoGeral = document.getElementById('informacao-geral')
     var botaoVoltar = document.getElementById('icone-voltar')
@@ -171,6 +178,8 @@
     horarioDadosSensor =[]
     dadosZonaAviso =[]
     dadosZonaPerigo = []
+    qtdAlertaCabs = []
+    qtdAlertaTotais = 0
 
     function captarCOV() {
 
@@ -219,6 +228,7 @@
         .then((resposta) => {
             if (resposta.ok) {
                 console.log(`Alerta "${tipoAlerta}" cadastrado com sucesso!`);
+                atualizarAlerta()
             } else {
                 console.log(`Erro ao cadastrar alerta "${tipoAlerta}"`);
                 resposta.text().then((texto) => {
@@ -344,58 +354,86 @@
     }
     }
     
-    const alertasCabines = new Chart(ctxB, {
-    type: 'bar',
-    data: {
-        labels: ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9', 'C10', 'C11', 'C12', 'C13', 'C14', 'C15'],
-        datasets: [{
-        label: 'Quantidade de alertas',
-        data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
-        borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-        y: {
-            beginAtZero: true
-        }
-        }
+    function atualizarAlerta() {
+        puxarAlertas()
+        contarAlertas()
+        criarGraficoAlerta()
     }
-    });
-    const porcentagemOk = new Chart(ctxC, {
-    type: 'pie',
-    data: {
-        datasets: [{
-            data: [30, 70],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.6)',
-                'rgba(54, 162, 235, 0.6)',
-                'rgba(255, 206, 86, 0.6)',
-                'rgba(75, 192, 192, 0.6)' 
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            legend: {
-                position: 'top',
-            },
-            tooltip: {
-                enabled: true
-            }
-            
-        }
-    }
-    });
 
+    function puxarAlertas(){
+        fetch(`/dashboard/puxarAlertas`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }})
+            .then(resposta => {
+
+            if (resposta.ok) {
+                console.log("Alertas coletados");
+                return resposta.json();
+                } else {
+                console.log("Houve um erro!");
+            }
+
+        }).then(dados => {
+
+                for(var i=0;i<dados.length;i++){
+                    qtdAlertaCabs.push(dados[i].qtdAlertas)
+                }
+                
+                criarGraficoAlerta()
+            
+        })
+    }
+    var alertasCabines
+    function criarGraficoAlerta(){
+
+        if (alertasCabines) {
+        alertasCabines.destroy();
+    }
+         alertasCabines = new Chart(ctxB, {
+            type: 'bar',
+            data: {
+                labels: ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9', 'C10', 'C11', 'C12'],
+                datasets: [{
+                    label: 'Quantidade de alertas',
+                    data: qtdAlertaCabs,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+    
+    function contarAlertas(){
+        fetch(`/dashboard/contarAlertas`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }})
+            .then(resposta => {
+
+            if (resposta.ok) {
+                console.log("Alertas totais coletados");
+                return resposta.json();
+                } else {
+                console.log("Houve um erro!");
+            }
+
+        }).then(dados => {
+
+                qtdAlertaTotais = dados[0].qtdAlertas + dados[1].qtdAlertas
+                
+            
+        })
+    }
+        
     function calcularMediaDia() {
 
     fetch(`/dashboard/calcularMediaDia`, {
@@ -416,7 +454,7 @@
             }
 
         }).then(dados => {
-            mediaDia.innerHTML = dados[0].media
+            mediaDia.innerHTML = `${dados[0].media} g/m²`
             const agulhaHoje = document.getElementById('agulhaHoje');
             var valor = dados[0].media
             var novaDiv;
@@ -455,7 +493,7 @@
             }
 
         }).then(dados => {
-            mediaSemana.innerHTML = dados[0].media
+            mediaSemana.innerHTML = `${dados[0].media} g/m²`
             const agulhaSemana = document.getElementById('agulhaSemana');
             var valor = dados[0].media
             var novaDiv;

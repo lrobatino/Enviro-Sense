@@ -28,4 +28,12 @@ router.post("/cadastrarAlerta", (req, res) => {
     dashboardController.cadastrarAlerta(req, res);
 });
 
+router.get("/puxarAlertas", (req, res) => {
+    dashboardController.puxarAlertas(req, res);
+});
+
+router.get("/contarAlertas", (req, res) => {
+    dashboardController.contarAlertas(req, res);
+});
+
 module.exports = router;

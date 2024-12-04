@@ -79,11 +79,41 @@ function captarCOV() {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+
+function puxarAlertas() {
+    console.log("Tô puxando alertas");
+    
+    var instrucaoSql = `
+        SELECT 
+            fkSensor, COUNT(*) as qtdAlertas
+        FROM
+            Alertas
+        GROUP BY fkSensor;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function contarAlertas() {
+    console.log("Tô puxando alertas");
+    
+    var instrucaoSql = `
+        SELECT 
+            tipoAlerta, COUNT(*) AS qtdAlertas
+        FROM
+            Alertas
+        GROUP BY tipoAlerta;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 module.exports = {
     cadastrarInfoFabrica,
     cadastrarInfoEndereco,
     calcularMediaDia,
     calcularMediaSemana,
     captarCOV,
-    cadastrarAlerta
+    cadastrarAlerta,
+    puxarAlertas,
+    contarAlertas
 };

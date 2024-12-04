@@ -1,6 +1,6 @@
 setInterval(() => {
     var mediaDia = document.getElementById('mediaDia')
-    var cabine1 = document.getElementsById('cabine1')
+    var cabine1 = document.getElementById('cabine1')
 
     if (mediaDia.innerHTML != "") {
         cabine1.style.backgroundColor = '#092f94'
