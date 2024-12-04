@@ -72,6 +72,26 @@ function cadastrarInfoEndereco(req, res) {
     }
 }
 
+function cadastrarAlerta(req, res) {
+    const tipoAlerta = req.body.tipoAlertaServer;
+
+    // Define valores para as chaves estrangeiras (ajuste conforme necessário)
+    const fkSensor = 1; // Exemplo: ID do sensor
+    const fkSensorCabine = 1; // Exemplo: ID da cabine
+    const fkSensorCabineFabrica = 1; // Exemplo: ID da fábrica
+
+    // Chama o método no model
+    dashboardModel
+        .cadastrarAlerta(fkSensor, fkSensorCabine, fkSensorCabineFabrica, tipoAlerta)
+        .then(() => {
+            res.status(200).send("Alerta cadastrado com sucesso!");
+        })
+        .catch((erro) => {
+            console.error("Erro ao cadastrar alerta:", erro);
+            res.status(500).send("Erro ao cadastrar alerta");
+        });
+}
+
 function calcularMediaDia(req, res) {
 
         dashboardModel.calcularMediaDia()
@@ -109,5 +129,6 @@ module.exports = {
     cadastrarInfoEndereco,
     calcularMediaDia,
     calcularMediaSemana,
-    captarCOV
+    captarCOV,
+    cadastrarAlerta
 }
