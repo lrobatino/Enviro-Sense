@@ -20,7 +20,56 @@ function cadastrarInfoEndereco(cep,cidade,bairro,numero,logradouro,nomeFabrica) 
     return database.executar(instrucaoSql);
 }
 
+function calcularMediaDia() {
+    console.log("Tô na funcao de media dia");
+    
+    var instrucaoSql = `
+        SELECT 
+            TRUNCATE(AVG(nvMedicao), 0) AS media
+        FROM
+            Registros
+        WHERE
+            DATE(dtRegistro) = CURDATE();
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function calcularMediaSemana() {
+    console.log("Tô na funcao de media semana");
+    
+    var instrucaoSql = `
+        SELECT 
+            TRUNCATE(AVG(nvMedicao), 0) AS media
+        FROM
+            Registros
+        WHERE
+            DATE(dtRegistro) BETWEEN DATE_SUB(CURDATE(), INTERVAL 7 DAY) AND CURDATE();
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function captarCOV() {
+    console.log("Tô captando COV");
+    
+    var instrucaoSql = `
+        SELECT 
+        TRUNCATE(nvMedicao, 0)  nivelCOV,
+        TIME(dtRegistro) horaRegistro,
+        zonaPerigo,
+        zonaAviso
+    FROM
+        Registros
+    ORDER BY dtRegistro desc limit 1;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 module.exports = {
     cadastrarInfoFabrica,
-    cadastrarInfoEndereco
+    cadastrarInfoEndereco,
+    calcularMediaDia,
+    calcularMediaSemana,
+    captarCOV
 };

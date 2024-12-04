@@ -1,3 +1,15 @@
+setInterval(() => {
+    var mediaDia = document.getElementById('mediaDia')
+    var cabine1 = document.getElementsById('cabine1')
+
+    if (mediaDia.innerHTML != "") {
+        cabine1.style.backgroundColor = '#092f94'
+    } else {
+        cabine1.style.backgroundColor = '#3c404e'
+    }
+}, 1000);
+
+
 function mostrarEsconderMenu() {
     var menu = document.getElementById('menu')
     if (menu.classList.contains('visivel')){
@@ -25,16 +37,6 @@ function cadastrarFabricas() {
 
     dashboard.style.display = 'none'
     cadastrarFabricas.style.display = 'flex'
-}
-
-function entrarCabine(numeroCabine) {
-    var informacaoIndividual = document.getElementById('informacao-individual')
-    var informacaoGeral = document.getElementById('informacao-geral')
-    var botaoVoltar = document.getElementById('icone-voltar')
-
-    informacaoGeral.style.display = 'none'
-    informacaoIndividual.style.display = 'flex'
-    botaoVoltar.style.display = 'flex'
 }
 
 function sairCabine() {

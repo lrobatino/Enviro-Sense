@@ -12,4 +12,16 @@ router.post("/cadastrarInfoEndereco", function (req, res) {
     dashboardController.cadastrarInfoEndereco(req, res);
 })
 
+router.get("/calcularMediaDia", function (req, res) {
+    dashboardController.calcularMediaDia(req, res);
+})
+
+router.get("/calcularMediaSemana", function (req, res) {
+    dashboardController.calcularMediaDia(req, res);
+})
+
+router.get("/captarCOV", function (req, res) {
+    dashboardController.captarCOV(req, res);
+})
+
 module.exports = router;

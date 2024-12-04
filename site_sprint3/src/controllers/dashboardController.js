@@ -72,7 +72,42 @@ function cadastrarInfoEndereco(req, res) {
     }
 }
 
+function calcularMediaDia(req, res) {
+
+        dashboardModel.calcularMediaDia()
+            .then(
+                function (resultado) {
+                    console.log(`Resultados: ${JSON.stringify(resultado)}`); 
+                    res.json(resultado);
+                    }
+            );
+    }
+
+function calcularMediaSemana(req, res) {
+
+    dashboardModel.calcularMediaSemana()
+        .then(
+            function (resultado) {
+                console.log(`Resultados: ${JSON.stringify(resultado)}`); 
+                res.json(resultado);
+                }
+        );
+}
+
+function captarCOV(req, res) {
+
+    dashboardModel.captarCOV()
+        .then(
+            function (resultado) {  
+                console.log(`Resultados: ${JSON.stringify(resultado)}`); 
+                res.json(resultado);
+                }
+        );
+}
 module.exports = {
     cadastrarInfoFabrica,
-    cadastrarInfoEndereco
+    cadastrarInfoEndereco,
+    calcularMediaDia,
+    calcularMediaSemana,
+    captarCOV
 }
