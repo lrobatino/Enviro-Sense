@@ -198,7 +198,37 @@
                 dadosZonaPerigo.push(dados[0].zonaPerigo)
         atualizarGrafico();
 
+            if (dados[0].nivelCOV >= 45) {
+                inserirAlerta("Perigo"); // Insere alerta de Perigo
+            } else if (dados[0].nivelCOV >= 35) {
+                inserirAlerta("Aviso"); // Insere alerta de Aviso
+            }
         })
+    }
+
+    function inserirAlerta(tipoAlerta){
+        fetch("/dashboard/cadastrarAlerta", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            tipoAlertaServer: tipoAlerta, // Tipo de alerta ("Aviso" ou "Perigo")
+        }),
+    })
+        .then((resposta) => {
+            if (resposta.ok) {
+                console.log(`Alerta "${tipoAlerta}" cadastrado com sucesso!`);
+            } else {
+                console.log(`Erro ao cadastrar alerta "${tipoAlerta}"`);
+                resposta.text().then((texto) => {
+                    console.error(texto);
+                });
+            }
+        })
+        .catch((erro) => {
+            console.error("Erro na requisição de cadastro de alerta:", erro);
+        });
     }
              
     var captacaoSensor = new Chart(ctxA, {
