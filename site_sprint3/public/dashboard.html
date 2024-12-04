@@ -335,7 +335,6 @@ function cadastrarInfoFabrica() {
       if (resposta.ok) {
         alert("Fábrica registrada com sucesso")
         listar()
-        limparFormulario();
       } else {
         throw "Houve um erro ao tentar realizar o cadastro!";
       }
@@ -399,7 +398,6 @@ fetch("/dashboard/cadastrarInfoEndereco", {
 
     if (resposta.ok) {
       alert("Endereço registrado com sucesso")
-
       limparFormulario();
     } else {
       throw "Houve um erro ao tentar realizar o cadastro!";
