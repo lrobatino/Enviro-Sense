@@ -8,11 +8,6 @@
 });
 
 function mostrarMenu() {
-    var login = document.getElementsByClassName('login')[0]
-    if(login.style.display == 'none'){
-       login.style.display = 'flex'
-       login.style.transform = 'translate(0%)'
-    } else{
-      login.style.display = 'none'
-    }
+    const menu = document.getElementById('menuLogin');
+    menu.classList.toggle('mostrar');
   }

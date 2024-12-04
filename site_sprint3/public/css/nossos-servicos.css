@@ -42,6 +42,7 @@ header {
                 button{
                     width: 50px;
                     height: 50px;
+                    cursor: pointer;
                     background-color: rgba(0, 0, 0, 0);
                     border: 2px solid rgba(0, 0, 0, 0);  
                     background-size: cover;
@@ -104,30 +105,94 @@ header.scrolled .container .navbar .entrar {
 
 
 .login {
-    padding-top: 50px;
     position: fixed;
-    z-index: 2;
-    height: max-content;
+    z-index: 999;
     background-color: rgb(245, 245, 245);
-    right: 0;
+    right: -400px;
     width: 400px;
     height: 100%;
-    display: none;
     flex-direction: column;
-    transition: transform ease;
+    transition: right 0.3s ease;
+
+    
+    #sair {
+        position: absolute;
+        font-size: 40px;
+        top: 15px;
+        right: 5%;
+        font-weight: bold;
+        border: transparent;
+        height: 40px;
+        width: 40px;
+        background-color: transparent;
+        transition: transform 0.5s ease;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        margin: 40px;
+        
+        input{
+            border: 1px solid black;
+            border-radius: 5px;
+            height: 40px;
+            outline: none;
+        }
+        
+        h1{
+            padding-top: 6%;
+            font-size: 40px;
+        }
+        button{
+            cursor: pointer;
+            border: transparent;
+            border-radius: 5px;
+            font-size: 30px;
+            text-align: start;
+            height: 40px;
+            margin-bottom: 20px;
+        }
+
+        .campo-cadastro{
+            display: flex;
+            align-items: center;
+            width: 100%;
+            position: relative;
+            transition: padding-right 0.5s ease;
+
+            p {
+                font-size: 30px;
+                padding-bottom: 20px;
+                cursor: pointer;
+            }
+
+        }
+
+    }
+
+    .campo-cadastro button:hover {
+        padding-right: 10px;
+    }
+    
+    .campo-cadastro p:hover {
+        padding-left: 5px;
+    }
+    
+    
+    #entrar{
+        background-color: #092f94;
+        opacity: 0.8;
+        transition: opacity 0.5s;
+        font-weight: bold;
+    }
+    
+    #cadastro{
+        background-color: transparent;
+    }
 }
 
-.login #sair {
-    position: absolute;
-    font-size: 40px;
-    top: 15px;
-    right: 5%;
-    font-weight: bold;
-    border: transparent;
-    height: 40px;
-    width: 40px;
-    background-color: transparent;
-    transition: transform 0.5s ease;
+.login.mostrar{
+    right: 0;
 }
 
 .login #sair:hover {
@@ -135,47 +200,10 @@ header.scrolled .container .navbar .entrar {
     cursor: pointer;
 }
 
-.login .container {
-    display: flex;
-    flex-direction: column;
-    margin: 40px;
-}
-
-.login input{
-    border: 1px solid black;
-    border-radius: 5px;
-    height: 40px;
-    outline: none;
-}
-
-.login h1{
-    font-size: 40px;
-}
-
-.login button{
-    cursor: pointer;
-    border: transparent;
-    border-radius: 5px;
-    font-size: 30px;
-    text-align: start;
-    height: 40px;
-    margin-bottom: 20px;
-}
-
-.login #entrar{
-    background-color: #092f94;
-    opacity: 0.8;
-    transition: opacity 0.5s;
-    font-weight: bold;
-}
-
 .login #entrar:hover{
     opacity: 1;
 }
 
-.login #cadastro{
-    background-color: transparent;
-}
 /*Fim da estilização do Header*/
 
 
@@ -357,5 +385,11 @@ header.scrolled .container .navbar .entrar {
         flex-direction: row;
         justify-content: space-between;
         width: 100%;
+    }
+
+    .icones img {
+        height: 30px;
+        width: 30px;
+        padding-inline: 2px;
     }
 }

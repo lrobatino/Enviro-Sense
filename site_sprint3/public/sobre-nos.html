@@ -8,16 +8,19 @@
     <link rel="icon" href="imgs/NUVEMSEMFUNDO.png" type="image/png">
 </head>
 <body>
-    <div class="login esconder" id="menuLogin">
+    <div class="login" id="menuLogin">
         <div class="container">
             <button id="sair" onclick="mostrarMenu()">
                 <img height="20px" width="20px" src="imgs/fechar.png">
             </button>
             <h1>Entrar</h1>
             <input type="text" id="inp_email" placeholder="Insira seu E-mail"><br>
-            <input type="text" id="inp_senha" placeholder="Insira sua senha"><br>
-            <button id="entrar">Entrar</button>
-            <button id="cadastro">Criar Conta</button>
+            <input type="password" id="inp_senha" placeholder="Insira sua senha"><br>
+            <button id="entrar" onclick="entrar()">Entrar</button>
+            <div class="campo-cadastro" onclick="window.location = 'cadastro.html'"">
+                <button id="cadastro">Criar Conta</button>
+                <p>&rarr;</p>
+            </div>
         </div>
     </div>
 
@@ -91,10 +94,10 @@
             <div class="caixa1">
                 <span>Redes Sociais</span>
                 <div class="icones">
-                    <img height="40px" width="40px"src="imgs/instagram-icon.png"> <br>
-                    <img height="40px" width="40px" src="imgs/linkedin-icon.png"> <br>
-                    <img height="40px" width="40px"src="imgs/twitter-icon.png"> <br>
-                    <img height="40px" width="40px"src="imgs/facebook-icon.png"> <br>
+                    <img src="imgs/instagram-icon.png"> <br>
+                    <img src="imgs/linkedin-icon.png"> <br>
+                    <img src="imgs/twitter-icon.png"> <br>
+                    <img src="imgs/facebook-icon.png"> <br>
                 </div>
             </div>
         </div>

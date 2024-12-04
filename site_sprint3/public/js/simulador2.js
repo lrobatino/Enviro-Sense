@@ -67,3 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Inicializa a interface
     updateStep();
 });
+
+function mostrarMenu() {
+    const menu = document.getElementById('menuLogin');
+    menu.classList.toggle('mostrar');
+  }

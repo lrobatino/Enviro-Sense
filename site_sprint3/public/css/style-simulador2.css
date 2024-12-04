@@ -16,7 +16,7 @@ header {
     position: fixed;
     width: 100%;
     padding: 20px 0px;
-    background-color: #0E2A71;
+    background-color: transparent;
     transition: background-color 0.3s;
     z-index: 1;
     
@@ -46,6 +46,7 @@ header {
                 button{
                     width: 50px;
                     height: 50px;
+                    cursor: pointer;
                     background-color: rgba(0, 0, 0, 0);
                     border: 2px solid rgba(0, 0, 0, 0);  
                     background-size: cover;
@@ -59,8 +60,8 @@ header {
             justify-content: space-between;
             width: 600px;
             min-width: 450px;
-            font-size: 15px;
-            font-weight: bold;
+            font-size: 20px;
+            font-weight: bolder;
             padding-left: 20px;
             padding-right: 20px;
         }
@@ -75,11 +76,9 @@ header {
 
 header .entrar:hover {
     transform: scale(1.2);
-    cursor: pointer;
 }
 header .opcao:hover {
     transform: scale(1.2);
-    cursor: pointer;
 }
 
 header.scrolled {
@@ -104,6 +103,108 @@ header.scrolled .container .navbar .entrar {
     background-image: url('../imgs/entrar-removebg-preview.png');
     background-size: cover;
     transition: transform 0.5s ease;
+}
+
+
+
+.login {
+    position: fixed;
+    z-index: 999;
+    background-color: rgb(245, 245, 245);
+    right: -400px;
+    width: 400px;
+    height: 100%;
+    flex-direction: column;
+    transition: right 0.3s ease;
+
+    
+    #sair {
+        position: absolute;
+        font-size: 40px;
+        top: 15px;
+        right: 5%;
+        font-weight: bold;
+        border: transparent;
+        height: 40px;
+        width: 40px;
+        background-color: transparent;
+        transition: transform 0.5s ease;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        margin: 40px;
+        
+        input{
+            border: 1px solid black;
+            border-radius: 5px;
+            height: 40px;
+            outline: none;
+        }
+        
+        h1{
+            padding-top: 6%;
+            font-size: 40px;
+        }
+        button{
+            cursor: pointer;
+            border: transparent;
+            border-radius: 5px;
+            font-size: 30px;
+            text-align: start;
+            height: 40px;
+            margin-bottom: 20px;
+        }
+
+        .campo-cadastro{
+            display: flex;
+            align-items: center;
+            width: 100%;
+            position: relative;
+            transition: padding-right 0.5s ease;
+
+            p {
+                font-size: 30px;
+                padding-bottom: 20px;
+                cursor: pointer;
+            }
+
+        }
+
+    }
+
+    .campo-cadastro button:hover {
+        padding-right: 10px;
+    }
+    
+    .campo-cadastro p:hover {
+        padding-left: 5px;
+    }
+    
+    
+    #entrar{
+        background-color: #092f94;
+        opacity: 0.8;
+        transition: opacity 0.5s;
+        font-weight: bold;
+    }
+    
+    #cadastro{
+        background-color: transparent;
+    }
+}
+
+.login.mostrar{
+    right: 0;
+}
+
+.login #sair:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.login #entrar:hover{
+    opacity: 1;
 }
 
 
@@ -246,14 +347,14 @@ button.hidden {
 
 .caixa-simulador {
     width: 100%;
-    height: 200vh;
+    height: 90vh;
     font-size: 30px;
+    background-image: url('../imgs/slide3.png');
     background-size: cover;
     background-position: center;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     padding-top: 80px;
-    height: 500px;
 }
